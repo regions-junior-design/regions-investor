@@ -8,6 +8,7 @@ import {BrowserRouter as Router, Switch, Route, Link, useHistory} from "react-ro
 import { LinkContainer } from "react-router-bootstrap";
 import Routes from "./Routes";
 import { AppContext } from "./libs/contextLib"
+import logo from './logo.png';
 
 function App () {
 
@@ -24,20 +25,22 @@ function App () {
         <div className="App container">
             <Navbar fluid collapseOnSelect>
                 <Navbar.Brand>
-                    <Link to="/">Regions Investor</Link>
+                    <Link to="/">
+                        <img src={logo} alt="Logo" align="left"/>
+                    </Link>
                 </Navbar.Brand>
                 <Navbar.Toggle/>
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mr-auto"/>
                     <Nav>
                         {isAuthenticated
-                            ? <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
+                            ? <Nav.Link onClick={handleLogout}><button>Logout</button></Nav.Link>
                             : <>
                                 <LinkContainer to="/signup">
-                                    <Nav.Link>Signup</Nav.Link>
+                                    <button>Signup</button>
                                 </LinkContainer>
                                 <LinkContainer to="/login">
-                                    <Nav.Link>Login</Nav.Link>
+                                    <button>Login</button>
                                 </LinkContainer>
                             </>
                         }

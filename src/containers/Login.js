@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, Text} from "react";
 import GoogleLogin from "react-google-login";
 import { Form, Button, FormGroup } from "react-bootstrap";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import { useAppContext } from "../libs/contextLib";
+
 import "./Login.css";
+import logo from '../google.png';
+import { link } from "fs";
 
 export default function Login() {
     const history = useHistory();
@@ -22,7 +25,8 @@ export default function Login() {
     function responseGoogleSuccess(response) {
         console.log(response);
         userHasAuthenticated(true);
-        history.push('/')
+        history.push('/homepage')
+        link()
     }
 
     function responseGoogleFail(response) {
@@ -31,9 +35,27 @@ export default function Login() {
 
     return (
         <div className="Login">
+            <hr />
+            <h1 align="center"> Welcome to Regions Wealth Planner </h1>
+            <h3 align="center"> Please Sign into your account below </h3>
             <Form onSubmit={handleSubmit}>
                 <Form.Group controlId="email" bsSize="large">
-                    <Form.Label>Username</Form.Label>
+                <GoogleLogin
+                    clientId="1022136605161-85hl38q8a3t8d6vtn40au39tvaaq7chq.apps.googleusercontent.com"
+                    buttonText="Login"
+                    render={renderProps => (
+                        <button block onClick={renderProps.onClick} disabled={renderProps.disabled}><img src={logo} alt="Logo" align="center"/>Login with Google</button>
+                    )}
+                    onSuccess={responseGoogleSuccess}
+                    onFailure={responseGoogleFail}
+                    cookiePolicy={'single_host_origin'}
+                />
+                <div class="block">
+                    <hr />
+                        <div class="text">or</div>
+                    <hr />
+                </div>
+                <Form.Label>Username</Form.Label>
                     <Form.Control
                         autoFocus
                         type="email"
@@ -52,17 +74,10 @@ export default function Login() {
                 <button block disabled={!validateForm()} type="submit">
                     Login
                 </button>
-                <GoogleLogin
-                    clientId="1022136605161-85hl38q8a3t8d6vtn40au39tvaaq7chq.apps.googleusercontent.com"
-                    buttonText="Login"
-                    render={renderProps => (
-                        <button block onClick={renderProps.onClick} disabled={renderProps.disabled}>Login with Google</button>
-                    )}
-                    onSuccess={responseGoogleSuccess}
-                    onFailure={responseGoogleFail}
-                    cookiePolicy={'single_host_origin'}
-                />
             </Form>
+            <Link to="/singup">
+                <p align="center"> Need to Register? Sign Up </p>
+            </Link>
         </div>
     );
 }

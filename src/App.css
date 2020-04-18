@@ -41,6 +41,27 @@
   margin-top: 15px;
 }
 
-.App .navbar-brand {
-  font-weight: bold;
+img {
+  width: 30%;
+  height: 100%;
+}
+
+.App button {
+	
+	background:white;
+	background-color:#90BA54;
+	border-radius:13px;
+	display:inline-block;
+	cursor:pointer;
+	color:white;
+	font-family:Arial;
+  font-size:12px;
+  font-weight: lighter;
+	padding:8px 24px;
+  text-decoration:none;
+  margin: 3px;
+
+}
+.App button:hover {
+	background-color:#648B3F;
 }
