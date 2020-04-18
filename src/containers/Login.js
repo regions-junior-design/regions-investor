@@ -49,14 +49,14 @@ export default function Login() {
                         type="password"
                     />
                 </FormGroup>
-                <Button block disabled={!validateForm()} type="submit">
+                <button block disabled={!validateForm()} type="submit">
                     Login
-                </Button>
+                </button>
                 <GoogleLogin
                     clientId="1022136605161-85hl38q8a3t8d6vtn40au39tvaaq7chq.apps.googleusercontent.com"
                     buttonText="Login"
                     render={renderProps => (
-                        <Button block onClick={renderProps.onClick} disabled={renderProps.disabled}>Login with Google</Button>
+                        <button block onClick={renderProps.onClick} disabled={renderProps.disabled}>Login with Google</button>
                     )}
                     onSuccess={responseGoogleSuccess}
                     onFailure={responseGoogleFail}
