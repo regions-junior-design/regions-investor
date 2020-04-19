@@ -7,8 +7,8 @@ export default function homepage() {
         <div className="homepage">
             <div className="lander">
             <hr />
-                <h3>Future Homescreen... work in progress</h3>
-                <img src={logo} alt="Logo" align="center"/>
+                {/*<h3>Future Homescreen... work in progress</h3>*/}
+                <img src={logo}  className='fullimg' alt="Logo" align="center"/>
             </div>
         </div>
     );
