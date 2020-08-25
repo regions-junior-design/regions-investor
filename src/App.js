@@ -11,6 +11,7 @@ import { AppContext } from "./libs/contextLib"
 import logo from './logo.png';
 import Chart from './containers/Chart.js';
 import Axis from './containers/Axis';
+import LineChart from './containers/LineChart';
 
 function App () {
 
@@ -56,6 +57,7 @@ function App () {
         <Chart></Chart>
         <div>
             <Axis></Axis>
+            <LineChart></LineChart>
         </div>
         {/*<Router>*/}
         {/*    <Switch>*/}
