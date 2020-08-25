@@ -3,7 +3,7 @@ import { select, line, curveCardinal } from "d3";
 
 const LineChart = () => {
     // this is where we get data for our viz, so how do we connect it to backend?
-    const [data, setData] = useState([25, 30, 45, 60]);
+    const [data, setData] = useState([25, 30, 45, 60, 41, 35, 70, 94, 12, 45]);
     const svgRef = useRef();
 
     //will be called initially and with every data change that might come from the backend
