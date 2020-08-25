@@ -9,6 +9,7 @@ import { LinkContainer } from "react-router-bootstrap";
 import Routes from "./Routes";
 import { AppContext } from "./libs/contextLib"
 import logo from './logo.png';
+import Chart from './containers/Chart.js';
 
 function App () {
 
@@ -51,6 +52,7 @@ function App () {
         <AppContext.Provider value={{ isAuthenticated, userHasAuthenticated }}>
             <Routes />
         </AppContext.Provider>
+        <Chart></Chart>
         {/*<Router>*/}
         {/*    <Switch>*/}
         {/*        <Route path="/login" component={Login}/>*/}
