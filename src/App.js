@@ -10,6 +10,7 @@ import Routes from "./Routes";
 import { AppContext } from "./libs/contextLib"
 import logo from './logo.png';
 import Chart from './containers/Chart.js';
+import Axis from './containers/Axis';
 
 function App () {
 
@@ -53,6 +54,9 @@ function App () {
             <Routes />
         </AppContext.Provider>
         <Chart></Chart>
+        <div>
+            <Axis></Axis>
+        </div>
         {/*<Router>*/}
         {/*    <Switch>*/}
         {/*        <Route path="/login" component={Login}/>*/}
