@@ -65,3 +65,8 @@ img {
 .App button:hover {
 	background-color:#648B3F;
 }
+
+.linechart {
+  padding-left: 50px;
+  padding-bottom: 100px;
+}

@@ -55,8 +55,7 @@ function App () {
             <Routes />
         </AppContext.Provider>
         <Chart></Chart>
-        <div>
-            <Axis></Axis>
+        <div class="linechart">
             <LineChart></LineChart>
         </div>
 

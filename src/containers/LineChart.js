@@ -10,18 +10,28 @@ const LineChart = () => {
     useEffect(() => {
         const svg = select(svgRef.current);
 
-        const xScale = scaleLinear().domain([0, data.length - 1]).range([0, 300]);
+        const xScale = scaleLinear()
+        .domain([0, data.length - 1])
+        .range([0, 300]);
 
-        const yScale = scaleLinear().domain([0, 100]).range([150, 0]);
+        const yScale = scaleLinear()
+        .domain([0, 100])
+        .range([150, 0]);
 
         const xAxis = axisBottom(xScale);
+        svg.select(".x-axis").style("transform", "translateY(150px)").call(xAxis);
 
         const myLine = line()
         .x((value, index) => xScale(index))
         .y(yScale)
         .curve(curveCardinal);
 
-        svg.selectAll("path").data([data]).join("path").attr("d", value => myLine(value)).attr("fill", "none");
+        svg.selectAll("path")
+        .data([data])
+        .join("path")
+        .attr("d", myLine)
+        .attr("fill", "none");
+
     }, [data]);
 
 
