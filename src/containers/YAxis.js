@@ -1,27 +1,27 @@
 import React, { useRef, useEffect, useState, useMemo } from 'react'
 import * as d3 from 'd3';
 
-const Axis = () => {
-   const ticks = useMemo(() => {
-     const xScale = d3.scaleLinear()
-       .domain([0, 100])
-       .range([10, 290])
-     return xScale.ticks()
-       .map(value => ({
-         value,
-         xOffset: xScale(value)
-       }))
-   }, [])
+const YAxis = () => {
+//    const ticks = useMemo(() => {
+//      const yScale = d3.scaleLinear()
+//        .domain([0, 100])
+//        .range([10, 290])
+//      return yScale.ticks()
+//        .map(value => ({
+//          value,
+//          yOffset: yScale(value)
+//        }))
+//    }, [])
    return (
      <svg>
        <path
-         d="M 9.5 0.5 H 290.5"
-         stroke="currentColor"
+         d="M 0 500 L 0 0"
+         stroke="currentColor" stroke-width="5px"
        />
-       {ticks.map(({ value, xOffset }) => (
+       {/* {ticks.map(({ value, yOffset }) => (
          <g
            key={value}
-           transform={`translate(${xOffset}, 0)`}
+           transform={`translate(${yOffset}, 0)`}
          >
            <line
              y2="6"
@@ -37,9 +37,9 @@ const Axis = () => {
              { value }
            </text>
          </g>
-       ))}
+       ))} */}
      </svg>
    )
  }
 
- export default Axis;
+ export default YAxis;

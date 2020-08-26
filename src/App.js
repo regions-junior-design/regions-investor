@@ -10,8 +10,9 @@ import Routes from "./Routes";
 import { AppContext } from "./libs/contextLib"
 import logo from './logo.png';
 import Chart from './containers/Chart.js';
-import Axis from './containers/Axis';
-import LineChart from './containers/LineChart';
+import XAxis from './containers/XAxis';
+import YAxis from './containers/YAxis';
+import Line from './containers/Line';
 
 function App () {
 
@@ -56,7 +57,15 @@ function App () {
         </AppContext.Provider>
         <Chart></Chart>
         <div class="linechart">
-            <LineChart></LineChart>
+            <svg
+            className="lineChartSvg"
+            >
+            <g>
+                <XAxis></XAxis>
+                <YAxis></YAxis>
+                <Line />
+            </g>
+            </svg>
         </div>
 
         {/*<Router>*/}
