@@ -25,6 +25,8 @@ function App () {
         history.push("/login");
     }
 
+    var arrayDat = [125, 230, 345, 260, 441, 335, 170, 294, 312, 145];
+
     return <div>
         <div className="App container">
             <Navbar fluid collapseOnSelect>
@@ -63,7 +65,7 @@ function App () {
             <g>
                 <XAxis></XAxis>
                 <YAxis></YAxis>
-                <Line />
+                <Line/>
             </g>
             </svg>
         </div>
