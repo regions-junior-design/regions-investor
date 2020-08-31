@@ -15,6 +15,7 @@ import YAxis from './containers/YAxis';
 import Line from './containers/Line';
 import Main from './components/Main';
 import NotFound from './containers/404';
+import NavMenu from './components/NavMenu';
 
 function App () {
 
@@ -64,6 +65,7 @@ function App () {
                 <Switch>
                 {/* <Route path="/login" component={Login}/> */}
                     <Route path="/main" component={Main} exact></Route>
+                    <Route path="/" component={NavMenu}></Route>
                     <Route component={NotFound} />
                 </Switch>
             </Router>
