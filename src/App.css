@@ -76,6 +76,8 @@ svg {
   overflow: visible;
   height: 500px;
   width: 1000px;
+  border-style: double;
+  border-color: black;
 }
 
 /* Regions color codes:
@@ -116,6 +118,11 @@ h1 {
 
   height: 40px;
   width: 100px;
+
+  background-color: #88bd40;
+  font-size: 20px;
+  color: white;
+  width: 150px;
 }
 
 .item3 {
@@ -127,31 +134,34 @@ h1 {
 }
 
 .graph-nav {
-  font-size: 20px;
-  font-family: 'Noto Sans JP', sans-serif;
+
   grid-column-start: 2;
   grid-column-end: 4;
-  grid-row-start: 3;
-  grid-row-end: 4;
-
-  width: 130px;
-
-  font-size: 20px;
-  font-family:Arial;
-
+  background-color: #88bd40;
+  border-radius: 8px;
+  width: 750px;
+  height: 40px;
 }
-button {
-  display: inline-block;
-  orientation: landscape;
+
+
+ /* button {
   background-color: #88bd40;
   font-size: 20px;
   color: white;
-  border-radius: 13px;
   width: 150px;
+}  */
 
+.graph-button-individual{
+  background-color: #88bd40;
+  font-size: 20px;
+  color: white;
+  width: 150px;
+  height: 40px;
+  float: left;
+  border: none;
+  border-radius: 8px;
 }
 
-button:hover {
+.graph-button-individual:hover {
   background-color: #55893d;
 }
-

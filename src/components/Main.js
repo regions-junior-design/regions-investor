@@ -14,9 +14,9 @@ export default function Main() {
             </h1>
             <button class="item2">Edit</button>
             <svg class="item3">
-                <XAxis></XAxis>
+                {/* <XAxis></XAxis>
                 <YAxis></YAxis>
-                <Line></Line>
+                <Line></Line> */}
             </svg>
             <GraphNav></GraphNav>
 
