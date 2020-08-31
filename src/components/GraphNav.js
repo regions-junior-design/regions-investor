@@ -21,7 +21,7 @@ const timeframe = [
 
 export default function GraphNav() {
     return(
-        <div className="graph-nav">
+        <div class="graph-nav">
             <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet"></link>
             {
                 timeframe.map(timeframe => (

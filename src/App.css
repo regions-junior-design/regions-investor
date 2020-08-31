@@ -129,15 +129,29 @@ h1 {
 .graph-nav {
   font-size: 20px;
   font-family: 'Noto Sans JP', sans-serif;
-}
+  grid-column-start: 2;
+  grid-column-end: 4;
+  grid-row-start: 3;
+  grid-row-end: 4;
 
+  width: 130px;
+
+  font-size: 20px;
+  font-family:Arial;
+
+}
 button {
+  display: inline-block;
+  orientation: landscape;
   background-color: #88bd40;
   font-size: 20px;
-  font-family: 'Noto Sans JP', sans-serif;
-  border-radius: 20px;
-  display: inline-block;
   color: white;
   border-radius: 13px;
+  width: 150px;
+
+}
+
+button:hover {
+  background-color: #55893d;
 }
 
