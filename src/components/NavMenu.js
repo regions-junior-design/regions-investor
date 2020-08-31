@@ -24,7 +24,6 @@ export default function NavMenu() {
         <React.Fragment>
         <CssBaseline />
         <Container fixed>
-            <Typography component="div" style={{ backgroundColor: '#cfe8fc', height: '100vh' }}>
             <div className={classes.root}>
   
             <ButtonGroup
@@ -39,8 +38,6 @@ export default function NavMenu() {
             </ButtonGroup>
 
             </div>
-            </Typography>
-
         </Container>
       </React.Fragment>
 
