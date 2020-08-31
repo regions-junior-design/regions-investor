@@ -13,6 +13,8 @@ import Chart from './containers/Chart.js';
 import XAxis from './containers/XAxis';
 import YAxis from './containers/YAxis';
 import Line from './containers/Line';
+import Main from './components/Main';
+import NotFound from './containers/404';
 
 function App () {
 
@@ -55,9 +57,20 @@ function App () {
             </Navbar>
         </div>
         <AppContext.Provider value={{ isAuthenticated, userHasAuthenticated }}>
-            <Routes />
+
+            {/* is this the right place to put the route */}
+
+            <Router>
+                <Switch>
+                {/* <Route path="/login" component={Login}/> */}
+                    <Route path="/main" component={Main} exact></Route>
+                    <Route component={NotFound} />
+                </Switch>
+            </Router>
+            {/* <Routes /> */}
         </AppContext.Provider>
-        <Chart></Chart>
+
+        {/* <Chart></Chart>
         <div class="linechart">
             <svg
             className="lineChartSvg"
@@ -68,14 +81,15 @@ function App () {
                 <Line/>
             </g>
             </svg>
-        </div>
+        </div> */}
 
-        {/*<Router>*/}
-        {/*    <Switch>*/}
-        {/*        <Route path="/login" component={Login}/>*/}
-        {/*        <Route component={PageNotFound}/>*/}
-        {/*    </Switch>*/}
-        {/*</Router>*/}
+        {/* <Router>
+            <Switch>
+            {/* <Route path="/login" component={Login}/>
+                <Route path="/main" component={Main} exact></Route>
+                <Route component={NotFound} />
+            </Switch>
+        </Router> */}
     </div>
 
 }
