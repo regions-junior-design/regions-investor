@@ -72,9 +72,72 @@ img {
 }
 
 svg {
-  background: #d0d7d1;
+  background: white;
   overflow: visible;
   height: 500px;
   width: 1000px;
+}
+
+/* Regions color codes:
+
+Dark green: #55893d
+
+Light green: #88bd40 */
+
+
+h1 {
+  font-family: 'Noto Sans JP', sans-serif;
+  color: #55893d;
+
+}
+
+.grid-layout {
+  padding-top: 40px;
+  display: grid;
+  grid-template-columns: 620px auto auto auto;
+  grid-template-rows: 60px auto auto;
+}
+
+.item1 {
+  grid-column-start: 2;
+  grid-column-end: 3;
+
+  grid-row-start: 1;
+  grid-row-end: 2;
+
+}
+
+.item2 {
+  grid-column-start: 3;
+  grid-column-end: 4;
+
+  grid-row-start: 1;
+  grid-row-end: 2;
+
+  height: 40px;
+  width: 100px;
+}
+
+.item3 {
+  grid-column-start: 2;
+  grid-column-end: 4;
+  grid-row-start: 2;
+  grid-row-end: 3;
+
+}
+
+.graph-nav {
+  font-size: 20px;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+button {
+  background-color: #88bd40;
+  font-size: 20px;
+  font-family: 'Noto Sans JP', sans-serif;
+  border-radius: 20px;
+  display: inline-block;
+  color: white;
+  border-radius: 13px;
 }
 

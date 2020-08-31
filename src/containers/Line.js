@@ -39,7 +39,7 @@ const Line = () => {
    return (
     <React.Fragment>
         <svg ref={svgRef}>
-            <path d="M0, 300 300, 450 600, 995" stroke="#88bd40" stroke-width="3px"></path>
+            <path d="M0, 800 800, 1050 1600, 1990" stroke="#88bd40" stroke-width="3px"></path>
         </svg>
     </React.Fragment>
    )

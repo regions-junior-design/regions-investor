@@ -30,7 +30,7 @@ useEffect(() => {
 
     return(
         <div className="App">
-            <h1>Chart</h1>
+            <h1></h1>
             <div style={{height: "600px", width: "600px"}}>
                 <Pie data={chartData} options={{
                     responsive: true
