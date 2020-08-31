@@ -4,8 +4,9 @@ import { Line } from 'react-chartjs-2';
 import YAxis from '../containers/YAxis';
 import XAxis from '../containers/XAxis';
 import GraphNav from './GraphNav';
-import { Container, CssBaseline, Button } from '@material-ui/core';
+import { Container, CssBaseline, Button, ButtonGroup, ListItemSecondaryAction } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import { color } from 'd3';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -28,7 +29,7 @@ export default function Main() {
             <h1 class="item1">
                 Regions Financial Wealth Planner
             </h1>
-            <Button variant="contained" color="primary" className={classes.root}>
+            <Button variant="contained" color="primary">
                 Edit
             </Button>
             {/* <button class="item2">Edit</button> */}
@@ -37,6 +38,15 @@ export default function Main() {
                 <YAxis></YAxis>
                 <Line></Line> */}
             </svg>
+     
+            {/* <ButtonGroup variant="contained" color="secondary" aria-label="contained primary button group" className={classes.root}>
+              <Button>1 Day</Button>
+              <Button>1 Week</Button>
+              <Button>1 Month</Button>
+              <Button>1 Year</Button>
+              <Button>5 Years</Button>
+            </ButtonGroup> */}
+
             <GraphNav></GraphNav>
 
         </div>
