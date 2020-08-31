@@ -78,6 +78,7 @@ svg {
   width: 1000px;
   border-style: double;
   border-color: black;
+  margin-bottom: 20px;
 }
 
 /* Regions color codes:
@@ -123,6 +124,10 @@ h1 {
   font-size: 20px;
   color: white;
   width: 150px;
+  border-color: black;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 13px;
 }
 
 .item3 {
@@ -134,12 +139,11 @@ h1 {
 }
 
 .graph-nav {
-
   grid-column-start: 2;
   grid-column-end: 4;
   background-color: #88bd40;
   border-radius: 8px;
-  width: 750px;
+  width: 1000px;
   height: 40px;
 }
 
@@ -155,7 +159,7 @@ h1 {
   background-color: #88bd40;
   font-size: 20px;
   color: white;
-  width: 150px;
+  width: 200px;
   height: 40px;
   float: left;
   border: none;
