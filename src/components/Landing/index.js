@@ -9,7 +9,7 @@
 // export default Landing;
 
 
-import React from 'react';
+import React, { useState }from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -54,7 +54,8 @@ export default function Landing() {
   const classes = useStyles();
 
   // Sing In, Sign Up, Forgot Password
-  const [view, setView] = React.useState("Sign In");
+  const [view, setView] = useState("Sign In");
+  const [num, setNum] = useState(0);
 
   const handleClick = (v) => {
     setView(v);
@@ -62,12 +63,15 @@ export default function Landing() {
 
   const handleBack = () => {
     setView("Sign Up");
+    setNum(0);
   };
   const handleForgot = () => {
     setView("Forgot Password");
+    setNum(2);
   };
   const handleNew = () => {
     setView("Sign Up");
+    setNum(1);
   };
 
   return (
@@ -79,7 +83,7 @@ export default function Landing() {
           {view}
         </Typography>
         
-        {view === 'Sign In' ? (
+        {num === 0 ? (
             <div>
               <SignInForm></SignInForm>
               <br></br>
@@ -87,14 +91,14 @@ export default function Landing() {
               <br></br>
               <Grid container>
                 <Grid item xs>
-                  <Link href="" variant="body2" onClick={handleForgot}>
+                  <Typography variant="body2" onClick={handleForgot}>
                     {"Forgot password?"}
-                  </Link>
+                  </Typography>
                 </Grid>
                 <Grid item>
-                  <Link href="" variant="body2" onClick={handleNew}>
+                  <Typography variant="body2" onClick={handleNew}>
                     {"Don't have an account? Sign Up"}
-                  </Link>
+                  </Typography>
                 </Grid>
               </Grid>
             </div>
@@ -102,15 +106,15 @@ export default function Landing() {
             <div></div>
           )
         }
-        {view === 'Sign Up' ? (
+        {num === 1 ? (
             <div>
               <SignUpForm></SignUpForm>
               <br></br>
               <Grid container>
                 <Grid item xs>
-                  <Link href="" variant="body2" onClick={handleBack}>
+                  <Typography variant="body2" onClick={handleBack}>
                     {"Back"}
-                  </Link>
+                  </Typography>
                 </Grid>
                 <Grid item>
                 </Grid>
@@ -120,15 +124,15 @@ export default function Landing() {
             <div></div>
           )
         }
-        {view === 'Forgot Password' ? (
+        {num === 2 ? (
             <div>
               <PasswordForgetForm></PasswordForgetForm>
               <br></br>
               <Grid container>
                 <Grid item xs>
-                  <Link href="" variant="body2" onClick={handleBack}>
+                  <Typography variant="body2" onClick={handleBack}>
                     {"Back"}
-                  </Link>
+                  </Typography>
                 </Grid>
                 <Grid item>
                 </Grid>
