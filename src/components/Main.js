@@ -1,5 +1,4 @@
 import React from 'react';
-import GraphNav from './GraphNav';
 import { Container, CssBaseline, Button, ButtonGroup, ListItemSecondaryAction, ThemeProvider } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import GridList from '@material-ui/core/GridList';
@@ -24,8 +23,25 @@ export default function Main() {
                 <YAxis></YAxis>
                 <Line></Line> */}
             </svg>
+            <ButtonGroup className="graph-nav">
+              <Button variant="contained" color="secondary" size='large' className="graph-button-individual">
+                1 Day
+              </Button>
+              <Button variant="contained" color="secondary" size='large' className="graph-button-individual">
+                1 Week
+              </Button>
+              <Button variant="contained" color="secondary" size='large' className="graph-button-individual">
+                1 Month
+              </Button>
+              <Button variant="contained" color="secondary" size='large' className="graph-button-individual">
+                1 Year
+              </Button>
+              <Button variant="contained" color="secondary" size='large' className="graph-button-individual">
+                5 Years
+              </Button>
+            </ButtonGroup>
 
-            <GraphNav></GraphNav>
+            {/* <GraphNav></GraphNav> */}
 
         </div>
         </Container>

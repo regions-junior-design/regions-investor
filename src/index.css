@@ -13,6 +13,8 @@ code {
     monospace;
 }
 
+/* Main.js formatting  starts below */
+
 svg {
   background: white;
   overflow: visible;
@@ -87,3 +89,10 @@ svg {
 .graph-button-individual:hover {
   background-color: #55893d;
 }
+
+.timeframe-buttons {
+  width: 500px;
+}
+
+
+/* Main.js formatting ends above */
