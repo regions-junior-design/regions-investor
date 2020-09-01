@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container, Typography, Button, ButtonGroup } from '@material-ui/core';
 import ArrowRightAltOutlinedIcon from '@material-ui/icons/ArrowRightAltOutlined';
+import { spacing } from '@material-ui/system';
 
 export default function SideNav() {
     return(

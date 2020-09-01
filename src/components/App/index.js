@@ -51,7 +51,7 @@ const theme = createMuiTheme({
         textTransform: 'capitalize',
       }
 
-    }
+    },
 });
 
 
