@@ -10,7 +10,7 @@ export default function Main() {
         <Container maxWidth="sm">
         <div class="grid-layout">
             <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet"></link>
-            <h1 class="item1">
+            <h1 className="item1">
                 Regions Financial Wealth Planner
             </h1>
             <Button variant="contained" color="primary" className="item2">

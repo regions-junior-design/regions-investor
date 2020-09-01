@@ -23,6 +23,25 @@ const theme = createMuiTheme({
         secondary: {
             main: "#88bd40"
         }
+    },
+    typography: {
+      fontFamily: "'Raleway', Sans-Serif",
+      h1: {
+        fontFamily: "'Raleway', Sans-Serif",
+        fontSize: 30, 
+      },
+      h2: {
+        fontFamily: "'Open Sans', Sans-Serif",
+      },
+      body1: {
+        fontFamily: "'Open Sans', Sans-Serif",
+        fontSize: 16,
+      }, 
+      button: {
+        fontFamily: "'Raleway', Sans-Serif",
+        fontSize: 20,
+      }
+
     }
 });
 
@@ -30,6 +49,7 @@ const theme = createMuiTheme({
 const App = () => (
   <Router>
     <ThemeProvider theme={theme}>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway:300,400" rel="stylesheet"/>
     <div>
       <Navigation />
 
