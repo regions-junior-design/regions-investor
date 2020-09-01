@@ -12,9 +12,52 @@ import AdminPage from '../Admin';
 
 import * as ROUTES from '../../constants/routes';
 import { withAuthentication } from '../Session';
+import Main from '../Main';
+import {createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+
+const theme = createMuiTheme({
+    palette: {
+        primary: {
+            main: "#55893d"
+        },
+        secondary: {
+            main: "#88bd40"
+        }
+    
+    },
+    typography: {
+      fontFamily: "'Raleway', Sans-Serif",
+      h1: {
+        fontFamily: "'Raleway', Sans-Serif",
+        textPrimary: '#FFFFFF',
+        textSecondary: "#55893d",
+      },
+      h2: {
+        fontFamily: "'Open Sans', Sans-Serif",
+        fontSize: 40,
+        textPrimary: '#FFFFFF',
+        textSecondary: "#55893d",
+      },
+      body1: {
+        fontFamily: "'Open Sans', Sans-Serif",
+        fontSize: 16,
+        textPrimary: '#FFFFFF',
+        textSecondary: '#000000',
+      }, 
+      button: {
+        fontFamily: "'Raleway', Sans-Serif",
+        fontSize: 20,
+        color: '#FFFFFF',
+      }
+
+    }
+});
+
 
 const App = () => (
   <Router>
+    <ThemeProvider theme={theme}>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway:300,400" rel="stylesheet"/>
     <div>
       <Navigation />
 
@@ -30,8 +73,12 @@ const App = () => (
       <Route path={ROUTES.HOME} component={HomePage} />
       <Route path={ROUTES.ACCOUNT} component={AccountPage} />
       <Route path={ROUTES.ADMIN} component={AdminPage} />
+      <Route path="/main" component={Main}></Route>
     </div>
+    </ThemeProvider>
   </Router>
 );
 
 export default withAuthentication(App);
+
+
