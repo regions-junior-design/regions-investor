@@ -76,14 +76,10 @@ svg {
 }
 
 .graph-button-individual{
-  background-color: #88bd40;
-  font-size: 20px;
   color: white;
   width: 200px;
   height: 40px;
   float: left;
-  border: none;
-  border-radius: 8px;
 }
 
 .graph-button-individual:hover {

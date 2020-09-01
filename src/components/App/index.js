@@ -23,23 +23,31 @@ const theme = createMuiTheme({
         secondary: {
             main: "#88bd40"
         }
+    
     },
     typography: {
       fontFamily: "'Raleway', Sans-Serif",
       h1: {
         fontFamily: "'Raleway', Sans-Serif",
-        fontSize: 30, 
+        textPrimary: '#FFFFFF',
+        textSecondary: "#55893d",
       },
       h2: {
         fontFamily: "'Open Sans', Sans-Serif",
+        fontSize: 40,
+        textPrimary: '#FFFFFF',
+        textSecondary: "#55893d",
       },
       body1: {
         fontFamily: "'Open Sans', Sans-Serif",
         fontSize: 16,
+        textPrimary: '#FFFFFF',
+        textSecondary: '#000000',
       }, 
       button: {
         fontFamily: "'Raleway', Sans-Serif",
         fontSize: 20,
+        color: '#FFFFFF',
       }
 
     }

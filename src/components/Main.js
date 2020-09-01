@@ -11,11 +11,13 @@ export default function Main() {
         <Container maxWidth="sm">
         <div class="grid-layout">
             <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet"></link>
-            <h1 variant='h1' className="item1">
-                Regions Financial Wealth Planner
-            </h1>
+            <Typography className="item1" variant="h2">
+              Regions Financial Wealth Planner
+            </Typography>
             <Button variant="contained" color="primary" className="item2">
-                Edit
+              <Typography variant='button'>
+                  Edit
+              </Typography>
             </Button>
             {/* <button class="item2">Edit</button> */}
             <svg class="item3">
@@ -25,19 +27,29 @@ export default function Main() {
             </svg>
             <ButtonGroup className="graph-nav">
               <Button variant="contained" color="secondary" size='large' className="graph-button-individual">
-                1 Day
+                <Typography variant='button'>
+                  1 Day
+                </Typography>
               </Button>
               <Button variant="contained" color="secondary" size='large' className="graph-button-individual">
-                1 Week
+                <Typography variant='button'>
+                  1 Week
+                </Typography>
               </Button>
               <Button variant="contained" color="secondary" size='large' className="graph-button-individual">
-                1 Month
+                <Typography variant='button'>
+                  1 Month
+                </Typography>
               </Button>
               <Button variant="contained" color="secondary" size='large' className="graph-button-individual">
-                1 Year
+                <Typography variant='button'>
+                  1 Year
+                </Typography>
               </Button>
               <Button variant="contained" color="secondary" size='large' className="graph-button-individual">
-                5 Years
+                <Typography variant='button'>
+                  5 Years
+                </Typography>
               </Button>
             </ButtonGroup>
 
