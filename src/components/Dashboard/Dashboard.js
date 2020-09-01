@@ -19,11 +19,17 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import { mainListItems, secondaryListItems } from '../Navigation';
-// import Chart from './Chart';
+import Chart from './Chart';
+import {theme} from '../../MaterialUITheme';
 // import Deposits from './Deposits';
 // import Orders from './Orders';
 
+import {createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+
+
 const drawerWidth = 240;
+
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -117,7 +123,8 @@ export default function Dashboard() {
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
   return (
-    <div className={classes.root}>
+    <ThemeProvider theme={theme}>
+        <div className={classes.root}>
       <CssBaseline />
       <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
         <Toolbar className={classes.toolbar}>
@@ -134,7 +141,7 @@ export default function Dashboard() {
             Dashboard
           </Typography>
           <IconButton color="inherit">
-            <Badge badgeContent={4} color="secondary">
+            <Badge badgeContent={1} color="secondary">
               <NotificationsIcon />
             </Badge>
           </IconButton>
@@ -160,13 +167,10 @@ export default function Dashboard() {
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
-          {/* <Grid container spacing={3}> */}
-            {/* Chart */}
-            {/* <Grid item xs={12} md={8} lg={9}> */}
-              {/* <Paper className={fixedHeightPaper}> */}
-                {/* <Chart /> */}
-              {/* </Paper> */}
-            {/* </Grid> */}
+          <Grid container spacing={3}> 
+            <Grid item xs={12} md={8} lg={9}> 
+                <Chart />
+            </Grid>
             {/* Recent Deposits */}
             {/* <Grid item xs={12} md={4} lg={3}> */}
               {/* <Paper className={fixedHeightPaper}> */}
@@ -179,9 +183,10 @@ export default function Dashboard() {
                 {/* <Orders /> */}
               {/* </Paper> */}
             {/* </Grid> */}
-          {/* </Grid> */}
+          </Grid> *
         </Container>
       </main>
     </div>
+    </ThemeProvider>
   );
 }
