@@ -92,3 +92,18 @@ svg {
 
 
 /* Main.js formatting ends above */
+
+/* -------------------------------------- */
+
+/* SideNav.js formatting starts below */
+.account-button {
+  height: 150px;
+}
+
+.side-nav-button {
+  height: 50px;
+}
+
+/* SideNav.js formatting ends above */
+
+/* -------------------------------------- */

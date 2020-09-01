@@ -48,6 +48,7 @@ const theme = createMuiTheme({
         fontFamily: "'Raleway', Sans-Serif",
         fontSize: 20,
         color: '#FFFFFF',
+        textTransform: 'capitalize',
       }
 
     }
@@ -60,7 +61,6 @@ const App = () => (
     <link href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway:300,400" rel="stylesheet"/>
     <div>
       <Navigation />
-
       <hr />
 
       <Route exact path={ROUTES.LANDING} component={LandingPage} />
