@@ -29,7 +29,7 @@ export default function Main() {
             <h1 class="item1">
                 Regions Financial Wealth Planner
             </h1>
-            <Button variant="contained" color="primary">
+            <Button variant="contained" color="primary" className="item2">
                 Edit
             </Button>
             {/* <button class="item2">Edit</button> */}
