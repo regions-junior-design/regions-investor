@@ -138,7 +138,7 @@ export default function Dashboard() {
             <MenuIcon />
           </IconButton>
           <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-            Dashboard
+            Regions Personal Investment Platform
           </Typography>
           <IconButton color="inherit">
             <Badge badgeContent={1} color="secondary">
