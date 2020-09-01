@@ -25,6 +25,7 @@ import {theme} from '../../MaterialUITheme';
 // import Orders from './Orders';
 
 import {createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import SignOut from '../SignOut';
 
 
 const drawerWidth = 240;
@@ -140,11 +141,7 @@ export default function Dashboard() {
           <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
             Regions Personal Investment Platform
           </Typography>
-          <IconButton color="inherit">
-            <Badge badgeContent={1} color="secondary">
-              <NotificationsIcon />
-            </Badge>
-          </IconButton>
+          <SignOut></SignOut>
         </Toolbar>
       </AppBar>
       <Drawer
