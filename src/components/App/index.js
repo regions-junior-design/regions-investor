@@ -12,7 +12,7 @@ import AdminPage from '../Admin';
 
 import * as ROUTES from '../../constants/routes';
 import { withAuthentication } from '../Session';
-import Main from '../Main';
+import Main from '../Graphs/Main';
 import {createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 
 const theme = createMuiTheme({

@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, CssBaseline, Button, ButtonGroup, ListItemSecondaryAction, ThemeProvider } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import GridList from '@material-ui/core/GridList';
-import SideNav from './SideNav/SideNav';
+import SideNav from '../SideNav/SideNav';
 
 export default function Main() {
 
