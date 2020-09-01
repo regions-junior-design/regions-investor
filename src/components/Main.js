@@ -1,6 +1,8 @@
 import React from 'react';
-// import GraphNav from './GraphNav';
+import GraphNav from './GraphNav';
 import { Container, CssBaseline, Button, ButtonGroup, ListItemSecondaryAction, ThemeProvider } from '@material-ui/core';
+import Typography from '@material-ui/core/Typography';
+import GridList from '@material-ui/core/GridList';
 
 export default function Main() {
 
@@ -10,7 +12,7 @@ export default function Main() {
         <Container maxWidth="sm">
         <div class="grid-layout">
             <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet"></link>
-            <h1 className="item1">
+            <h1 variant='h1' className="item1">
                 Regions Financial Wealth Planner
             </h1>
             <Button variant="contained" color="primary" className="item2">
@@ -23,7 +25,7 @@ export default function Main() {
                 <Line></Line> */}
             </svg>
 
-            {/* <GraphNav></GraphNav> */}
+            <GraphNav></GraphNav>
 
         </div>
         </Container>
