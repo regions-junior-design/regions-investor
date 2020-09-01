@@ -100,9 +100,15 @@ class Firebase {
 
   // *** Message API ***
 
-  message = uid => this.db.ref(`messages/${uid}`);
+  message = (userId, uid) => this.db.ref(`messages/${userId}/${uid}`);
 
-  messages = () => this.db.ref('messages');
+  messages = (userId) => this.db.ref(`messages/${userId}/`);
+
+  // *** Main Accounts API ***
+
+  mainAccount = (userId, uid) => this.db.ref(`accounts/${userId}/${uid}`);
+
+  mainAccounts = (userId) => this.db.ref(`accounts/${userId}/`);
 }
 
 export default Firebase;
