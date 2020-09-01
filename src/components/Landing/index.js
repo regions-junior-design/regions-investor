@@ -23,6 +23,8 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import {theme} from '../../MaterialUITheme';
+import {ThemeProvider } from '@material-ui/core/styles';
 
 import { SignInForm, SignInGoogle } from '../SignIn'
 
@@ -50,6 +52,7 @@ export default function Landing() {
   const classes = useStyles();
 
   return (
+    <ThemeProvider theme={theme}>
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
@@ -66,5 +69,6 @@ export default function Landing() {
 
       </div>
     </Container>
+    </ThemeProvider>
   );
 }
