@@ -7,6 +7,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
+import Typography from '@material-ui/core/Typography';
 
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -143,18 +144,6 @@ class SignInFormBase extends Component {
           Sign In
         </Button>
         <br></br>
-        <Grid container>
-          <Grid item xs>
-            <Link href="#" variant="body2">
-              Forgot password?
-            </Link>
-          </Grid>
-          <Grid item>
-            <Link href="#" variant="body2">
-              {"Don't have an account? Sign Up"}
-            </Link>
-          </Grid>
-        </Grid>
         {error && <p>{error.message}</p>}
       </form>
 

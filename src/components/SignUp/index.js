@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
@@ -100,50 +102,121 @@ class SignUpFormBase extends Component {
       username === '';
 
     return (
-      <form onSubmit={this.onSubmit}>
-        <input
+      <form onSubmit={this.onSubmit} noValidate>
+        <TextField
+          variant="outlined"
+          margin="normal"
+          required
+          fullWidth
+          id="username"
+          label="Username"
+          autoComplete="name"
+          autoFocus
+
           name="username"
           value={username}
           onChange={this.onChange}
           type="text"
-          placeholder="Full Name"
         />
-        <input
+        <TextField
+          variant="outlined"
+          margin="normal"
+          required
+          fullWidth
+          id="email"
+          label="Email"
+          autoComplete="email"
+
           name="email"
           value={email}
           onChange={this.onChange}
           type="text"
-          placeholder="Email Address"
         />
-        <input
+        <TextField
+          variant="outlined"
+          margin="normal"
+          required
+          fullWidth
+          label="Password"
+          id="passwordOne"
+
           name="passwordOne"
           value={passwordOne}
           onChange={this.onChange}
           type="password"
-          placeholder="Password"
         />
-        <input
+        <TextField
+          variant="outlined"
+          margin="normal"
+          required
+          fullWidth
+          label="Confirm Password"
+          id="passwordTwo"
+
           name="passwordTwo"
           value={passwordTwo}
           onChange={this.onChange}
           type="password"
           placeholder="Confirm Password"
         />
-        <label>
-          Admin:
-          <input
-            name="isAdmin"
-            type="checkbox"
-            checked={isAdmin}
-            onChange={this.onChangeCheckbox}
-          />
-        </label>
-        <button disabled={isInvalid} type="submit">
-          Sign Up
-        </button>
 
+        <Button
+          type="submit"
+          fullWidth
+          variant="contained"
+          color="primary"
+          disabled={isInvalid}
+        >
+          Sign Up
+        </Button>
+        <br></br>
         {error && <p>{error.message}</p>}
       </form>
+
+      // <form onSubmit={this.onSubmit}>
+      //   <input
+      //     name="username"
+      //     value={username}
+      //     onChange={this.onChange}
+      //     type="text"
+      //     placeholder="Full Name"
+      //   />
+      //   <input
+      //     name="email"
+      //     value={email}
+      //     onChange={this.onChange}
+      //     type="text"
+      //     placeholder="Email Address"
+      //   />
+      //   <input
+      //     name="passwordOne"
+      //     value={passwordOne}
+      //     onChange={this.onChange}
+      //     type="password"
+      //     placeholder="Password"
+      //   />
+      //   <input
+      //     name="passwordTwo"
+      //     value={passwordTwo}
+      //     onChange={this.onChange}
+      //     type="password"
+      //     placeholder="Confirm Password"
+      //   />
+      //   <label>
+      //     Admin:
+      //     <input
+      //       name="isAdmin"
+      //       type="checkbox"
+      //       checked={isAdmin}
+      //       onChange={this.onChangeCheckbox}
+      //     />
+      //   </label>
+      //   <button disabled={isInvalid} type="submit">
+      //     Sign Up
+      //   </button>
+
+      //   {error && <p>{error.message}</p>}
+      // </form>
     );
   }
 }
@@ -155,7 +228,7 @@ const SignUpLink = () => (
 );
 
 const SignUpForm = compose(
-  withRouter,
+  // withRouter,
   withFirebase,
 )(SignUpFormBase);
 
