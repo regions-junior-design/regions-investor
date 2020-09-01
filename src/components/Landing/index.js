@@ -60,6 +60,16 @@ export default function Landing() {
     setView(v);
   };
 
+  const handleBack = () => {
+    setView("Sign Up");
+  };
+  const handleForgot = () => {
+    setView("Forgot Password");
+  };
+  const handleNew = () => {
+    setView("Sign Up");
+  };
+
   return (
     <ThemeProvider theme={theme}>
     <Container component="main" maxWidth="xs">
@@ -77,12 +87,12 @@ export default function Landing() {
               <br></br>
               <Grid container>
                 <Grid item xs>
-                  <Link href="" variant="body2" onClick={() => handleClick("Forgot Password")}>
+                  <Link href="" variant="body2" onClick={handleForgot}>
                     {"Forgot password?"}
                   </Link>
                 </Grid>
                 <Grid item>
-                  <Link href="" variant="body2" onClick={() => handleClick("Sign Up")}>
+                  <Link href="" variant="body2" onClick={handleNew}>
                     {"Don't have an account? Sign Up"}
                   </Link>
                 </Grid>
@@ -98,7 +108,7 @@ export default function Landing() {
               <br></br>
               <Grid container>
                 <Grid item xs>
-                  <Link href="" variant="body2" onClick={() => handleClick("Sign In")}>
+                  <Link href="" variant="body2" onClick={handleBack}>
                     {"Back"}
                   </Link>
                 </Grid>
@@ -116,7 +126,7 @@ export default function Landing() {
               <br></br>
               <Grid container>
                 <Grid item xs>
-                  <Link href="" variant="body2" onClick={() => handleClick("Sign In")}>
+                  <Link href="" variant="body2" onClick={handleBack}>
                     {"Back"}
                   </Link>
                 </Grid>
