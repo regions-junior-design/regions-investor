@@ -1,6 +1,15 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+import Grid from '@material-ui/core/Grid';
+import Link from '@material-ui/core/Link';
+
+
+import { makeStyles } from '@material-ui/core/styles';
 
 import { SignUpLink } from '../SignUp';
 import { PasswordForgetLink } from '../PasswordForget';
@@ -35,11 +44,32 @@ const ERROR_MSG_ACCOUNT_EXISTS = `
   your personal account page.
 `;
 
+// const useStyles = makeStyles((theme) => ({
+//   paper: {
+//     marginTop: theme.spacing(8),
+//     display: 'flex',
+//     flexDirection: 'column',
+//     alignItems: 'center',
+//   },
+//   avatar: {
+//     margin: theme.spacing(1),
+//     backgroundColor: theme.palette.secondary.main,
+//   },
+//   form: {
+//     width: '100%', // Fix IE 11 issue.
+//     marginTop: theme.spacing(1),
+//   },
+//   submit: {
+//     margin: theme.spacing(3, 0, 2),
+//   },
+// }));
+
 class SignInFormBase extends Component {
   constructor(props) {
     super(props);
 
     this.state = { ...INITIAL_STATE };
+    // this.classes = useStyles();
   }
 
   onSubmit = event => {
@@ -68,27 +98,87 @@ class SignInFormBase extends Component {
     const isInvalid = password === '' || email === '';
 
     return (
-      <form onSubmit={this.onSubmit}>
-        <input
+      <form onSubmit={this.onSubmit} noValidate>
+        <TextField
+          variant="outlined"
+          margin="normal"
+          required
+          fullWidth
+          id="email"
+          label="Email Address"
           name="email"
+          autoComplete="email"
+          autoFocus
+
           value={email}
           onChange={this.onChange}
           type="text"
-          placeholder="Email Address"
         />
-        <input
+        <TextField
+          variant="outlined"
+          margin="normal"
+          required
+          fullWidth
           name="password"
+          label="Password"
+          type="password"
+          id="password"
+          autoComplete="current-password"
+
           value={password}
           onChange={this.onChange}
           type="password"
-          placeholder="Password"
         />
-        <button disabled={isInvalid} type="submit">
+        {/* <FormControlLabel
+          control={<Checkbox value="remember" color="primary" />}
+          label="Remember me"
+        /> */}
+        <Button
+          type="submit"
+          fullWidth
+          variant="contained"
+          color="primary"
+          disabled={isInvalid}
+        >
           Sign In
-        </button>
-
+        </Button>
+        <br></br>
+        <Grid container>
+          <Grid item xs>
+            <Link href="#" variant="body2">
+              Forgot password?
+            </Link>
+          </Grid>
+          <Grid item>
+            <Link href="#" variant="body2">
+              {"Don't have an account? Sign Up"}
+            </Link>
+          </Grid>
+        </Grid>
         {error && <p>{error.message}</p>}
       </form>
+
+      // <form onSubmit={this.onSubmit}>
+      //   <input
+      //     name="email"
+      //     value={email}
+      //     onChange={this.onChange}
+      //     type="text"
+      //     placeholder="Email Address"
+      //   />
+      //   <input
+      //     name="password"
+      //     value={password}
+      //     onChange={this.onChange}
+      //     type="password"
+      //     placeholder="Password"
+      //   />
+      //   <button disabled={isInvalid} type="submit">
+      //     Sign In
+      //   </button>
+
+      //   {error && <p>{error.message}</p>}
+      // </form>
     );
   }
 }
@@ -131,8 +221,14 @@ class SignInGoogleBase extends Component {
 
     return (
       <form onSubmit={this.onSubmit}>
-        <button type="submit">Sign In with Google</button>
-
+        <Button
+          type="submit"
+          fullWidth
+          variant="contained"
+          color="primary"
+        >
+          Sign In with Google
+        </Button>
         {error && <p>{error.message}</p>}
       </form>
     );
@@ -232,22 +328,21 @@ class SignInTwitterBase extends Component {
 }
 
 const SignInForm = compose(
-  withRouter,
   withFirebase,
 )(SignInFormBase);
 
 const SignInGoogle = compose(
-  withRouter,
+  // withRouter,
   withFirebase,
 )(SignInGoogleBase);
 
 const SignInFacebook = compose(
-  withRouter,
+  // withRouter,
   withFirebase,
 )(SignInFacebookBase);
 
 const SignInTwitter = compose(
-  withRouter,
+  // withRouter,
   withFirebase,
 )(SignInTwitterBase);
 
