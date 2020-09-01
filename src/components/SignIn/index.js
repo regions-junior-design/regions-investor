@@ -9,7 +9,8 @@ import * as ROUTES from '../../constants/routes';
 
 const SignInPage = () => (
   <div>
-    <h1>SignIn</h1>
+    <h1 align="center"> Welcome to Regions Wealth Planner </h1>
+    <h3 align="center"> Please Sign into your account below </h3>
     <SignInForm />
     <SignInGoogle />
     <SignInFacebook />
