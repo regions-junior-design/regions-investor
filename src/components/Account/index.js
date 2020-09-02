@@ -135,7 +135,6 @@ class LoginManagementBase extends Component {
 
     return (
       <div>
-        Sign In Methods:
         <ul>
           {SIGN_IN_METHODS.map(signInMethod => {
             const onlyOneLeft = activeSignInMethods.length === 1;
