@@ -2,7 +2,6 @@ import * as React from 'react';
 import { useTheme } from '@material-ui/core/styles';
 import { Container, CssBaseline, Button, ButtonGroup, ListItemSecondaryAction, ThemeProvider } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
-import './Chart.css';
 
 export default function Chart() {
   const theme = useTheme();
@@ -22,10 +21,15 @@ export default function Chart() {
               </Typography>
             </Button>
             {/* <button class="item2">Edit</button> */}
-            <svg class="item3">
-                {/* <XAxis></XAxis>
-                <YAxis></YAxis>
-                <Line></Line> */}
+            <svg class="item3" style={{
+                  height: '450px',
+                  width: '1000px',
+                  border: 'solid',
+                  color: '#88bd40',
+                  marginBottom: '30px',
+                  borderRadius: '13px',
+            }}>
+
             </svg>
             <ButtonGroup className="graph-nav">
               <Button variant="contained" color="secondary" size='large' className="graph-button-individual">
