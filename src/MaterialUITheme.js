@@ -11,6 +11,7 @@ export const theme = createMuiTheme({
         }
     
     },
+    spacing: 8,
     typography: {
       fontFamily: "'Raleway', Sans-Serif",
       h1: {
@@ -24,6 +25,13 @@ export const theme = createMuiTheme({
         textPrimary: '#FFFFFF',
         textSecondary: "#55893d",
       },
+      h3: {
+        fontFamily: "'Open Sans', Sans-Serif",
+        fontSize: 28,
+        textPrimary: '#FFFFFF',
+        textSecondary: "#55893d",
+        marginBottom: '10px'
+      },
       body1: {
         fontFamily: "'Open Sans', Sans-Serif",
         fontSize: 16,
@@ -34,11 +42,18 @@ export const theme = createMuiTheme({
         fontFamily: "'Raleway', Sans-Serif",
         fontSize: 20,
         color: '#FFFFFF',
+        marginBottom: '10px'
       },
       signOutButton: {
         fontFamily: "'Raleway', Sans-Serif",
         fontSize: 20,
         color: 'secondayr',
+      },
+      label: {
+        fontFamily: "'Raleway', Sans-Serif",
+        fontSize: 20,
+        color: '#FFFFFF',
+        margin: '100px'
       }
 
     }

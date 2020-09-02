@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import { withFirebase } from '../Firebase';
+import { Button,Input, FormControl, ButtonGroup} from '@material-ui/core';
 
 const INITIAL_STATE = {
   passwordOne: '',
@@ -42,24 +43,28 @@ class PasswordChangeForm extends Component {
 
     return (
       <form onSubmit={this.onSubmit}>
-        <input
+        <Input
           name="passwordOne"
           value={passwordOne}
           onChange={this.onChange}
           type="password"
           placeholder="New Password"
         />
-        <input
+        <Input
           name="passwordTwo"
           value={passwordTwo}
           onChange={this.onChange}
           type="password"
           placeholder="Confirm New Password"
         />
-        <button disabled={isInvalid} type="submit">
+        <Button disabled={isInvalid} 
+            type="submit"
+            variant="contained"
+            color="primary"
+            m={0.5}
+            size="medium">
           Reset My Password
-        </button>
-
+        </Button>
         {error && <p>{error.message}</p>}
       </form>
     );
