@@ -6,14 +6,17 @@ export default function News() {
         <Box style={{
             borderStyle: 'solid',
             borderColor: '#88bd40',
-            width: '500px',
+            width: '480px',
             height: '300px',
-            marginTop: '90px',
+            marginTop: '60px',
             marginLeft: '180px',
             borderRadius: '13px',
+            backgroundColor: 'white',
         }}>
             <Typography variant="h2" style={{
                 color: '#88bd40', 
+                marginLeft: '180px',
+                marginTop: '5px',
             }}>
                 News
             </Typography>

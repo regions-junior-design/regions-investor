@@ -2,7 +2,6 @@ import * as React from 'react';
 import { useTheme } from '@material-ui/core/styles';
 import { Container, CssBaseline, Button, ButtonGroup, ListItemSecondaryAction, ThemeProvider } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
-
 export default function Chart() {
   const theme = useTheme();
 
@@ -29,7 +28,7 @@ export default function Chart() {
                   marginBottom: '30px',
                   borderRadius: '13px',
             }}>
-
+                  <text textAnchor="middle" x="250" y="55">Circle Text</text>
             </svg>
             <ButtonGroup className="graph-nav">
               <Button variant="contained" color="secondary" size='large' className="graph-button-individual">
