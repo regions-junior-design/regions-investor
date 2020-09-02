@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { compose } from 'recompose';
-
 import {
   AuthUserContext,
   withAuthorization,
@@ -9,6 +8,13 @@ import {
 import { withFirebase } from '../Firebase';
 import { PasswordForgetForm } from '../PasswordForget';
 import PasswordChangeForm from '../PasswordChange';
+import {ThemeProvider} from '@material-ui/core/styles';
+import {theme} from '../../MaterialUITheme'
+import { makeStyles } from '@material-ui/core/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
+import { Button, Input, ButtonGroup, Typography} from '@material-ui/core';
 
 const SIGN_IN_METHODS = [
   {
@@ -19,28 +25,66 @@ const SIGN_IN_METHODS = [
     id: 'google.com',
     provider: 'googleProvider',
   },
-  {
-    id: 'facebook.com',
-    provider: 'facebookProvider',
-  },
-  {
-    id: 'twitter.com',
-    provider: 'twitterProvider',
-  },
 ];
 
-const AccountPage = () => (
-  <AuthUserContext.Consumer>
-    {authUser => (
-      <div>
-        <h1>Account: {authUser.email}</h1>
-        <PasswordForgetForm />
-        <PasswordChangeForm />
-        <LoginManagement authUser={authUser} />
-      </div>
-    )}
-  </AuthUserContext.Consumer>
+const useStyles = makeStyles((theme) => ({
+  drawerPaperClose: {
+    overflowX: 'hidden',
+    transition: theme.transitions.create('width', {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+    width: theme.spacing(7),
+    [theme.breakpoints.up('sm')]: {
+      width: theme.spacing(9),
+    },
+  },
+  appBarSpacer: theme.mixins.toolbar,
+  content: {
+    flexGrow: 1,
+    height: '100vh',
+    width: '100vw',
+    overflow: 'auto',
+  },
+  container: {
+    paddingTop: theme.spacing(4),
+    paddingBottom: theme.spacing(4),
+  },
+}));
+
+export default function AccountPage() {
+
+  const classes = useStyles();
+  return (
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <main className={classes.content}>
+        <div className={classes.appBarSpacer} />
+        <Container maxWidth="lg" className={classes.container}>
+            <Grid item xs={12} md={8} lg={9}> 
+            <AuthUserContext.Consumer>
+              {authUser => (
+                <div>
+                  <Typography className="item1" variant="h3">
+                    Email: {authUser.email}
+                  </Typography>
+                  <Typography className="item1" variant="h3">
+                    Create New Password
+                  </Typography>
+                  <PasswordChangeForm />
+                  <Typography className="item1" variant="h3">
+                    Change Login Preferences
+                  </Typography>
+                  <LoginManagement authUser={authUser} />
+                </div>
+              )}
+              </AuthUserContext.Consumer>
+            </Grid>
+        </Container>
+      </main>
+    </ThemeProvider>
 );
+}
 
 class LoginManagementBase extends Component {
   constructor(props) {
@@ -93,10 +137,9 @@ class LoginManagementBase extends Component {
 
   render() {
     const { activeSignInMethods, error } = this.state;
-
+    
     return (
       <div>
-        Sign In Methods:
         <ul>
           {SIGN_IN_METHODS.map(signInMethod => {
             const onlyOneLeft = activeSignInMethods.length === 1;
@@ -132,7 +175,6 @@ class LoginManagementBase extends Component {
     );
   }
 }
-
 const SocialLoginToggle = ({
   onlyOneLeft,
   isEnabled,
@@ -141,20 +183,32 @@ const SocialLoginToggle = ({
   onUnlink,
 }) =>
   isEnabled ? (
-    <button
+    <ThemeProvider theme={theme}>
+    <Button
       type="button"
+      variant="contained"
+      color="primary"
+      size="medium"
+      m={2}
       onClick={() => onUnlink(signInMethod.id)}
       disabled={onlyOneLeft}
     >
       Deactivate {signInMethod.id}
-    </button>
+    </Button>
+    </ThemeProvider>
   ) : (
-    <button
+    <ThemeProvider theme={theme}>
+    <Button
       type="button"
+      variant="contained"
+      color="primary"
+      size="medium"
+      m={0.5}
       onClick={() => onLink(signInMethod.provider)}
     >
       Link {signInMethod.id}
-    </button>
+    </Button>
+    </ThemeProvider>
   );
 
 class DefaultLoginToggle extends Component {
@@ -189,23 +243,26 @@ class DefaultLoginToggle extends Component {
       passwordOne !== passwordTwo || passwordOne === '';
 
     return isEnabled ? (
-      <button
+      <Button
+        variant="contained"
+        color="primary"
+        size="medium"
         type="button"
         onClick={() => onUnlink(signInMethod.id)}
         disabled={onlyOneLeft}
       >
         Deactivate {signInMethod.id}
-      </button>
+      </Button>
     ) : (
       <form onSubmit={this.onSubmit}>
-        <input
+        <Input
           name="passwordOne"
           value={passwordOne}
           onChange={this.onChange}
           type="password"
           placeholder="New Password"
         />
-        <input
+        <Input
           name="passwordTwo"
           value={passwordTwo}
           onChange={this.onChange}
@@ -213,9 +270,12 @@ class DefaultLoginToggle extends Component {
           placeholder="Confirm New Password"
         />
 
-        <button disabled={isInvalid} type="submit">
+        <Button disabled={isInvalid} 
+              variant="contained"
+              color="Secondary"
+              size="small"type="submit">
           Link {signInMethod.id}
-        </button>
+        </Button>
       </form>
     );
   }
@@ -224,8 +284,3 @@ class DefaultLoginToggle extends Component {
 const LoginManagement = withFirebase(LoginManagementBase);
 
 const condition = authUser => !!authUser;
-
-export default compose(
-  withEmailVerification,
-  withAuthorization(condition),
-)(AccountPage);

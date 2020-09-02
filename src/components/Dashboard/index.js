@@ -27,6 +27,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import SignOut from '../SignOut';
+import AccountPage from '../Account';
 
 
 const drawerWidth = 240;
@@ -305,12 +306,7 @@ export default function Platform() {
         }
         {num === 5 ? (
             <div>
-                <main className={classes.content}>
-                    <div className={classes.appBarSpacer} />
-                    <Container maxWidth="lg" className={classes.container}>
-                        <h1>Account Detials Page</h1>
-                    </Container>
-                </main>
+                <AccountPage></AccountPage>
             </div>
         ) : (
             <div></div>
