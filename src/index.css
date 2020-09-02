@@ -13,7 +13,6 @@ code {
     monospace;
 }
 
-/* Main.js formatting  starts below */
 
 svg {
   background: white;
@@ -69,14 +68,14 @@ svg {
 .graph-nav {
   grid-column-start: 2;
   grid-column-end: 4;
-  background-color: #88bd40;
+
   border-radius: 8px;
   width: 1000px;
   height: 40px;
 }
 
 .graph-button-individual{
-  color: white;
+
   width: 200px;
   height: 40px;
   float: left;
@@ -91,4 +90,3 @@ svg {
 }
 
 
-/* Main.js formatting ends above */

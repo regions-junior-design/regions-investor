@@ -1,5 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import ListSubheader from '@material-ui/core/ListSubheader';
+import DashboardIcon from '@material-ui/icons/Dashboard';
+import ViewListIcon from '@material-ui/icons/ViewList';
+import TimelapseIcon from '@material-ui/icons/Timelapse';
+import LayersIcon from '@material-ui/icons/Layers';
+import HelpIcon from '@material-ui/icons/Help';
+import AccountBoxIcon from '@material-ui/icons/AccountBox';
+import SettingsIcon from '@material-ui/icons/Settings';
+import FindInPageIcon from '@material-ui/icons/FindInPage';
 
 import { AuthUserContext } from '../Session';
 import SignOutButton from '../SignOut';
