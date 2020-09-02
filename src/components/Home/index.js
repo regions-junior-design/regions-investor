@@ -5,6 +5,7 @@ import { AuthUserContext, withAuthorization, withEmailVerification } from '../Se
 import Messages from '../Messages';
 import MainAccounts from '../MainAccounts';
 
+
 const HomePage = () => (
   <div>
     <h1>Home Page</h1>
