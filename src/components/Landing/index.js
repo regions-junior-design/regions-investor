@@ -1,14 +1,3 @@
-// import React from 'react';
-
-// const Landing = () => (
-//   <div>
-//     <h1>Landing</h1>
-//   </div>
-// );
-
-// export default Landing;
-
-
 import React, { useState }from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
