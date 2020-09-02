@@ -6,6 +6,7 @@ import Grid from '@material-ui/core/Grid';
 import Chart from './Chart';
 import {theme} from '../../MaterialUITheme';
 import {ThemeProvider} from '@material-ui/core/styles';
+import News from './News';
 
 const useStyles = makeStyles((theme) => ({
   drawerPaperClose: {
@@ -44,6 +45,8 @@ export default function Dashboard() {
             <Grid item xs={12} md={8} lg={9}> 
                 <Chart />
             </Grid>
+
+            <News></News>
           </Grid> *
         </Container>
       </main>
