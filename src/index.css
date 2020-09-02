@@ -14,7 +14,7 @@ code {
 }
 
 .grid-layout {
-  padding-top: 40px;
+  padding-top: 10px;
   display: grid;
   grid-template-columns: 0px auto 100px auto;
   grid-template-rows: 60px auto auto;

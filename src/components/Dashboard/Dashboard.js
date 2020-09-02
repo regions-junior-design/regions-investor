@@ -4,8 +4,12 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Chart from './Chart';
+import { Paper } from '@material-ui/core';
 import {theme} from '../../MaterialUITheme';
 import {ThemeProvider} from '@material-ui/core/styles';
+import News from './News';
+import IconScroller from './IconScroller';
+import RecentTransactions from './RecentTransactions';
 
 const useStyles = makeStyles((theme) => ({
   drawerPaperClose: {
@@ -34,6 +38,19 @@ const useStyles = makeStyles((theme) => ({
 export default function Dashboard() {
   const classes = useStyles();
 
+  function FormRow() {
+    return (
+      <React.Fragment>
+        <Grid item xs={4}>
+          <News></News>
+        </Grid>
+        <Grid item xs={4}>
+        <RecentTransactions></RecentTransactions>
+        </Grid>
+      </React.Fragment>
+    );
+  }
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -41,8 +58,13 @@ export default function Dashboard() {
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
           <Grid container spacing={3}> 
-            <Grid item xs={12} md={8} lg={9}> 
+            <Grid item xs={12} md={8} lg={9} className="scroll-container"> 
                 <Chart />
+                {/* <IconScroller></IconScroller> */}
+                <Grid container item xs={12} spacing={3}>
+                  <FormRow>
+                  </FormRow>
+                </Grid>
             </Grid>
           </Grid> *
         </Container>
