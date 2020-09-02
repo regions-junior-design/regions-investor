@@ -16,7 +16,8 @@ export default function News() {
             <Typography variant="h2" className="news-title" style={{
                 color: '#88bd40', 
                 marginTop: '5px',
-                marginLeft: '180px',
+                marginLeft: '200px',
+                fontSize: '30px'
             }}>
                 News
  
