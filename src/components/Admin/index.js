@@ -8,6 +8,7 @@ import * as ROLES from '../../constants/roles';
 import * as ROUTES from '../../constants/routes';
 
 const AdminPage = () => (
+
   <div>
     <h1>Admin</h1>
     <p>The Admin Page is accessible by every signed in admin user.</p>

@@ -16,6 +16,7 @@ import { AuthUserContext, withAuthentication } from '../Session';
 import Dashboard from '../Dashboard';
 
 const App = () => (
+
   // <Router>
   //   <div>
   //     <Navigation />
