@@ -41,6 +41,8 @@ export default function Chart() {
                     fontSize: '20px',
                     fill: '#88bd40',
                   }}> (+3.89%) </text>
+{/* 
+                  <path d="M0, 5L20, 20L40, 10L60, 40L80, 5L100, 60" stroke="#55893d" stroke-width="2" fill='none'></path> */}
             </svg>
             <ButtonGroup className="graph-nav">
               <Button variant="contained" color="secondary" size='large' className="graph-button-individual">
