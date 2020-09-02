@@ -13,6 +13,7 @@ code {
     monospace;
 }
 
+
 svg {
   background: white;
   overflow: visible;
@@ -67,12 +68,14 @@ svg {
 .graph-nav {
   grid-column-start: 2;
   grid-column-end: 4;
+
   border-radius: 8px;
   width: 1000px;
   height: 40px;
 }
 
 .graph-button-individual{
+
   width: 200px;
   height: 40px;
   float: left;
@@ -85,4 +88,5 @@ svg {
 .timeframe-buttons {
   width: 500px;
 }
+
 
