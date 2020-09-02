@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { compose } from 'recompose';
-
 import {
   AuthUserContext,
   withAuthorization,
@@ -9,6 +8,12 @@ import {
 import { withFirebase } from '../Firebase';
 import { PasswordForgetForm } from '../PasswordForget';
 import PasswordChangeForm from '../PasswordChange';
+import {ThemeProvider} from '@material-ui/core/styles';
+import {theme} from '../../MaterialUITheme'
+import { makeStyles } from '@material-ui/core/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
 
 const SIGN_IN_METHODS = [
   {
@@ -19,28 +24,62 @@ const SIGN_IN_METHODS = [
     id: 'google.com',
     provider: 'googleProvider',
   },
-  {
-    id: 'facebook.com',
-    provider: 'facebookProvider',
-  },
-  {
-    id: 'twitter.com',
-    provider: 'twitterProvider',
-  },
 ];
 
-const AccountPage = () => (
-  <AuthUserContext.Consumer>
-    {authUser => (
-      <div>
-        <h1>Account: {authUser.email}</h1>
-        <PasswordForgetForm />
-        <PasswordChangeForm />
-        <LoginManagement authUser={authUser} />
-      </div>
-    )}
-  </AuthUserContext.Consumer>
+const useStyles = makeStyles((theme) => ({
+  drawerPaperClose: {
+    overflowX: 'hidden',
+    transition: theme.transitions.create('width', {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+    width: theme.spacing(7),
+    [theme.breakpoints.up('sm')]: {
+      width: theme.spacing(9),
+    },
+  },
+  appBarSpacer: theme.mixins.toolbar,
+  content: {
+    flexGrow: 1,
+    height: '100vh',
+    width: '100vw',
+    overflow: 'auto',
+  },
+  container: {
+    paddingTop: theme.spacing(4),
+    paddingBottom: theme.spacing(4),
+  },
+}));
+
+export default function AccountPage() {
+
+  const classes = useStyles();
+  return (
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <main className={classes.content}>
+        <div className={classes.appBarSpacer} />
+        <Container maxWidth="lg" className={classes.container}>
+            <Grid item xs={12} md={8} lg={9}> 
+            <AuthUserContext.Consumer>
+              {authUser => (
+                <div>
+                  <h1>Email: {authUser.email}</h1>
+                  <h3>Forgot Password:</h3>
+                    <PasswordForgetForm />
+                  <h3>New Password:</h3>
+                    <PasswordChangeForm />
+                  <h3>Change Login Preference</h3>
+                    <LoginManagement authUser={authUser} />
+                </div>
+              )}
+              </AuthUserContext.Consumer>
+            </Grid>
+        </Container>
+      </main>
+    </ThemeProvider>
 );
+}
 
 class LoginManagementBase extends Component {
   constructor(props) {
@@ -224,8 +263,3 @@ class DefaultLoginToggle extends Component {
 const LoginManagement = withFirebase(LoginManagementBase);
 
 const condition = authUser => !!authUser;
-
-export default compose(
-  withEmailVerification,
-  withAuthorization(condition),
-)(AccountPage);
