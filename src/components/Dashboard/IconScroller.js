@@ -5,15 +5,17 @@ import {Button} from '@material-ui/core';
 
 export default function IconScroller() {
 
+    
+
     return(
         <React.Fragment>
-            {/* <Button style={{
-                width: '60px'
-            }}> */}
+            <Button className="scroll-button" style={{
+                width: '60px',
+                marginLeft: '650px'
+            }}>
                 <KeyboardArrowDownIcon className="down-icon" style={{
                     width: 60,
                     height: 60,
-                    marginLeft: '640px',
                     marginTop: '10px',
                     color: '#88bd40',
                     borderStyle: 'solid',
@@ -23,7 +25,7 @@ export default function IconScroller() {
                 }}>
 
                 </KeyboardArrowDownIcon>
-            {/* </Button> */}
+            </Button>
 
         </React.Fragment>
     )
