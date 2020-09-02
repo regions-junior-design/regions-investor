@@ -28,7 +28,19 @@ export default function Chart() {
                   marginBottom: '20px',
                   borderRadius: '13px',
             }}>
-                  <text textAnchor="middle" x="250" y="55">Circle Text</text>
+                  <text textAnchor="middle" x="200" y="55" style={{
+                    fontSize: '20px',
+                    fontWeight: 'bold',
+                    fill: '#88bd40',
+                  }}>Total Account Value:</text>
+                  <text textAnchor="middle" x="200" y="105" style={{
+                    fontSize: '40px',
+                    fill: '#55893d',
+                  }}> $18,345.78 </text>
+                  <text textAnchor="middle" x="200" y="135" style={{
+                    fontSize: '20px',
+                    fill: '#88bd40',
+                  }}> (+3.89%) </text>
             </svg>
             <ButtonGroup className="graph-nav">
               <Button variant="contained" color="secondary" size='large' className="graph-button-individual">

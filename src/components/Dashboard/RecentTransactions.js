@@ -8,7 +8,7 @@ export default function RecentTransactions() {
                 borderStyle: 'solid',
                 borderColor: '#88bd40',
                 width: '480px',
-                height: '200px',
+                height: '180px',
                 marginTop: '20px',
                 borderRadius: '13px',
                 marginLeft: '400px',

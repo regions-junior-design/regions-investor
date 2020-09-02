@@ -7,7 +7,7 @@ export default function News() {
             borderStyle: 'solid',
             borderColor: '#88bd40',
             width: '480px',
-            height: '200px',
+            height: '180px',
             marginTop: '20px',
             marginLeft: '180px',
             borderRadius: '13px',
