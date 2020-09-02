@@ -21,11 +21,11 @@ export default function Chart() {
             </Button>
             {/* <button class="item2">Edit</button> */}
             <svg class="item3" style={{
-                  height: '450px',
+                  height: '350px',
                   width: '1000px',
                   border: 'solid',
                   color: '#88bd40',
-                  marginBottom: '30px',
+                  marginBottom: '20px',
                   borderRadius: '13px',
             }}>
                   <text textAnchor="middle" x="250" y="55">Circle Text</text>

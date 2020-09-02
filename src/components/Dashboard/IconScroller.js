@@ -2,10 +2,9 @@ import React from 'react';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import './IconScroller.css';
 import {Button} from '@material-ui/core';
+import { Link, DirectLink, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll';
 
 export default function IconScroller() {
-
-    
 
     return(
         <React.Fragment>

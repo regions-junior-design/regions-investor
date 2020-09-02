@@ -7,19 +7,33 @@ export default function News() {
             borderStyle: 'solid',
             borderColor: '#88bd40',
             width: '480px',
-            height: '300px',
-            marginTop: '60px',
+            height: '200px',
+            marginTop: '20px',
             marginLeft: '180px',
             borderRadius: '13px',
             backgroundColor: 'white',
-        }}>
-            <Typography variant="h2" style={{
+        }} className="scroll-to-element">
+            <Typography variant="h2" className="news-title" style={{
                 color: '#88bd40', 
-                marginLeft: '180px',
                 marginTop: '5px',
+                marginLeft: '180px',
             }}>
                 News
+ 
             </Typography>
+            <Typography variant="body1" color="textSecondary" style={{
+                marginRight: '5px',
+                }}>
+                    <ul>
+                        <li>
+                            Saudi and Russia Agree to short term limits on Oil Production
+                        </li>
+                        <li>
+                            Apple and Google Agree to work together on the Covid-19 Crisis
+                        </li>
+                    </ul>
+
+                </Typography>
         </Box>
     )
 }
