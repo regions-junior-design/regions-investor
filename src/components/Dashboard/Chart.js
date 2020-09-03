@@ -3,6 +3,7 @@ import { useTheme } from '@material-ui/core/styles';
 import { Container, CssBaseline, Button, ButtonGroup, ListItemSecondaryAction, ThemeProvider} from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import { useState } from 'react';
+import * as d3 from 'd3';
 
 export default function Chart() {
   const theme = useTheme();
@@ -59,7 +60,7 @@ export default function Chart() {
               <Button variant="contained" color="secondary" size='large' id="one-week" style={{
                 width: '200px',
                 
-              }} onClick={() => setLineData("M5,30L8,25,L19,98,L56,45L120,20")}>
+              }} onClick={() => setLineData("M5,30L8,25,L19,98,L56,45L120,20"), scaleData()}>
                 <Typography variant='button'>
                   1 Week
                 </Typography>
