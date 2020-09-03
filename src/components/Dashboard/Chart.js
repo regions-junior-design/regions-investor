@@ -3,6 +3,7 @@ import { useTheme } from '@material-ui/core/styles';
 import { Container, CssBaseline, Button, ButtonGroup, ListItemSecondaryAction, ThemeProvider} from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import { useState } from 'react';
+import * as d3 from 'd3';
 
 export default function Chart() {
   const theme = useTheme();
@@ -51,7 +52,7 @@ export default function Chart() {
             <ButtonGroup className="graph-nav">
               <Button variant="contained" color="secondary" size='large' id="one-day" style={{
                 width: '200px',
-              }} onClick={() => setLineData("M0,0L998,1998")}>
+              }} onClick={() => setLineData("M0,350L50,312L100,323L350,220L450,230L500,315L600,230L650,320L700,212L750,130L800,279L850,317L900,243L950,150L1000,75")}>
                 <Typography variant='button'>
                   1 Day
                 </Typography>
@@ -59,28 +60,28 @@ export default function Chart() {
               <Button variant="contained" color="secondary" size='large' id="one-week" style={{
                 width: '200px',
                 
-              }} onClick={() => setLineData("M5,30L8,25,L19,98,L56,45L120,20")}>
+              }} onClick={() => setLineData("M0,350L50,312L200,312L350,220L450,230L500,315L600,230L650,320L700,212L750,130L800,279L850,317L900,243L950,150L1000,75")}>
                 <Typography variant='button'>
                   1 Week
                 </Typography>
               </Button>
               <Button variant="contained" color="secondary" size='large' id="one-month" style={{
                 width: '200px',
-              }} onClick={() => setLineData("M0,10L40,75,L68,98,L90,145L120,220")}>
+              }} onClick={() => setLineData("M0,350L50,312L100,323L350,220L450,230L500,315L650,320L700,212L750,230L800,279L850,317L900,243L950,150L1000,75")}>
                 <Typography variant='button'>
                   1 Month
                 </Typography>
               </Button>
               <Button variant="contained" color="secondary" size='large' id="one-year" style={{
                 width: '200px',
-              }} onClick={() => setLineData("M100,140L240,275L368,398L490,545L720,920")}>
+              }} onClick={() => setLineData("M0,350L50,312L100,323L350,220L450,230L500,315L600,230L650,320L700,212L750,130L950,150L1000,75")}>
                 <Typography variant='button'>
                   1 Year
                 </Typography>
               </Button>
               <Button variant="contained" color="secondary" size='large' id="five-years" style={{
                 width: '200px',
-              }} onClick={() => setLineData("M0,10L40,75,L68,98,L90,145L120,220")}>
+              }} onClick={() => setLineData("M0,350L50,312L100,323L350,220L450,230L500,315L800,279L850,317L900,243L950,150L1000,75")}>
                 <Typography variant='button'>
                   5 Years
                 </Typography>
