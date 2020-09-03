@@ -27,7 +27,7 @@ export default function RecentTransactions() {
                 }}>
                     <ul>
                         <li>
-                           9/1 4 Shares of TSLA were purchased for your House Downpayment Account
+                           9/1 5 Shares of TSLA were purchased for your House Downpayment Account
                         </li>
                         <li>
                             8/28 New Phone account was created with a Conservative Investment Plan
