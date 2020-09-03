@@ -1,9 +1,8 @@
-import React from 'react';
+import React, {useRef, useEffect} from 'react';
 import { useTheme } from '@material-ui/core/styles';
 import { Container, CssBaseline, Button, ButtonGroup, ListItemSecondaryAction, ThemeProvider} from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import { useState } from 'react';
-import * as d3 from 'd3';
 
 export default function Chart() {
   const theme = useTheme();
@@ -25,7 +24,7 @@ export default function Chart() {
               </Typography>
             </Button>
             {/* <button class="item2">Edit</button> */}
-            <svg class="item3" style={{
+            <svg id="svg" class="item3" style={{
                   height: '350px',
                   width: '1000px',
                   border: 'solid',
@@ -46,8 +45,8 @@ export default function Chart() {
                     fontSize: '20px',
                     fill: '#88bd40',
                   }}> (+3.89%) </text>
-
-                  <path d={lineData} stroke="#55893d" stroke-width="2" fill='none'></path>
+                  
+                  <path id="path" d={lineData} stroke="#55893d" stroke-width="2" fill='none'></path>
             </svg>
             <ButtonGroup className="graph-nav">
               <Button variant="contained" color="secondary" size='large' id="one-day" style={{
@@ -60,7 +59,7 @@ export default function Chart() {
               <Button variant="contained" color="secondary" size='large' id="one-week" style={{
                 width: '200px',
                 
-              }} onClick={() => setLineData("M5,30L8,25,L19,98,L56,45L120,20"), scaleData()}>
+              }} onClick={() => setLineData("M5,30L8,25,L19,98,L56,45L120,20")}>
                 <Typography variant='button'>
                   1 Week
                 </Typography>
