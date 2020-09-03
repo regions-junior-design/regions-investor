@@ -63,13 +63,6 @@ code {
   height: 40px;
 }
 
-.graph-button-individual{
-  color: white;
-  width: 200px;
-  height: 40px;
-  float: left;
-}
-
 .graph-button-individual:hover {
   background-color: #55893d;
 }
