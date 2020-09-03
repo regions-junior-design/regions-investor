@@ -51,7 +51,7 @@ export default function Chart() {
             <ButtonGroup className="graph-nav">
               <Button variant="contained" color="secondary" size='large' id="one-day" style={{
                 width: '200px',
-              }} onClick={() => setLineData("M10,0L20,25,L35,48,L56,90L78,108")}>
+              }} onClick={() => setLineData("M0,0L998,1998")}>
                 <Typography variant='button'>
                   1 Day
                 </Typography>
