@@ -44,6 +44,7 @@ export const theme = createMuiTheme({
         fontFamily: "'Raleway', Sans-Serif",
         fontSize: 20,
         color: '#FFFFFF',
+        marginBottom: 10,
 
       },
       signOutButton: {
