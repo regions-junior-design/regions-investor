@@ -67,18 +67,12 @@ export default function AccountPage() {
             <AuthUserContext.Consumer>
               {authUser => (
                 <div>
-                  <Typography className="item1" variant="h3">
+                  <Typography className="item1" variant="h6">
                     Email: {authUser.email}
                   </Typography>
-                  <Typography className="item1" variant="h3">
-                    Create New Password
-                  </Typography>
                   <PasswordChangeForm />
-                  <Typography className="item1" variant="h3">
-                    Change Login Preferences
-                  </Typography>              
+                  <AccountDetail authUser={authUser}/>         
                   <LoginManagement authUser={authUser} />
-                  <AccountDetail authUser={authUser}/> 
                 </div>
               )}
               </AuthUserContext.Consumer>
@@ -143,7 +137,6 @@ class LoginManagementBase extends Component {
     
     return (
       <div>
-        <ul>
           {SIGN_IN_METHODS.map(signInMethod => {
             const onlyOneLeft = activeSignInMethods.length === 1;
             const isEnabled = activeSignInMethods.includes(
@@ -151,7 +144,7 @@ class LoginManagementBase extends Component {
             );
 
             return (
-              <li key={signInMethod.id}>
+              <div key={signInMethod.id}>
                 {signInMethod.id === 'password' ? (
                   <DefaultLoginToggle
                     onlyOneLeft={onlyOneLeft}
@@ -169,10 +162,9 @@ class LoginManagementBase extends Component {
                     onUnlink={this.onUnlink}
                   />
                 )}
-              </li>
+              </div>
             );
           })}
-        </ul>
         {error && error.message}
       </div>
     );
@@ -192,7 +184,6 @@ const SocialLoginToggle = ({
       variant="contained"
       color="primary"
       size="medium"
-      m={2}
       onClick={() => onUnlink(signInMethod.id)}
       disabled={onlyOneLeft}
     >
@@ -206,7 +197,6 @@ const SocialLoginToggle = ({
       variant="contained"
       color="primary"
       size="medium"
-      m={0.5}
       onClick={() => onLink(signInMethod.provider)}
     >
       Link {signInMethod.id}
@@ -257,29 +247,7 @@ class DefaultLoginToggle extends Component {
         Deactivate {signInMethod.id}
       </Button>
     ) : (
-      <form onSubmit={this.onSubmit}>
-        <Input
-          name="passwordOne"
-          value={passwordOne}
-          onChange={this.onChange}
-          type="password"
-          placeholder="New Password"
-        />
-        <Input
-          name="passwordTwo"
-          value={passwordTwo}
-          onChange={this.onChange}
-          type="password"
-          placeholder="Confirm New Password"
-        />
-
-        <Button disabled={isInvalid} 
-              variant="contained"
-              color="Secondary"
-              size="small"type="submit">
-          Link {signInMethod.id}
-        </Button>
-      </form>
+      <PasswordChangeForm></PasswordChangeForm>
     );
   }
 }

@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 
 import { withFirebase } from '../Firebase';
-import { Button,Input, FormControl, ButtonGroup} from '@material-ui/core';
+import { Button,Input, FormControl, ButtonGroup, Grid, TextField, Typography} from '@material-ui/core';
 
 const INITIAL_STATE = {
   passwordOne: '',
   passwordTwo: '',
+  submitClicked: false,
   error: null,
 };
 
@@ -17,9 +18,9 @@ class PasswordChangeForm extends Component {
   }
 
   onSubmit = event => {
-    const { passwordOne } = this.state;
-
-    this.props.firebase
+    const { passwordOne, passwordTwo } = this.state;
+    if (!(passwordOne !== passwordTwo || passwordOne === '')) {
+      this.props.firebase
       .doPasswordUpdate(passwordOne)
       .then(() => {
         this.setState({ ...INITIAL_STATE });
@@ -29,46 +30,69 @@ class PasswordChangeForm extends Component {
       });
 
     event.preventDefault();
-  };
+    this.setState({ submitClicked: true });
+
+    } 
+  }
 
   onChange = event => {
+    console.log(event.target.name)
     this.setState({ [event.target.name]: event.target.value });
   };
 
   render() {
-    const { passwordOne, passwordTwo, error } = this.state;
+    const { passwordOne, passwordTwo, error, submitClicked, } = this.state;
 
     const isInvalid =
       passwordOne !== passwordTwo || passwordOne === '';
 
     return (
-      <form onSubmit={this.onSubmit}>
-        <Input
-          name="passwordOne"
-          value={passwordOne}
-          onChange={this.onChange}
-          type="password"
-          placeholder="New Password"
-        />
-        <Input
-          name="passwordTwo"
-          value={passwordTwo}
-          onChange={this.onChange}
-          type="password"
-          placeholder="Confirm New Password"
-        />
-        <Button disabled={isInvalid} 
-            type="submit"
-            variant="contained"
-            color="primary"
-            m={0.5}
-            size="medium">
-          Reset My Password
-        </Button>
+      <Grid container spacing={3}>
+        <Grid item xs={12} sm={6}>
+          <TextField
+            required
+            id="passwordOne"
+            name="passwordOne"
+            type="password"
+            label="New Password"
+            onChange={this.onChange}
+            label="New Password"
+            fullWidth
+          />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <TextField
+            required
+            id="passwordTwo"
+            type="password"
+            name="passwordTwo"
+            label="Confirm Password"
+            onChange={this.onChange}
+            fullWidth
+          />
+        </Grid>
+        <Grid item xs={12}>
         {error && <p>{error.message}</p>}
-      </form>
+       {!error && submitClicked &&                   
+       <Typography className="item1" variant="h6" color="primary">
+            Password Succesfully Updated
+        </Typography>}
+       <Button
+         type="button"
+         variant="contained"
+         color="primary"
+         size="medium"
+         onClick={this.onSubmit}
+       >
+        Update Passowrd
+
+       </Button>
+        </Grid>
+      </Grid>
+      
     );
   }
 }
 
 export default withFirebase(PasswordChangeForm);
+
