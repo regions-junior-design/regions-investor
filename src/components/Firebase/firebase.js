@@ -1,4 +1,4 @@
-import app from 'firebase/app';
+import app, { auth } from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/database';
 
@@ -66,6 +66,25 @@ class Firebase {
   onAuthUserListener = (next, fallback) =>
     this.auth.onAuthStateChanged(authUser => {
       if (authUser) {
+        this.user(authUser.uid).on("value", snapshot => {
+          const dbUser = snapshot.val();
+
+            // default empty roles
+            if (!dbUser.roles) {
+              dbUser.roles = {};
+            }
+
+            // merge auth and db user
+            authUser = {
+              uid: authUser.uid,
+              email: authUser.email,
+              emailVerified: authUser.emailVerified,
+              providerData: authUser.providerData,
+              ...dbUser,
+            };
+
+            next(authUser);
+        })
         this.user(authUser.uid)
           .once('value')
           .then(snapshot => {
@@ -92,6 +111,8 @@ class Firebase {
       }
     });
 
+   
+
   // *** User API ***
 
   user = uid => this.db.ref(`users/${uid}`);
@@ -109,6 +130,11 @@ class Firebase {
   mainAccount = (userId, uid) => this.db.ref(`accounts/${userId}/${uid}`);
 
   mainAccounts = (userId) => this.db.ref(`accounts/${userId}/`);
+
+  // *** Account Detail API ***
+
+  updateAccountDetail = (data, uid) => this.db.ref(`users/${uid}`).update(data) 
+
 }
 
 export default Firebase;

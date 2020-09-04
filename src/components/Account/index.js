@@ -8,6 +8,7 @@ import {
 import { withFirebase } from '../Firebase';
 import { PasswordForgetForm } from '../PasswordForget';
 import PasswordChangeForm from '../PasswordChange';
+import AccountDetailBase from  '../AccountDetail';
 import {ThemeProvider} from '@material-ui/core/styles';
 import {theme} from '../../MaterialUITheme'
 import { makeStyles } from '@material-ui/core/styles';
@@ -15,6 +16,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import { Button, Input, ButtonGroup, Typography} from '@material-ui/core';
+import { auth } from 'firebase';
 
 const SIGN_IN_METHODS = [
   {
@@ -74,8 +76,9 @@ export default function AccountPage() {
                   <PasswordChangeForm />
                   <Typography className="item1" variant="h3">
                     Change Login Preferences
-                  </Typography>
+                  </Typography>              
                   <LoginManagement authUser={authUser} />
+                  <AccountDetail authUser={authUser}/> 
                 </div>
               )}
               </AuthUserContext.Consumer>
@@ -282,5 +285,5 @@ class DefaultLoginToggle extends Component {
 }
 
 const LoginManagement = withFirebase(LoginManagementBase);
-
+const AccountDetail = withFirebase(AccountDetailBase)
 const condition = authUser => !!authUser;
