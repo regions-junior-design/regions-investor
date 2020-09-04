@@ -41,12 +41,14 @@ export default function Dashboard() {
   function FormRow() {
     return (
       <React.Fragment>
-        <Grid item xs={4}>
+        <Grid item lg={0} />
+        <Grid item xs={12} sm={12} md={8} lg={4}>
           <News></News>
         </Grid>
-        <Grid item xs={4}>
+        <Grid item xs={12} sm={12} md={8} lg={4}>
         <RecentTransactions></RecentTransactions>
         </Grid>
+        <Grid item lg={1} />
       </React.Fragment>
     );
   }
@@ -56,16 +58,18 @@ export default function Dashboard() {
       <CssBaseline />
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
-        <Container maxWidth="lg" className={classes.container}>
-          <Grid container spacing={3}> 
-            <Grid item xs={12} md={8} lg={9} className="scroll-container"> 
-                <Chart />
+        <Container maxWidth="xl" className={classes.container}>
+          <Grid container alignItems="center"> 
+            <Grid item lg={0} /> 
+            <Grid item lg={8} className="scroll-container"> 
+                <Chart /> 
                 {/* <IconScroller></IconScroller> */}
-                <Grid container item xs={12} spacing={3}>
+                <Grid container item Spacing={0}>
                   <FormRow>
                   </FormRow>
                 </Grid>
             </Grid>
+            <Grid item lg={0} />
           </Grid> *
         </Container>
       </main>

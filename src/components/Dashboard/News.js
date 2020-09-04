@@ -4,6 +4,7 @@ import { Box, Typography } from '@material-ui/core';
 export default function News() {
     return(
         <Box style={{
+            align:"center",
             borderStyle: 'solid',
             borderColor: '#88bd40',
             width: '480px',
@@ -24,6 +25,7 @@ export default function News() {
             </Typography>
             <Typography variant="body1" color="textSecondary" style={{
                 marginRight: '5px',
+                marginLeft: '0px',
                 }}>
                     <ul>
                         <li>

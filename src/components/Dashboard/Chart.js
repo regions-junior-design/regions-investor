@@ -2,6 +2,7 @@ import * as React from 'react';
 import { useTheme } from '@material-ui/core/styles';
 import { Container, CssBaseline, Button, ButtonGroup, ListItemSecondaryAction, ThemeProvider } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
+import Grid from '@material-ui/core/Grid';
 export default function Chart() {
   const theme = useTheme();
 
@@ -44,33 +45,45 @@ export default function Chart() {
 {/* 
                   <path d="M0, 5L20, 20L40, 10L60, 40L80, 5L100, 60" stroke="#55893d" stroke-width="2" fill='none'></path> */}
             </svg>
-            <ButtonGroup className="graph-nav">
-              <Button variant="contained" color="secondary" size='large' className="graph-button-individual">
-                <Typography variant='button'>
-                  1 Day
-                </Typography>
-              </Button>
-              <Button variant="contained" color="secondary" size='large' className="graph-button-individual">
-                <Typography variant='button'>
-                  1 Week
-                </Typography>
-              </Button>
-              <Button variant="contained" color="secondary" size='large' className="graph-button-individual">
-                <Typography variant='button'>
-                  1 Month
-                </Typography>
-              </Button>
-              <Button variant="contained" color="secondary" size='large' className="graph-button-individual">
-                <Typography variant='button'>
-                  1 Year
-                </Typography>
-              </Button>
-              <Button variant="contained" color="secondary" size='large' className="graph-button-individual">
-                <Typography variant='button'>
-                  5 Years
-                </Typography>
-              </Button>
-            </ButtonGroup>
+                <ButtonGroup className="graph-nav">
+                  <Grid container> 
+                    <Grid item> 
+                      <Button variant="contained" color="secondary" size='large' className="graph-button-individual">
+                        <Typography variant='button'>
+                          1 Day
+                        </Typography>
+                      </Button>
+                    </Grid>
+                    <Grid item>
+                      <Button variant="contained" color="secondary" size='large' className="graph-button-individual">
+                        <Typography variant='button'>
+                          1 Week
+                        </Typography>
+                      </Button>
+                    </Grid>
+                    <Grid item> 
+                      <Button variant="contained" color="secondary" size='large' className="graph-button-individual">
+                        <Typography variant='button'>
+                          1 Month
+                        </Typography>
+                      </Button>
+                    </Grid>
+                    <Grid item> 
+                      <Button variant="contained" color="secondary" size='large' className="graph-button-individual">
+                        <Typography variant='button'>
+                          1 Year
+                        </Typography>
+                      </Button>
+                    </Grid>
+                    <Grid item> 
+                      <Button variant="contained" color="secondary" size='large' className="graph-button-individual">
+                        <Typography variant='button'>
+                          5 Years
+                        </Typography>
+                      </Button>
+                  </Grid>
+                </Grid>
+                </ButtonGroup>
 
             {/* <GraphNav></GraphNav> */}
 
