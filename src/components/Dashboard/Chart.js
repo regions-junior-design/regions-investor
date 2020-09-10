@@ -48,35 +48,35 @@ export default function Chart() {
                 <ButtonGroup className="graph-nav">
                   <Grid container> 
                     <Grid item> 
-                      <Button variant="contained" color="secondary" size='large' className="graph-button-individual">
+                      <Button variant="contained" color="primary" size='large' className="graph-button-individual">
                         <Typography variant='button'>
                           1 Day
                         </Typography>
                       </Button>
                     </Grid>
                     <Grid item>
-                      <Button variant="contained" color="secondary" size='large' className="graph-button-individual">
+                      <Button variant="contained" color="primary" size='large' className="graph-button-individual">
                         <Typography variant='button'>
                           1 Week
                         </Typography>
                       </Button>
                     </Grid>
                     <Grid item> 
-                      <Button variant="contained" color="secondary" size='large' className="graph-button-individual">
+                      <Button variant="contained" color="primary" size='large' className="graph-button-individual">
                         <Typography variant='button'>
                           1 Month
                         </Typography>
                       </Button>
                     </Grid>
                     <Grid item> 
-                      <Button variant="contained" color="secondary" size='large' className="graph-button-individual">
+                      <Button variant="contained" color="primary" size='large' className="graph-button-individual">
                         <Typography variant='button'>
                           1 Year
                         </Typography>
                       </Button>
                     </Grid>
                     <Grid item> 
-                      <Button variant="contained" color="secondary" size='large' className="graph-button-individual">
+                      <Button variant="contained" color="primary" size='large' className="graph-button-individual">
                         <Typography variant='button'>
                           5 Years
                         </Typography>
