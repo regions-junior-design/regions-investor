@@ -8,7 +8,6 @@ import { Paper } from '@material-ui/core';
 import {theme} from '../../MaterialUITheme';
 import {ThemeProvider} from '@material-ui/core/styles';
 import News from './News';
-import IconScroller from './IconScroller';
 import RecentTransactions from './RecentTransactions';
 
 const useStyles = makeStyles((theme) => ({

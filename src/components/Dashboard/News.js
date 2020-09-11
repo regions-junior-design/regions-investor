@@ -23,7 +23,7 @@ export default function News() {
                 News
  
             </Typography>
-            <Typography variant="body1" color="textSecondary" style={{
+            <Typography variant="body1" style={{
                 marginRight: '5px',
                 marginLeft: '0px',
                 }}>

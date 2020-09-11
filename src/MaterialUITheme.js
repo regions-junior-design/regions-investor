@@ -28,12 +28,12 @@ export const theme = createMuiTheme({
         textPrimary: "rgb(51, 51, 51)",
         textSecondary: "#55893d",
         textTransform: 'capitalize',
+        fontWeight: 'bold',
       },
       h3: {
         fontFamily: "'Source Sans Pro', sans-serif",
-        fontSize: 28,
-        textPrimary: '#FFFFFF',
-        textSecondary: "#55893d",
+        fontSize: 31,
+        textPrimary: "rgb(51, 51, 51)",
         marginBottom: '10px'
       },
       body1: {

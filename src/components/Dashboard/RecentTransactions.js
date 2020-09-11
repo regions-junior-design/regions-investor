@@ -22,7 +22,7 @@ export default function RecentTransactions() {
                 }}>
                     Recent Transactions
                 </Typography>
-                <Typography variant="body1" color="textSecondary" style={{
+                <Typography variant="body1" style={{
                 marginRight: '5px',
                 }}>
                     <ul>
