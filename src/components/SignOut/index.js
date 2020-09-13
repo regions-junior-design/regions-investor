@@ -12,11 +12,13 @@ const SignOutButton = ({ firebase }) => (
   // </Typography>
   <Button
   variant="contained"
-  color="Secondary"
+  color="secondary"
   size="small"
   onClick={firebase.doSignOut}
   >
-    Sign Out
+    <Typography variant="button">
+      Sign Out
+    </Typography> 
   </Button>
 );
 

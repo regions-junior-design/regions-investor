@@ -31,18 +31,18 @@ export default function Chart() {
                   marginBottom: '20px',
                   borderRadius: '13px',
             }}>
-                  <text textAnchor="middle" x="200" y="55" variant="h3" style={{
+                  <text textAnchor="middle" x="200" y="55" variant="h2" style={{
                     fontSize: '20px',
                     fontWeight: 'bold',
-                    fill: '#88bd40',
+                    fill: '#55893d',
                   }}>Total Account Value:</text>
                   <text textAnchor="middle" x="200" y="105" variant="h3"  style={{
                     fontSize: '40px',
-                    fill: '#55893d',
+                    // fill: '#55893d',
                   }}> $18,345.78 </text>
-                  <text textAnchor="middle" x="200" y="135" variant="h3" style={{
+                  <text textAnchor="middle" x="200" y="135" variant="h2" style={{
                     fontSize: '20px',
-                    fill: '#88bd40',
+                    fill: '#55893d',
                   }}> (+3.89%) </text>
 {/* 
                   <path d="M0, 5L20, 20L40, 10L60, 40L80, 5L100, 60" stroke="#55893d" stroke-width="2" fill='none'></path> */}

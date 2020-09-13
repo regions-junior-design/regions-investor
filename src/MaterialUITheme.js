@@ -36,6 +36,11 @@ export const theme = createMuiTheme({
         textPrimary: "rgb(51, 51, 51)",
         marginBottom: '10px'
       },
+      h4: {
+        fontFamily: "'Source Sans Pro', sans-serif",
+        fontSize: 23,
+        textPrimary: "rgb(51, 51, 51)",
+      },
       body1: {
         fontFamily: "'Source Sans Pro', sans-serif",
         fontSize: 18,
