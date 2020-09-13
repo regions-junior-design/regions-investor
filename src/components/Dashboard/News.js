@@ -15,7 +15,6 @@ export default function News() {
             backgroundColor: 'white',
         }} className="scroll-to-element">
             <Typography variant="h2" className="news-title" style={{
-                color: '#88bd40', 
                 marginTop: '5px',
                 marginLeft: '200px',
                 fontSize: '30px'
