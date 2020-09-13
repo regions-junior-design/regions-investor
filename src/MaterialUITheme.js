@@ -49,7 +49,8 @@ export const theme = createMuiTheme({
       button: {
         fontFamily: "'Source Sans Pro', sans-serif",
         fontSize: 20,
-        color: "#ffffff",
+        textPrimary: "#ffffff",
+        textSecondary: "#000000",
         marginBottom: 10,
         textTransform: 'capitalize',
       },
