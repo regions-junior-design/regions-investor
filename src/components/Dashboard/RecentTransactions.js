@@ -15,14 +15,13 @@ export default function RecentTransactions() {
                 backgroundColor: 'white',
                 }}>
                 <Typography variant="h2" style={{
-                    color: '#88bd40', 
                     marginLeft: '95px',
                     marginTop: '5px',
                     fontSize: '30px'
                 }}>
                     Recent Transactions
                 </Typography>
-                <Typography variant="body1" color="textSecondary" style={{
+                <Typography variant="body1" style={{
                 marginRight: '5px',
                 }}>
                     <ul>

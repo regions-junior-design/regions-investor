@@ -12,11 +12,13 @@ export default function Chart() {
         <Container maxWidth="sm">
         <div class="grid-layout">
             <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet"></link>
-            <Typography className="item1" variant="h2">
+            <Typography className="item1" variant="h1">
               Dashboard
             </Typography>
             <Button variant="contained" color="primary" className="item2">
-              <Typography variant='button'>
+              <Typography variant='button' style={{
+                marginTop: 11,
+              }}>
                   Edit
               </Typography>
             </Button>
@@ -29,18 +31,18 @@ export default function Chart() {
                   marginBottom: '20px',
                   borderRadius: '13px',
             }}>
-                  <text textAnchor="middle" x="200" y="55" style={{
+                  <text textAnchor="middle" x="200" y="55" variant="h2" style={{
                     fontSize: '20px',
                     fontWeight: 'bold',
-                    fill: '#88bd40',
-                  }}>Total Account Value:</text>
-                  <text textAnchor="middle" x="200" y="105" style={{
-                    fontSize: '40px',
                     fill: '#55893d',
+                  }}>Total Account Value:</text>
+                  <text textAnchor="middle" x="200" y="105" variant="h3"  style={{
+                    fontSize: '40px',
+                    // fill: '#55893d',
                   }}> $18,345.78 </text>
-                  <text textAnchor="middle" x="200" y="135" style={{
+                  <text textAnchor="middle" x="200" y="135" variant="h2" style={{
                     fontSize: '20px',
-                    fill: '#88bd40',
+                    fill: '#55893d',
                   }}> (+3.89%) </text>
 {/* 
                   <path d="M0, 5L20, 20L40, 10L60, 40L80, 5L100, 60" stroke="#55893d" stroke-width="2" fill='none'></path> */}
@@ -48,35 +50,45 @@ export default function Chart() {
                 <ButtonGroup className="graph-nav">
                   <Grid container> 
                     <Grid item> 
-                      <Button variant="contained" color="secondary" size='large' className="graph-button-individual">
+                      <Button variant="contained" color="primary" size='large' className="graph-button-individual" style={{
+                        paddingTop: 15,
+                      }}>
                         <Typography variant='button'>
                           1 Day
                         </Typography>
                       </Button>
                     </Grid>
                     <Grid item>
-                      <Button variant="contained" color="secondary" size='large' className="graph-button-individual">
+                      <Button variant="contained" color="primary" size='large' className="graph-button-individual" style={{
+                        paddingTop: 15,
+                      }}>
                         <Typography variant='button'>
                           1 Week
                         </Typography>
                       </Button>
                     </Grid>
                     <Grid item> 
-                      <Button variant="contained" color="secondary" size='large' className="graph-button-individual">
+                      <Button variant="contained" color="primary" size='large' className="graph-button-individual" style={{
+                        paddingTop: 15,
+                      }}>
                         <Typography variant='button'>
                           1 Month
                         </Typography>
                       </Button>
                     </Grid>
                     <Grid item> 
-                      <Button variant="contained" color="secondary" size='large' className="graph-button-individual">
+                      <Button variant="contained" color="primary" size='large' className="graph-button-individual" style={{
+                        paddingTop: 15,
+                      }}>
                         <Typography variant='button'>
                           1 Year
                         </Typography>
                       </Button>
                     </Grid>
                     <Grid item> 
-                      <Button variant="contained" color="secondary" size='large' className="graph-button-individual">
+                      <Button variant="contained" color="primary" size='large' className="graph-button-individual" style={{
+                        paddingTop: 15,
+                      }}>
                         <Typography variant='button'>
                           5 Years
                         </Typography>

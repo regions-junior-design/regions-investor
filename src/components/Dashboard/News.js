@@ -15,7 +15,6 @@ export default function News() {
             backgroundColor: 'white',
         }} className="scroll-to-element">
             <Typography variant="h2" className="news-title" style={{
-                color: '#88bd40', 
                 marginTop: '5px',
                 marginLeft: '200px',
                 fontSize: '30px'
@@ -23,7 +22,7 @@ export default function News() {
                 News
  
             </Typography>
-            <Typography variant="body1" color="textSecondary" style={{
+            <Typography variant="body1" style={{
                 marginRight: '5px',
                 marginLeft: '0px',
                 }}>

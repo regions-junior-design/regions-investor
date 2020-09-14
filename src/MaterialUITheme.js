@@ -4,10 +4,10 @@ import {createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 export const theme = createMuiTheme({
     palette: {
         primary: {
-            main: "#55893d"
+            main: "#528400"
         },
         secondary: {
-            main: "#88bd40"
+            main: "#88bb00"
         }
     
     },
@@ -15,37 +15,44 @@ export const theme = createMuiTheme({
     typography: {
       fontFamily: "'Raleway', Sans-Serif",
       h1: {
-        fontFamily: "'Raleway', Sans-Serif",
-        textPrimary: '#FFFFFF',
+        fontFamily: "'Source Sans Pro', sans-serif",
+        textPrimary: "rgb(51, 51, 51)",
         textSecondary: "#55893d",
         textTransform: 'capitalize',
+        fontSize: 46,
+        fontWeight: "bold",
       },
       h2: {
-        fontFamily: "'Open Sans', Sans-Serif",
-        fontSize: 40,
-        textPrimary: '#FFFFFF',
+        fontFamily: "'Source Sans Pro', sans-serif",
+        fontSize: 37,
+        textPrimary: "rgb(51, 51, 51)",
         textSecondary: "#55893d",
         textTransform: 'capitalize',
+        fontWeight: 'bold',
       },
       h3: {
-        fontFamily: "'Open Sans', Sans-Serif",
-        fontSize: 28,
-        textPrimary: '#FFFFFF',
-        textSecondary: "#55893d",
+        fontFamily: "'Source Sans Pro', sans-serif",
+        fontSize: 31,
+        textPrimary: "rgb(51, 51, 51)",
         marginBottom: '10px'
       },
+      h4: {
+        fontFamily: "'Source Sans Pro', sans-serif",
+        fontSize: 23,
+        textPrimary: "rgb(51, 51, 51)",
+      },
       body1: {
-        fontFamily: "'Open Sans', Sans-Serif",
-        fontSize: 16,
-        textPrimary: '#FFFFFF',
-        textSecondary: '#000000',
+        fontFamily: "'Source Sans Pro', sans-serif",
+        fontSize: 18,
+        textPrimary: "rgb(51, 51, 51)",
       }, 
       button: {
-        fontFamily: "'Raleway', Sans-Serif",
+        fontFamily: "'Source Sans Pro', sans-serif",
         fontSize: 20,
-        color: '#FFFFFF',
+        textPrimary: "#ffffff",
+        textSecondary: "#000000",
         marginBottom: 10,
-
+        textTransform: 'capitalize',
       },
       signOutButton: {
         fontFamily: "'Raleway', Sans-Serif",
