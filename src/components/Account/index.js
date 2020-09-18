@@ -71,7 +71,7 @@ export default function AccountPage() {
                     Email: {authUser.email}
                   </Typography>
                   <PasswordChangeForm />
-                  <AccountDetail authUser={authUser}/>         
+                  <AccountDetail authUser={authUser}/>
                   <LoginManagement authUser={authUser} />
                 </div>
               )}

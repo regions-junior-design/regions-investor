@@ -4,12 +4,14 @@ import { compose } from 'recompose';
 import { AuthUserContext, withAuthorization, withEmailVerification } from '../Session';
 import Messages from '../Messages';
 import MainAccounts from '../MainAccounts';
+import {
+  withFirebase
+} from '../Firebase';
 
 
-const HomePage = () => (
+const Accounts = () => (
   <div>
-    <h1>Home Page</h1>
-    <p>The Home Page is accessible by every signed in user.</p>
+    <h1>Accounts Page</h1>
 
     <AuthUserContext.Consumer>
       {authUser => (
@@ -24,7 +26,4 @@ const HomePage = () => (
 
 const condition = authUser => !!authUser;
 
-export default compose(
-  withEmailVerification,
-  withAuthorization(condition),
-)(HomePage);
+export default withFirebase(Accounts);

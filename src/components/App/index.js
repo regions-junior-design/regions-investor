@@ -6,7 +6,6 @@ import LandingPage from '../Landing';
 import SignUpPage from '../SignUp';
 import SignInPage from '../SignIn';
 import PasswordForgetPage from '../PasswordForget';
-import HomePage from '../Home';
 import AccountPage from '../Account';
 import AdminPage from '../Admin';
 
