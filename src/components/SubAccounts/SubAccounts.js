@@ -6,6 +6,7 @@ import AddIcon from '@material-ui/icons/Add';
 import './index.css';
 import { Add } from '@material-ui/icons';
 import EditIcon from '@material-ui/icons/Edit';
+import NewGoalPage from './NewGoalPage';
 
 export default function SubAccounts() {
 
@@ -52,7 +53,10 @@ export default function SubAccounts() {
                 )
             }   
           {num === 1 ? (
-              <div> Testing </div>
+              <div>
+                  <Button onClick={handleMain} variant="contained">Cancel</Button>
+                  <NewGoalPage></NewGoalPage>
+              </div>
           ) : (
               <div></div>
           )
