@@ -20,6 +20,8 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
 import DeleteIcon from '@material-ui/icons/Delete';
 import FilterListIcon from '@material-ui/icons/FilterList';
+import Heading from './Heading';
+import PageButtons from './PageButtons';
 
 function createData(name, currentAccountValue, goalAmount, investmentStyle, goalDate) {
   return { name, currentAccountValue, goalAmount, investmentStyle, goalDate };
@@ -75,6 +77,7 @@ function EnhancedTableHead(props) {
   };
 
   return (
+    <>
     <TableHead>
       <TableRow>
         <TableCell padding="checkbox">
@@ -102,6 +105,7 @@ function EnhancedTableHead(props) {
         ))}
       </TableRow>
     </TableHead>
+    </>
   );
 }
 
@@ -140,6 +144,7 @@ const EnhancedTableToolbar = (props) => {
   const { numSelected } = props;
 
   return (
+    <>
     <Toolbar
       className={clsx(classes.root, {
         [classes.highlight]: numSelected > 0,
@@ -169,6 +174,7 @@ const EnhancedTableToolbar = (props) => {
         </Tooltip>
       )}
     </Toolbar>
+    </>
   );
 };
 
@@ -262,6 +268,13 @@ export default function EnhancedTable() {
   const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
 
   return (
+    <>
+    
+    {/* THIS IS WHERE YOU PUT OTHER ELEMENTS IN THE PAGE */}
+    <Heading></Heading>
+
+    <PageButtons></PageButtons>
+
     <div className={classes.root}>
       <Paper className={classes.paper}>
         <EnhancedTableToolbar numSelected={selected.length} />
@@ -337,5 +350,6 @@ export default function EnhancedTable() {
         label="Dense padding"
       />
     </div>
+    </>
   );
 }
