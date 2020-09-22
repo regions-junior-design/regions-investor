@@ -20,6 +20,8 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
 import DeleteIcon from '@material-ui/icons/Delete';
 import FilterListIcon from '@material-ui/icons/FilterList';
+import NewAccount from '../NewAccount';
+import { Container, CssBaseline, Button, ButtonGroup, ListItemSecondaryAction, ThemeProvider } from '@material-ui/core';
 
 function createData(name, currentAccountValue, goalAmount, investmentStyle, goalDate) {
   return { name, currentAccountValue, goalAmount, investmentStyle, goalDate };
@@ -208,6 +210,7 @@ export default function EnhancedTable() {
   const [page, setPage] = React.useState(0);
   const [dense, setDense] = React.useState(false);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const [createNew, setCreateNew] = React.useState(false);
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
@@ -260,6 +263,11 @@ export default function EnhancedTable() {
   const isSelected = (name) => selected.indexOf(name) !== -1;
 
   const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
+
+  const handleCreateNew = (e) => {
+    console.log('The link was clicked.');
+    setCreateNew(true);
+  }
 
   return (
     <div className={classes.root}>
@@ -336,6 +344,24 @@ export default function EnhancedTable() {
         control={<Switch checked={dense} onChange={handleChangeDense} />}
         label="Dense padding"
       />
-    </div>
+   
+      <Button variant="contained" color="primary" className="item2" align="right" onClick={handleCreateNew}>
+      <Typography variant='button' style={{
+        marginTop: 11,
+      }}>
+          Create  
+      </Typography>
+      </Button>
+
+      {createNew === true ? (
+            <div>
+                <NewAccount></NewAccount>
+            </div>
+        ) : (
+            <div></div>
+        )
+        }
+      
+    </div>      
   );
 }
