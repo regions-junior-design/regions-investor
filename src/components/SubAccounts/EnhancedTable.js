@@ -270,10 +270,7 @@ export default function EnhancedTable() {
   return (
     <>
     
-    {/* THIS IS WHERE YOU PUT OTHER ELEMENTS IN THE PAGE */}
-    <Heading></Heading>
-
-    <PageButtons></PageButtons>
+    {/* this is where you put elements above the table */}
 
     <div className={classes.root}>
       <Paper className={classes.paper}>
