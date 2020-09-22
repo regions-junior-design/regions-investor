@@ -54,7 +54,10 @@ export default function SubAccounts() {
             }   
           {num === 1 ? (
               <div>
-                  <Button onClick={handleMain} variant="contained">Cancel</Button>
+                  <Button onClick={handleMain} variant="contained" style={{
+                    backgroundColor: "#528400",
+                    color: 'white',  
+                  }}>Cancel</Button>
                   <NewGoalPage></NewGoalPage>
               </div>
           ) : (
