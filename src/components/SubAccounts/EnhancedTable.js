@@ -20,8 +20,13 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
 import DeleteIcon from '@material-ui/icons/Delete';
 import FilterListIcon from '@material-ui/icons/FilterList';
+<<<<<<< HEAD:src/components/SubAccounts/index.js
 import NewAccount from '../NewAccount';
 import { Container, CssBaseline, Button, ButtonGroup, ListItemSecondaryAction, ThemeProvider } from '@material-ui/core';
+=======
+import Heading from './Heading';
+import PageButtons from './PageButtons';
+>>>>>>> 4e693749218a3996dca517a224aea423394fdb9c:src/components/SubAccounts/EnhancedTable.js
 
 function createData(name, currentAccountValue, goalAmount, investmentStyle, goalDate) {
   return { name, currentAccountValue, goalAmount, investmentStyle, goalDate };
@@ -77,6 +82,7 @@ function EnhancedTableHead(props) {
   };
 
   return (
+    <>
     <TableHead>
       <TableRow>
         <TableCell padding="checkbox">
@@ -104,6 +110,7 @@ function EnhancedTableHead(props) {
         ))}
       </TableRow>
     </TableHead>
+    </>
   );
 }
 
@@ -142,6 +149,7 @@ const EnhancedTableToolbar = (props) => {
   const { numSelected } = props;
 
   return (
+    <>
     <Toolbar
       className={clsx(classes.root, {
         [classes.highlight]: numSelected > 0,
@@ -171,6 +179,7 @@ const EnhancedTableToolbar = (props) => {
         </Tooltip>
       )}
     </Toolbar>
+    </>
   );
 };
 
@@ -270,6 +279,10 @@ export default function EnhancedTable() {
   }
 
   return (
+    <>
+    
+    {/* this is where you put elements above the table */}
+
     <div className={classes.root}>
       <Paper className={classes.paper}>
         <EnhancedTableToolbar numSelected={selected.length} />
@@ -344,6 +357,7 @@ export default function EnhancedTable() {
         control={<Switch checked={dense} onChange={handleChangeDense} />}
         label="Dense padding"
       />
+<<<<<<< HEAD:src/components/SubAccounts/index.js
    
       <Button variant="contained" color="primary" className="item2" align="right" onClick={handleCreateNew}>
       <Typography variant='button' style={{
@@ -363,5 +377,9 @@ export default function EnhancedTable() {
         }
       
     </div>      
+=======
+    </div>
+    </>
+>>>>>>> 4e693749218a3996dca517a224aea423394fdb9c:src/components/SubAccounts/EnhancedTable.js
   );
 }
