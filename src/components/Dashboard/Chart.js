@@ -10,7 +10,7 @@ import ChartContent from './ChartContent';
 export default function Chart() {
   const theme = useTheme();
 
-  const [xAxis, setXAxis] = React.useState(['8am', '9am', '10am']);
+  const [xAxis, setXAxis] = React.useState(['12am', '6am', '12pm', '6pm', '12am']);
 
   return (
 <React.Fragment>
@@ -69,7 +69,7 @@ export default function Chart() {
                     <Grid item> 
                       <Button variant="contained" color="primary" size='large' className="graph-button-individual" style={{
                         paddingTop: 15,
-                      }} onClick={(xAxis) => setXAxis(['January', 'February', 'March', 'April', 'May', 'June', 'July'])}>
+                      }} onClick={(xAxis) => setXAxis(['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'])}>
                         <Typography variant='button'>
                           1 Year
                         </Typography>

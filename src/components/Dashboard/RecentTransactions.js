@@ -16,7 +16,7 @@ export default function RecentTransactions() {
                 backgroundColor: 'white',
                 }}>
                 <Typography variant="h2" style={{
-                    marginLeft: '55px',
+                    marginLeft: '65px',
                     marginTop: '5px',
                     fontSize: '30px'
                 }}>

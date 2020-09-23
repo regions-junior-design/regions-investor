@@ -17,7 +17,7 @@ export default function News() {
         }} className="scroll-to-element">
             <Typography variant="h2" className="news-title" style={{
                 marginTop: '5px',
-                marginLeft: '200px',
+                marginLeft: '160px',
                 fontSize: '30px'
             }}>
                 News
