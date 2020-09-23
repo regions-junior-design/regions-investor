@@ -58,18 +58,19 @@ export default function Dashboard() {
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         <Container maxWidth="xl" className={classes.container}>
-          <Grid container alignItems="center"> 
-            <Grid item lg={0} /> 
-            <Grid item lg={8} className="scroll-container"> 
+          <Grid container alignItems="left"> 
+            <Grid item xs={9} className="scroll-container"> 
                 <Chart /> 
-                {/* <IconScroller></IconScroller> */}
-                <Grid container item Spacing={0}>
+                {/* <Grid container item Spacing={0}>
                   <FormRow>
                   </FormRow>
-                </Grid>
+                </Grid> */}
             </Grid>
-            <Grid item lg={0} />
-          </Grid> *
+            <Grid item xs={3}>
+              <News></News>
+              <RecentTransactions></RecentTransactions>
+            </Grid>
+          </Grid>
         </Container>
       </main>
     </ThemeProvider>
