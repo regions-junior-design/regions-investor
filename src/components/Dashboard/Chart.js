@@ -42,7 +42,7 @@ export default function Chart() {
                     <Grid item> 
                       <Button variant="contained" color="primary" size='large' className="graph-button-individual" style={{
                         paddingTop: 15,
-                      }}>
+                      }} onClick={(xAxis) => setXAxis(['12am', '6am', '12pm', '6pm', '12am'])}>
                         <Typography variant='button'>
                           1 Day
                         </Typography>
@@ -51,7 +51,7 @@ export default function Chart() {
                     <Grid item>
                       <Button variant="contained" color="primary" size='large' className="graph-button-individual" style={{
                         paddingTop: 15,
-                      }}>
+                      }} onClick={(xAxis) => setXAxis(['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'])}>
                         <Typography variant='button'>
                           1 Week
                         </Typography>
@@ -60,7 +60,7 @@ export default function Chart() {
                     <Grid item> 
                       <Button variant="contained" color="primary" size='large' className="graph-button-individual" style={{
                         paddingTop: 15,
-                      }}>
+                      }} onClick={(xAxis) => setXAxis(['1st', '5th', '10th', '15th', '20th', '25th', '30th'])}>
                         <Typography variant='button'>
                           1 Month
                         </Typography>
@@ -69,7 +69,7 @@ export default function Chart() {
                     <Grid item> 
                       <Button variant="contained" color="primary" size='large' className="graph-button-individual" style={{
                         paddingTop: 15,
-                      }}>
+                      }} onClick={(xAxis) => setXAxis(['January', 'February', 'March', 'April', 'May', 'June', 'July'])}>
                         <Typography variant='button'>
                           1 Year
                         </Typography>
@@ -78,7 +78,7 @@ export default function Chart() {
                     <Grid item> 
                       <Button variant="contained" color="primary" size='large' className="graph-button-individual" style={{
                         paddingTop: 15,
-                      }}>
+                      }} onClick={(xAxis) => setXAxis(['2016', '2017', '2018', '2019', '2020'])}>
                         <Typography variant='button'>
                           5 Years
                         </Typography>
