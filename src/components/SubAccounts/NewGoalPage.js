@@ -27,7 +27,7 @@ export default function NewGoalPage() {
 
     return (
         <React.Fragment>
-          <Typography variant="h6" gutterBottom>
+          <Typography variant="h1" gutterBottom>
             Create New Goal
           </Typography>
           <Grid container spacing={3}>

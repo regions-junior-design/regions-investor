@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { lighten, makeStyles } from '@material-ui/core/styles';
@@ -205,6 +205,9 @@ const useStyles = makeStyles((theme) => ({
     width: 1,
   },
 }));
+
+
+export const TableContext = React.createContext();
 
 export default function EnhancedTable() {
   const classes = useStyles();
