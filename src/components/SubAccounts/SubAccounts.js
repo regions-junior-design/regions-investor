@@ -7,6 +7,7 @@ import './index.css';
 import { Add } from '@material-ui/icons';
 import EditIcon from '@material-ui/icons/Edit';
 import NewGoalPage from './NewGoalPage';
+import EditGoalPage from './EditGoalPage';
 
 export default function SubAccounts() {
 
@@ -21,6 +22,11 @@ export default function SubAccounts() {
     const handleNewGoal = () => {
         setView("NewGoal");
         setNum(1);
+    }
+
+    const handleEditGoal = () => {
+        setView("EditGoal");
+        setNum(2);
     }
     
     return (
@@ -41,7 +47,7 @@ export default function SubAccounts() {
                         backgroundColor: "#528400",
                         color: 'white',
                         marginLeft: 20
-                    }}>
+                    }} onClick={handleEditGoal}>
                         <EditIcon fontSize='medium'></EditIcon>
                         <Typography className="tooltiptext">Edit Goal</Typography>
                     </Button>
@@ -64,6 +70,18 @@ export default function SubAccounts() {
               <div></div>
           )
           }  
+          {num === 2 ? (
+              <div>
+                    <Button onClick={handleMain} variant="contained" style={{
+                        backgroundColor: "#528400",
+                        color: 'white',  
+                    }}>Cancel</Button>
+                    <EditGoalPage></EditGoalPage>
+                </div>
+          ) : (
+              <div></div>
+          )
+        }   
         </div>
     )
 }
