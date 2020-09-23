@@ -14,6 +14,7 @@ export default function Chart() {
         <Container maxWidth="sm">
         <div class="grid-layout">
             <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet"></link>
+            
             <Typography className="item1" variant="h1">
               Dashboard
             </Typography>
