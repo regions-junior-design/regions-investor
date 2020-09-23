@@ -7,15 +7,16 @@ export default function RecentTransactions() {
             <Box style={{
                 borderStyle: 'solid',
                 borderColor: '#88bd40',
-                width: '480px',
-                height: '180px',
+                width: '380px',
+                height: '210px',
                 marginTop: '20px',
                 borderRadius: '13px',
-                marginLeft: '400px',
+                marginLeft: '200px',
+                marginRight: '10px',
                 backgroundColor: 'white',
                 }}>
                 <Typography variant="h2" style={{
-                    marginLeft: '95px',
+                    marginLeft: '55px',
                     marginTop: '5px',
                     fontSize: '30px'
                 }}>
