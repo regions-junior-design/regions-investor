@@ -84,7 +84,7 @@ class PasswordChangeForm extends Component {
          size="medium"
          onClick={this.onSubmit}
        >
-        Update Passowrd
+        Update Passoword
 
        </Button>
         </Grid>
