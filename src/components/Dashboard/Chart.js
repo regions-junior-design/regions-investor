@@ -1,12 +1,16 @@
-import * as React from 'react';
+import React, {useState} from 'react';
 import { useTheme } from '@material-ui/core/styles';
 import { Container, CssBaseline, Button, ButtonGroup, ListItemSecondaryAction, ThemeProvider } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import ChartContent from './ChartContent';
 
+// ['January', 'February', 'March', 'April', 'May', 'June', 'July']
+
 export default function Chart() {
   const theme = useTheme();
+
+  const [xAxis, setXAxis] = React.useState(['8am', '9am', '10am']);
 
   return (
 <React.Fragment>
@@ -29,7 +33,7 @@ export default function Chart() {
 
               <ChartContent style={{
                 marginTop: 500
-              }} labelsArr= {['January', 'February', 'March', 'April', 'May', 'June', 'July']} dataArr={[13000, 13023, 13212, 14231, 14001, 14568, 14678]}></ChartContent>
+              }} labelsArr= {xAxis} dataArr={[13000, 13023, 13212, 14231, 14001, 14568, 14678]}></ChartContent>
 
                 <ButtonGroup className="graph-nav" style={{
                   marginTop: 470
