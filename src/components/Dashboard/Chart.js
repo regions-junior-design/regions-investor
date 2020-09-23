@@ -23,20 +23,20 @@ export default function Chart() {
             }}>
               Dashboard
             </Typography>
-            <Button variant="contained" color="primary" className="item2">
+            {/* <Button variant="contained" color="primary" className="item2">
               <Typography variant='button' style={{
                 marginTop: 11,
               }}>
                   Edit
               </Typography>
-            </Button>
+            </Button> */}
 
               <ChartContent style={{
                 marginTop: 500
               }} labelsArr= {xAxis} dataArr={[13000, 13023, 13212, 14231, 14001, 14568, 14678]}></ChartContent>
 
                 <ButtonGroup className="graph-nav" style={{
-                  marginTop: 470
+                  marginTop: 520
                 }}>
                   <Grid container> 
                     <Grid item> 

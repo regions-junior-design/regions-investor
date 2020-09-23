@@ -71,6 +71,7 @@ const data = {
         <div className="line-chart" style={{
             height: 500,
             width: 1000,
+            marginTop: '65px',
         }}>   
             <Line data={data} options={options}></Line>
         </div>
