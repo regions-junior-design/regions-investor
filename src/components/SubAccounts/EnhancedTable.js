@@ -20,13 +20,8 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
 import DeleteIcon from '@material-ui/icons/Delete';
 import FilterListIcon from '@material-ui/icons/FilterList';
-<<<<<<< HEAD:src/components/SubAccounts/index.js
-import NewAccount from '../NewAccount';
-import { Container, CssBaseline, Button, ButtonGroup, ListItemSecondaryAction, ThemeProvider } from '@material-ui/core';
-=======
 import Heading from './Heading';
 import PageButtons from './PageButtons';
->>>>>>> 4e693749218a3996dca517a224aea423394fdb9c:src/components/SubAccounts/EnhancedTable.js
 
 function createData(name, currentAccountValue, goalAmount, investmentStyle, goalDate) {
   return { name, currentAccountValue, goalAmount, investmentStyle, goalDate };
@@ -357,29 +352,7 @@ export default function EnhancedTable() {
         control={<Switch checked={dense} onChange={handleChangeDense} />}
         label="Dense padding"
       />
-<<<<<<< HEAD:src/components/SubAccounts/index.js
-   
-      <Button variant="contained" color="primary" className="item2" align="right" onClick={handleCreateNew}>
-      <Typography variant='button' style={{
-        marginTop: 11,
-      }}>
-          Create  
-      </Typography>
-      </Button>
-
-      {createNew === true ? (
-            <div>
-                <NewAccount></NewAccount>
-            </div>
-        ) : (
-            <div></div>
-        )
-        }
-      
-    </div>      
-=======
     </div>
     </>
->>>>>>> 4e693749218a3996dca517a224aea423394fdb9c:src/components/SubAccounts/EnhancedTable.js
   );
 }
