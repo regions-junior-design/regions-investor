@@ -7,7 +7,7 @@ export default function EditGoalPage() {
             <div>
                 <Typography variant='h1' style={{
                     marginTop: '10px',
-                }}>Edit Goal {rows}</Typography>
+                }}>Edit Goal</Typography>
 
             </div>
 
