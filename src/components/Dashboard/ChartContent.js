@@ -2,15 +2,10 @@ import React, {useState} from 'react';
 import { Line } from 'react-chartjs-2';
 
 
-
-const dataArr = [13000, 13023, 13212, 14231, 14001, 14568, 14678];
-const labelsArr = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-
-const [data, setData] = useState(dataArr);
-const [labels, setLabels] = useState(labelsArr);
+export default function ChartContent(props) {
 
 const data = {
-    labels: labelsArr,
+    labels: props.labelsArr,
     datasets: [
       {
         label: 'Account Total Over Time',
@@ -28,7 +23,7 @@ const data = {
         pointHoverBorderWidth: 2,
         pointRadius: 1,
         pointHitRadius: 10,
-        data: dataArr,
+        data: props.dataArr,
       }
     ], 
   };
@@ -50,8 +45,6 @@ const data = {
         }
     }
   }
-  
-export default function ChartContent() {
     return(
         <div className="line-chart" style={{
             height: 500,

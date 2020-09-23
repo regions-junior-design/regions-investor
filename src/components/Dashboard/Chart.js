@@ -29,7 +29,7 @@ export default function Chart() {
 
               <ChartContent style={{
                 marginTop: 500
-              }}></ChartContent>
+              }} labelsArr= {['January', 'February', 'March', 'April', 'May', 'June', 'July']} dataArr={[13000, 13023, 13212, 14231, 14001, 14568, 14678]}></ChartContent>
 
                 <ButtonGroup className="graph-nav" style={{
                   marginTop: 470
