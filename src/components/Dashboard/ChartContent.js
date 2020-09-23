@@ -34,6 +34,28 @@ const data = {
                 {
                     ticks: {
                         stepSize: 500,
+                        fontColor: 'black',
+                        fontSize: 18,
+                        padding: 10,
+                        fontFamily: "'Helvetica Neue', sans-serif",
+                        fontStyle: 'italic',
+                    },
+                    gridLines: {
+                        color: 'grey',
+                    }
+                }
+            ],
+            xAxes: [
+                {
+                    ticks: {
+                        fontColor: 'black',
+                        fontSize: 18,  
+                        padding: 10,
+                        fontFamily: "'Helvetica Neue', sans-serif",
+                        fontStyle: 'italic',
+                    },
+                    gridLines: {
+                        color: 'grey',
                     }
                 }
             ]
