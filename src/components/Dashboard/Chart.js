@@ -15,7 +15,8 @@ export default function Chart() {
         <div class="grid-layout">
             <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet"></link>
             
-            <Typography className="item1" variant="h1">
+            <Typography className="item1" variant="h1" style={{
+            }}>
               Dashboard
             </Typography>
             <Button variant="contained" color="primary" className="item2">
@@ -26,7 +27,9 @@ export default function Chart() {
               </Typography>
             </Button>
 
-              <ChartContent></ChartContent>
+              <ChartContent style={{
+                marginTop: 500
+              }}></ChartContent>
 
                 <ButtonGroup className="graph-nav" style={{
                   marginTop: 470
