@@ -82,7 +82,7 @@ class ETable extends Component {
     // };
   
     // onRemoveMessage = uid => {
-    //   this.props.firebase.message(this.user.uid, uid).remove();
+    //   this.props.firebase.mainAccount(this.props.user.uid, uid).remove();
     // };
   
     render() {

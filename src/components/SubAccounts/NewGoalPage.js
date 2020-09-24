@@ -30,7 +30,8 @@ function NewGoalPage(props) {
                 currentAccountValue: init || "",
                 goalDate: date || "",
                 investmentStyle: type || ""
-            })
+            });
+        props.back();
     }
   return (
     <React.Fragment>

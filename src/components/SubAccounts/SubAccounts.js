@@ -108,7 +108,7 @@ export default function SubAccounts() {
                                 backgroundColor: "#528400",
                                 color: 'white',  
                             }}>Cancel</Button>
-                            <NewGoalPage authUser={authUser}/>
+                            <NewGoalPage authUser={authUser} back={handleMain}/>
                             </div>
                         )}
                     </AuthUserContext.Consumer>
