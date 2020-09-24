@@ -29,6 +29,7 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import SignOut from '../SignOut';
 import AccountPage from '../Account';
 import SubAccounts from '../SubAccounts';
+import Accounts from '../Accounts';
 
 
 const drawerWidth = 240;
@@ -161,9 +162,9 @@ export default function Platform() {
     setView("Settings");
     setNum(6);
   }
-  
+
     return (
-      <ThemeProvider theme={theme}>   
+      <ThemeProvider theme={theme}>
       <div className={classes.root}>
         <CssBaseline />
             <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
@@ -174,7 +175,7 @@ export default function Platform() {
                         aria-label="open drawer"
                         onClick={handleDrawerOpen}
                         className={clsx(classes.menuButton, open && classes.menuButtonHidden)}
-                        >     
+                        >
                         <MenuIcon />
                     </IconButton>
                     <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
@@ -246,13 +247,13 @@ export default function Platform() {
                         </ListItem>
                     </div>
                 </List>
-            </Drawer>   
+            </Drawer>
         {num === 0 ? (
             <Dashboard></Dashboard>
         ) : (
             <div></div>
         )
-        }   
+        }
         {num === 1 ? (
             <div>
                 <main className={classes.content}>
