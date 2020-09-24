@@ -130,7 +130,7 @@ class Firebase {
   mainAccount = (userId, uid) => this.db.ref(`accounts/${userId}/${uid}`);
 
   mainAccounts = (userId) => this.db.ref(`accounts/${userId}/`);
-
+  
   // *** Account Detail API ***
 
   updateAccountDetail = (data, uid) => this.db.ref(`users/${uid}`).update(data) 
