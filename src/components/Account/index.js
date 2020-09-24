@@ -70,7 +70,7 @@ export default function AccountPage() {
                   <Typography className="item1" variant="h6">
                     Email: {authUser.email}
                   </Typography>
-                  <PasswordChangeForm />
+                  {/* <PasswordChangeForm /> */}
                   <AccountDetail authUser={authUser}/>
                   <LoginManagement authUser={authUser} />
                 </div>

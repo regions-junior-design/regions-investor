@@ -64,7 +64,7 @@ export default function SubAccounts() {
         <div>
             {num === 0 ? (
                 <div>
-                    <Heading></Heading>
+                    {/* <Heading></Heading> */}
                     <Container maxWidth="lg" className={classes.container}>
                     <Grid item xs={12} md={8} lg={9}>
                     <AuthUserContext.Consumer>
@@ -108,7 +108,7 @@ export default function SubAccounts() {
                                 backgroundColor: "#528400",
                                 color: 'white',  
                             }}>Cancel</Button>
-                            <NewGoalPage></NewGoalPage>
+                            <NewGoalPage authUser={authUser}/>
                             </div>
                         )}
                     </AuthUserContext.Consumer>
