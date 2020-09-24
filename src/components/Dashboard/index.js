@@ -29,7 +29,6 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import SignOut from '../SignOut';
 import AccountPage from '../Account';
 import SubAccounts from '../SubAccounts';
-import Accounts from '../Accounts';
 
 
 const drawerWidth = 240;
