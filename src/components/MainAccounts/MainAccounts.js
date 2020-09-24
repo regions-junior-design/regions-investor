@@ -10,6 +10,7 @@ class MainAccounts extends Component {
 
     this.state = {
       text: '',
+      balance: '',
       loading: false,
       accounts: [],
       limit: 5,
@@ -56,14 +57,19 @@ class MainAccounts extends Component {
     this.setState({ text: event.target.value });
   };
 
+  onChangeBalance = event => {
+    this.setState({ balance: event.target.value });
+  };
+
   onCreateAccount = (event, authUser) => {
     this.props.firebase.mainAccounts(this.user.uid).push({
       text: this.state.text,
+      balance: this.state.balance,
       userId: authUser.uid,
       createdAt: this.props.firebase.serverValue.TIMESTAMP,
     });
 
-    this.setState({ text: '' });
+    this.setState({ text: '', balance: '' });
 
     event.preventDefault();
   };
@@ -90,17 +96,17 @@ class MainAccounts extends Component {
   };
 
   render() {
-    const { text, accounts, loading } = this.state;
+    const { text, accounts, loading, balance } = this.state;
 
     return (
       <AuthUserContext.Consumer>
         {authUser => (
           <div>
-            {!loading && accounts && (
+            {/* {!loading && accounts && (
               <button type="button" onClick={this.onNextPage}>
                 More
               </button>
-            )}
+            )} */}
 
             {loading && <div>Loading ...</div>}
 
@@ -124,6 +130,11 @@ class MainAccounts extends Component {
                 type="text"
                 value={text}
                 onChange={this.onChangeText}
+              />
+              <input
+                type="text"
+                value={balance}
+                onChange={this.onChangeBalance}
               />
               <button type="submit">Send</button>
             </form>

@@ -41,12 +41,11 @@ class AccountItem extends Component {
           />
         ) : (
           <span>
-            <strong>{account.userId}</strong> {account.text}
-            {account.editedAt && <span>(Edited)</span>}
+            {account.text}    Balance:   {account.balance}
           </span>
         )}
 
-        {authUser.uid === account.userId && (
+        {/* {authUser.uid === account.userId && (
           <span>
             {editMode ? (
               <span>
@@ -66,7 +65,7 @@ class AccountItem extends Component {
               </button>
             )}
           </span>
-        )}
+        )} */}
       </li>
     );
   }
