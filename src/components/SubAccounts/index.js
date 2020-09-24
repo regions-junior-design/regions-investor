@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { lighten, makeStyles } from '@material-ui/core/styles';
@@ -22,12 +22,14 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import FilterListIcon from '@material-ui/icons/FilterList';
 import Heading from './Heading';
 import PageButtons from './PageButtons';
+import { withFirebase } from '../Firebase';
+import { AuthUserContext } from '../Session';
 
 function createData(name, currentAccountValue, goalAmount, investmentStyle, goalDate) {
   return { name, currentAccountValue, goalAmount, investmentStyle, goalDate };
 }
 
-const rows = [
+const rows2 = [
   createData('New Phone', 365, 1000, 'Agressive', '12/09/2020'),
   createData('House Downpayment', 15000, 50000, 'Conservative;', '1/01/2022'),
   createData('Student Debt', 12000, 45000, 'Conservative', '11/01/2020'),
@@ -206,7 +208,92 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function EnhancedTable() {
+const TableWithAccountandFB = withFirebase(TableValue);
+
+TableWithAccountandFB.propTypes = {
+  authUser: PropTypes.object.isRequired,
+  firebase: PropTypes.object.isRequired
+}
+
+export default function TableWithAccount(props) {
+  return (
+    <AuthUserContext.Consumer>
+    {authUser => (
+        <TableWithAccountandFB authUser = {authUser} />
+
+        )
+      }
+      </AuthUserContext.Consumer>
+  )
+}
+
+
+TableValue.propTypes = {
+  authUser: PropTypes.object.isRequired,
+  firebase: PropTypes.object.isRequired
+}
+
+function TableValue(props)
+{
+  var authUser = props.authUser
+  const [rows , setRows] = React.useState([]);
+  console.log(props)
+  var user = props.authUser
+  const onListenForSubAccounts = () => { 
+    
+    props.firebase
+      .mainAccounts(user.uid)
+      .orderByChild('createdAt')
+      .limitToLast(5)
+      .on('value', snapshot => {
+        const accountObject = snapshot.val();
+  
+        if (accountObject) {
+          console.log(accountObject)
+          const accountsList = Object.keys(accountObject).map(key => (
+            {             
+              ...accountObject[key]
+            }
+          ));
+          console.log(accountsList)
+          
+          setRows(accountsList)
+        } else {
+          setRows(
+            []
+          )
+          // setState({ accounts: null});
+        }
+      });
+    
+    
+    }
+
+
+    
+
+  useEffect(() => { 
+      onListenForSubAccounts();
+  }, [])
+
+
+
+  return (<EnhancedTable  
+    authUser = {authUser} 
+    rows = {rows}
+                          >
+      </EnhancedTable>)
+}
+
+
+
+EnhancedTable.propTypes = {
+  authUser: PropTypes.object.isRequired,
+  rows: PropTypes.array.isRequired,
+  
+};
+
+function EnhancedTable(props) {
   const classes = useStyles();
   const [order, setOrder] = React.useState('asc');
   const [orderBy, setOrderBy] = React.useState('currentAccountValue');
@@ -214,6 +301,8 @@ export default function EnhancedTable() {
   const [page, setPage] = React.useState(0);
   const [dense, setDense] = React.useState(false);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const rows = props.rows.map (a => ({...a}));
+  
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
