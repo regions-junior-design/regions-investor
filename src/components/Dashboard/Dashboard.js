@@ -40,14 +40,9 @@ export default function Dashboard() {
   function FormRow() {
     return (
       <React.Fragment>
-        <Grid item lg={0} />
-        <Grid item xs={12} sm={12} md={8} lg={4}>
-          <News></News>
-        </Grid>
-        <Grid item xs={12} sm={12} md={8} lg={4}>
+        <Grid item xs={12} sm={12} md={4} lg={2}>
         <RecentTransactions></RecentTransactions>
         </Grid>
-        <Grid item lg={1} />
       </React.Fragment>
     );
   }
@@ -61,14 +56,10 @@ export default function Dashboard() {
           <Grid container alignItems="left"> 
             <Grid item xs={9} className="scroll-container"> 
                 <Chart /> 
-                {/* <Grid container item Spacing={0}>
+                <Grid container item Spacing={0}>
                   <FormRow>
                   </FormRow>
-                </Grid> */}
-            </Grid>
-            <Grid item xs={3}>
-              <News></News>
-              <RecentTransactions></RecentTransactions>
+                </Grid>
             </Grid>
           </Grid>
         </Container>
