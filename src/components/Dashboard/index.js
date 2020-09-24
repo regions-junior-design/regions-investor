@@ -28,7 +28,8 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import SignOut from '../SignOut';
 import AccountPage from '../Account';
-import Accounts from '../Accounts';
+import SubAccounts from '../SubAccounts/SubAccounts';
+
 
 
 const drawerWidth = 240;
@@ -257,8 +258,8 @@ export default function Platform() {
             <div>
                 <main className={classes.content}>
                     <div className={classes.appBarSpacer} />
-                    <Container maxWidth="lg" className={classes.container}>
-                        <Accounts></Accounts>
+                    <Container className={classes.container}>
+                        <SubAccounts></SubAccounts>
                     </Container>
                 </main>
             </div>
