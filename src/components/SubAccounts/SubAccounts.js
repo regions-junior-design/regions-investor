@@ -58,12 +58,12 @@ export default function SubAccounts() {
     }
     
     return (
+        <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <main className={classes.content}>
         <div>
             {num === 0 ? (
                 <div>
-                    <ThemeProvider theme={theme}>
-                    <CssBaseline />
-                    <main className={classes.content}>
                     <Heading></Heading>
                     <Container maxWidth="lg" className={classes.container}>
                     <Grid item xs={12} md={8} lg={9}>
@@ -92,8 +92,6 @@ export default function SubAccounts() {
                     </AuthUserContext.Consumer>
                     </Grid>
                     </Container>
-                    </main>
-                    </ThemeProvider>
                 </div>
                 ) : (
               <     div></div>
@@ -101,6 +99,8 @@ export default function SubAccounts() {
             }   
           {num === 1 ? (
               <div>
+                    <Container maxWidth="lg" className={classes.container}>
+                    <Grid item xs={12} md={8} lg={9}>
                     <AuthUserContext.Consumer>
                         {authUser => (
                             <div>
@@ -112,12 +112,16 @@ export default function SubAccounts() {
                             </div>
                         )}
                     </AuthUserContext.Consumer>
+                    </Grid>
+                    </Container>
               </div>
           ) : (
               <div></div>
           )
           }  
         </div>
+        </main>
+        </ThemeProvider>
     )
 }
 
