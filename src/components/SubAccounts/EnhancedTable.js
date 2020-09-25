@@ -25,7 +25,6 @@ import PageButtons from './PageButtons';
 
 import { AuthUserContext } from '../Session';
 import { withFirebase } from '../Firebase';
-import MessageList from './MessageList';
 
 // function createData(name, currentAccountValue, goalAmount, investmentStyle, goalDate) {
 //   return { name, currentAccountValue, goalAmount, investmentStyle, goalDate };
