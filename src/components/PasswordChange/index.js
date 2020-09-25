@@ -85,7 +85,6 @@ class PasswordChangeForm extends Component {
          onClick={this.onSubmit}
        >
         Update Password
-
        </Button>
         </Grid>
       </Grid>
