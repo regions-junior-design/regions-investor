@@ -7,16 +7,17 @@ export default function News() {
             align:"center",
             borderStyle: 'solid',
             borderColor: '#88bd40',
-            width: '480px',
-            height: '180px',
-            marginTop: '20px',
-            marginLeft: '180px',
+            width: '380px',
+            height: '200px',
+            marginTop: '105px',
+            marginLeft: '200px',
+            marginRight: '10px',
             borderRadius: '13px',
             backgroundColor: 'white',
         }} className="scroll-to-element">
             <Typography variant="h2" className="news-title" style={{
                 marginTop: '5px',
-                marginLeft: '200px',
+                marginLeft: '160px',
                 fontSize: '30px'
             }}>
                 News

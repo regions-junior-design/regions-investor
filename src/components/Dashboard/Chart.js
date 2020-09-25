@@ -1,10 +1,16 @@
-import * as React from 'react';
+import React, {useState} from 'react';
 import { useTheme } from '@material-ui/core/styles';
 import { Container, CssBaseline, Button, ButtonGroup, ListItemSecondaryAction, ThemeProvider } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
+import ChartContent from './ChartContent';
+
+// ['January', 'February', 'March', 'April', 'May', 'June', 'July']
+
 export default function Chart() {
   const theme = useTheme();
+
+  const [xAxis, setXAxis] = React.useState(['12am', '6am', '12pm', '6pm', '12am']);
 
   return (
 <React.Fragment>
@@ -12,47 +18,31 @@ export default function Chart() {
         <Container maxWidth="sm">
         <div class="grid-layout">
             <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet"></link>
-            <Typography className="item1" variant="h1">
+            
+            <Typography className="item1" variant="h1" style={{
+            }}>
               Dashboard
             </Typography>
-            <Button variant="contained" color="primary" className="item2">
+            {/* <Button variant="contained" color="primary" className="item2">
               <Typography variant='button' style={{
                 marginTop: 11,
               }}>
                   Edit
               </Typography>
-            </Button>
-            {/* <button class="item2">Edit</button> */}
-            <svg class="item3" style={{
-                  height: '350px',
-                  width: '1000px',
-                  border: 'solid',
-                  color: '#88bd40',
-                  marginBottom: '20px',
-                  borderRadius: '13px',
-            }}>
-                  <text textAnchor="middle" x="200" y="55" variant="h2" style={{
-                    fontSize: '20px',
-                    fontWeight: 'bold',
-                    fill: '#55893d',
-                  }}>Total Account Value:</text>
-                  <text textAnchor="middle" x="200" y="105" variant="h3"  style={{
-                    fontSize: '40px',
-                    // fill: '#55893d',
-                  }}> $18,345.78 </text>
-                  <text textAnchor="middle" x="200" y="135" variant="h2" style={{
-                    fontSize: '20px',
-                    fill: '#55893d',
-                  }}> (+3.89%) </text>
-{/* 
-                  <path d="M0, 5L20, 20L40, 10L60, 40L80, 5L100, 60" stroke="#55893d" stroke-width="2" fill='none'></path> */}
-            </svg>
-                <ButtonGroup className="graph-nav">
+            </Button> */}
+
+              <ChartContent style={{
+                marginTop: 500
+              }} labelsArr= {xAxis} dataArr={[13000, 13023, 13212, 14231, 14001, 14568, 14678]}></ChartContent>
+
+                <ButtonGroup className="graph-nav" style={{
+                  marginTop: 520
+                }}>
                   <Grid container> 
                     <Grid item> 
                       <Button variant="contained" color="primary" size='large' className="graph-button-individual" style={{
                         paddingTop: 15,
-                      }}>
+                      }} onClick={(xAxis) => setXAxis(['12am', '6am', '12pm', '6pm', '12am'])}>
                         <Typography variant='button'>
                           1 Day
                         </Typography>
@@ -61,7 +51,7 @@ export default function Chart() {
                     <Grid item>
                       <Button variant="contained" color="primary" size='large' className="graph-button-individual" style={{
                         paddingTop: 15,
-                      }}>
+                      }} onClick={(xAxis) => setXAxis(['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'])}>
                         <Typography variant='button'>
                           1 Week
                         </Typography>
@@ -70,7 +60,7 @@ export default function Chart() {
                     <Grid item> 
                       <Button variant="contained" color="primary" size='large' className="graph-button-individual" style={{
                         paddingTop: 15,
-                      }}>
+                      }} onClick={(xAxis) => setXAxis(['1st', '5th', '10th', '15th', '20th', '25th', '30th'])}>
                         <Typography variant='button'>
                           1 Month
                         </Typography>
@@ -79,7 +69,7 @@ export default function Chart() {
                     <Grid item> 
                       <Button variant="contained" color="primary" size='large' className="graph-button-individual" style={{
                         paddingTop: 15,
-                      }}>
+                      }} onClick={(xAxis) => setXAxis(['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'])}>
                         <Typography variant='button'>
                           1 Year
                         </Typography>
@@ -88,7 +78,7 @@ export default function Chart() {
                     <Grid item> 
                       <Button variant="contained" color="primary" size='large' className="graph-button-individual" style={{
                         paddingTop: 15,
-                      }}>
+                      }} onClick={(xAxis) => setXAxis(['2016', '2017', '2018', '2019', '2020'])}>
                         <Typography variant='button'>
                           5 Years
                         </Typography>

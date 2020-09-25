@@ -40,14 +40,9 @@ export default function Dashboard() {
   function FormRow() {
     return (
       <React.Fragment>
-        <Grid item lg={0} />
-        <Grid item xs={12} sm={12} md={8} lg={4}>
-          <News></News>
-        </Grid>
-        <Grid item xs={12} sm={12} md={8} lg={4}>
+        <Grid item xs={12} sm={12} md={4} lg={2}>
         <RecentTransactions></RecentTransactions>
         </Grid>
-        <Grid item lg={1} />
       </React.Fragment>
     );
   }
@@ -58,18 +53,15 @@ export default function Dashboard() {
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         <Container maxWidth="xl" className={classes.container}>
-          <Grid container alignItems="center"> 
-            <Grid item lg={0} /> 
-            <Grid item lg={8} className="scroll-container"> 
+          <Grid container alignItems="left"> 
+            <Grid item xs={9} className="scroll-container"> 
                 <Chart /> 
-                {/* <IconScroller></IconScroller> */}
                 <Grid container item Spacing={0}>
                   <FormRow>
                   </FormRow>
                 </Grid>
             </Grid>
-            <Grid item lg={0} />
-          </Grid> *
+          </Grid>
         </Container>
       </main>
     </ThemeProvider>

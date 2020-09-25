@@ -32,7 +32,7 @@ class PasswordChangeForm extends Component {
     event.preventDefault();
     this.setState({ submitClicked: true });
 
-    } 
+    }
   }
 
   onChange = event => {
@@ -73,7 +73,7 @@ class PasswordChangeForm extends Component {
         </Grid>
         <Grid item xs={12}>
         {error && <p>{error.message}</p>}
-       {!error && submitClicked &&                   
+       {!error && submitClicked &&
        <Typography className="item1" variant="h6" color="primary">
             Password Succesfully Updated
         </Typography>}
@@ -84,12 +84,11 @@ class PasswordChangeForm extends Component {
          size="medium"
          onClick={this.onSubmit}
        >
-        Update Passoword
-
+        Update Password
        </Button>
         </Grid>
       </Grid>
-      
+
     );
   }
 }
