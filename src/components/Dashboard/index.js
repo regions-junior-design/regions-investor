@@ -258,9 +258,7 @@ export default function Platform() {
             <div>
                 <main className={classes.content}>
                     <div className={classes.appBarSpacer} />
-                    <Container className={classes.container}>
                         <SubAccounts></SubAccounts>
-                    </Container>
                 </main>
             </div>
         ) : (
