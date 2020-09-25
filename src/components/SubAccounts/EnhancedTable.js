@@ -21,25 +21,6 @@ import Switch from '@material-ui/core/Switch';
 import DeleteIcon from '@material-ui/icons/Delete';
 import FilterListIcon from '@material-ui/icons/FilterList';
 
-import Heading from './Heading';
-import PageButtons from './PageButtons';
-
-import { AuthUserContext } from '../Session';
-import { withFirebase } from '../Firebase';
-
-// function createData(name, currentAccountValue, goalAmount, investmentStyle, goalDate) {
-//   return { name, currentAccountValue, goalAmount, investmentStyle, goalDate };
-// }
-
-// const rows = [
-//   createData('New Phone', 365, 1000, 'Agressive', '12/09/2020'),
-//   createData('House Downpayment', 15000, 50000, 'Conservative;', '1/01/2022'),
-//   createData('Student Debt', 12000, 45000, 'Conservative', '11/01/2020'),
-//   createData('New Computer', 1237, 1500, 'Conservative', '12/25/2020'),
-//   createData('Date Night', 85, 100, 'None', '10/03/2020'),
-//   createData('Europe Trip', 400, 2000, 'Moderate', '5/05/2021'),
-// ];
-
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
     return -1;
