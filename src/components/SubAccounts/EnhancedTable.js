@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { lighten, makeStyles } from '@material-ui/core/styles';
@@ -20,21 +20,6 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
 import DeleteIcon from '@material-ui/icons/Delete';
 import FilterListIcon from '@material-ui/icons/FilterList';
-import Heading from './Heading';
-import PageButtons from './PageButtons';
-
-function createData(name, currentAccountValue, goalAmount, investmentStyle, goalDate) {
-  return { name, currentAccountValue, goalAmount, investmentStyle, goalDate };
-}
-
-const rows = [
-  createData('New Phone', 365, 1000, 'Agressive', '12/09/2020'),
-  createData('House Downpayment', 15000, 50000, 'Conservative;', '1/01/2022'),
-  createData('Student Debt', 12000, 45000, 'Conservative', '11/01/2020'),
-  createData('New Computer', 1237, 1500, 'Conservative', '12/25/2020'),
-  createData('Date Night', 85, 100, 'None', '10/03/2020'),
-  createData('Europe Trip', 400, 2000, 'Moderate', '5/05/2021'),
-];
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -71,7 +56,7 @@ const headCells = [
 ];
 
 function EnhancedTableHead(props) {
-  const { classes, onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort } = props;
+  const { classes, onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort, goalSelected } = props;
   const createSortHandler = (property) => (event) => {
     onRequestSort(event, property);
   };
@@ -112,6 +97,7 @@ function EnhancedTableHead(props) {
 EnhancedTableHead.propTypes = {
   classes: PropTypes.object.isRequired,
   numSelected: PropTypes.number.isRequired,
+  goalSelected: PropTypes.string.isRequired,
   onRequestSort: PropTypes.func.isRequired,
   onSelectAllClick: PropTypes.func.isRequired,
   order: PropTypes.oneOf(['asc', 'desc']).isRequired,
@@ -141,7 +127,7 @@ const useToolbarStyles = makeStyles((theme) => ({
 
 const EnhancedTableToolbar = (props) => {
   const classes = useToolbarStyles();
-  const { numSelected } = props;
+  const { numSelected, goalSelected } = props;
 
   return (
     <>
@@ -152,7 +138,7 @@ const EnhancedTableToolbar = (props) => {
     >
       {numSelected > 0 ? (
         <Typography className={classes.title} color="inherit" variant="subtitle1" component="div">
-          {numSelected} selected
+          {goalSelected} selected 
         </Typography>
       ) : (
         <Typography className={classes.title} variant="h6" id="tableTitle" component="div">
@@ -161,11 +147,7 @@ const EnhancedTableToolbar = (props) => {
       )}
 
       {numSelected > 0 ? (
-        <Tooltip title="Delete">
-          <IconButton aria-label="delete">
-            <DeleteIcon />
-          </IconButton>
-        </Tooltip>
+        <div></div>
       ) : (
         <Tooltip title="Filter list">
           <IconButton aria-label="filter list">
@@ -180,6 +162,7 @@ const EnhancedTableToolbar = (props) => {
 
 EnhancedTableToolbar.propTypes = {
   numSelected: PropTypes.number.isRequired,
+  goalSelected: PropTypes.string.isRequired,
 };
 
 const useStyles = makeStyles((theme) => ({
@@ -206,7 +189,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function EnhancedTable() {
+const EnhancedTable = ({
+  authUser,
+  rows,
+  // onEditMessage,
+  // onRemoveMessage,
+}) => {
   const classes = useStyles();
   const [order, setOrder] = React.useState('asc');
   const [orderBy, setOrderBy] = React.useState('currentAccountValue');
@@ -222,33 +210,28 @@ export default function EnhancedTable() {
     setOrderBy(property);
   };
 
-  const handleSelectAllClick = (event) => {
-    if (event.target.checked) {
-      const newSelecteds = rows.map((n) => n.name);
-      setSelected(newSelecteds);
-      return;
-    }
-    setSelected([]);
-  };
-
   const handleClick = (event, name) => {
     const selectedIndex = selected.indexOf(name);
     let newSelected = [];
-
-    if (selectedIndex === -1) {
-      newSelected = newSelected.concat(selected, name);
-    } else if (selectedIndex === 0) {
-      newSelected = newSelected.concat(selected.slice(1));
-    } else if (selectedIndex === selected.length - 1) {
-      newSelected = newSelected.concat(selected.slice(0, -1));
-    } else if (selectedIndex > 0) {
-      newSelected = newSelected.concat(
-        selected.slice(0, selectedIndex),
-        selected.slice(selectedIndex + 1),
-      );
+    console.log(selected)
+    if (selected.length <= 0) {
+      if (selectedIndex === -1) {
+        newSelected = newSelected.concat(selected, name);
+      } else if (selectedIndex === 0) {
+        newSelected = newSelected.concat(selected.slice(1));
+      } else if (selectedIndex === selected.length - 1) {
+        newSelected = newSelected.concat(selected.slice(0, -1));
+      } else if (selectedIndex > 0) {
+        newSelected = newSelected.concat(
+          selected.slice(0, selectedIndex),
+          selected.slice(selectedIndex + 1),
+        );
+      }
+      setSelected(newSelected);
+    } else if (name === selected[0]){
+      setSelected(newSelected);
     }
-
-    setSelected(newSelected);
+    console.log(selected)
   };
 
   const handleChangePage = (event, newPage) => {
@@ -268,11 +251,6 @@ export default function EnhancedTable() {
 
   const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
 
-  const handleCreateNew = (e) => {
-    console.log('The link was clicked.');
-    setCreateNew(true);
-  }
-
   return (
     <>
     
@@ -280,7 +258,7 @@ export default function EnhancedTable() {
 
     <div className={classes.root}>
       <Paper className={classes.paper}>
-        <EnhancedTableToolbar numSelected={selected.length} />
+        <EnhancedTableToolbar numSelected={selected.length} goalSelected={selected[0]} />
         <TableContainer>
           <Table
             className={classes.table}
@@ -293,7 +271,6 @@ export default function EnhancedTable() {
               numSelected={selected.length}
               order={order}
               orderBy={orderBy}
-              onSelectAllClick={handleSelectAllClick}
               onRequestSort={handleRequestSort}
               rowCount={rows.length}
             />
@@ -356,3 +333,5 @@ export default function EnhancedTable() {
     </>
   );
 }
+
+export default EnhancedTable;
