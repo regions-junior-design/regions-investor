@@ -56,6 +56,11 @@ export default function SubAccounts() {
         setView("NewGoal");
         setNum(1);
     }
+
+    const handelIndividualGoal = () => {
+        setView("Individual");
+        setNum(2);
+    }
     
     return (
         <ThemeProvider theme={theme}>
@@ -115,6 +120,27 @@ export default function SubAccounts() {
                     </Grid>
                     </Container>
               </div>
+          ) : (
+              <div></div>
+          )
+          }
+          {num === 2 ? (
+              <div>
+                    <Container maxWidth="lg" className={classes.container}>
+                    <Grid item xs={12} md={8} lg={9}>
+                    <AuthUserContext.Consumer>
+                        {authUser => (
+                            <div>
+                            <Button onClick={handleMain} variant="contained" style={{
+                                backgroundColor: "#528400",
+                                color: 'white',  
+                            }}>Cancel</Button>
+                            </div>
+                        )}
+                    </AuthUserContext.Consumer>
+                    </Grid>
+                    </Container>
+                </div>
           ) : (
               <div></div>
           )
