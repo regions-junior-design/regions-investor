@@ -6,6 +6,7 @@ import Grid from '@material-ui/core/Grid';
 import Chart from './Chart';
 import { Paper } from '@material-ui/core';
 import {theme} from '../../MaterialUITheme';
+import {Typography} from '@material-ui/core'
 import {ThemeProvider} from '@material-ui/core/styles';
 import News from './News';
 import RecentTransactions from './RecentTransactions';
@@ -124,23 +125,42 @@ export default function Dashboard() {
           <Grid container alignItems="left"> 
             <Grid item xs={9} className="scroll-container"> 
                 <Chart/> 
-                <div id='chart-container' style={{
-                  display: 'inline-block'
+                <Typography variant='h2' style={{
+                  marginLeft: 530,
+                  marginTop: 120,
+                  borderStyle: 'solid',
+                  borderColor: "#88bb00",
+                  borderWidth: 20,
+                  padding: 10,
+                  width: 450
                 }}>
+                  Subaccount Breakdown
+                </Typography>
+                <Grid container spacing={3} style={{
+                  marginTop: 10,
+                  width: 950
+                }}>
+                  <Grid item sm={6}>
                   <div id='chart-1' style={{
-                      height: 900, 
-                      width: 900
+                      height: 800, 
+                      width: 800
                     }}>
                     <PieCharts data={data1} options={options1}/>
                     </div>
+                  </Grid>
 
-                    <div id="chart-2" style={{
-                      height: 900, 
-                      width: 900
+                  <Grid item sm={6}>
+                  <div id="chart-2" style={{
+                      height: 800, 
+                      width: 800
                     }}>
                       <PieCharts data={data2} options={options2}/>
                     </div>
-                </div>
+                  </Grid>
+
+                </Grid>
+
+
             </Grid>
           </Grid>
         </Container>

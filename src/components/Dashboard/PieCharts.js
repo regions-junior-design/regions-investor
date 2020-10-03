@@ -5,9 +5,7 @@ import {Pie} from 'react-chartjs-2';
 export default function PieCharts({data, options}) {
 
     return(
-        <div id='pie-chart' style={{
-            marginTop: 50
-        }}>
+        <div id='pie-chart'>
             <Pie data={data} options={options}></Pie>
         </div>
 
