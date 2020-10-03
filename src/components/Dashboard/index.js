@@ -178,8 +178,15 @@ export default function Platform() {
                         >
                         <MenuIcon />
                     </IconButton>
+                    <img src="https://lh3.googleusercontent.com/kPTc1uhV8RQn_JOrTFBIbHXznvmZKvmfupQ7vVFUj_VyLhRWc7IpXPEL15m_kU5udvWK43o30zHDQkbV2-XKkNko886I2haSalGqL2jWvQpkmfXQ0GgIGFqXzEtCKAASHtVzbGdxE2LMR5lBLr4YWoIbieqh8HOwh8LrUpmJGD8DBEvFt-M4uxuiRKj0YVpCO5X6ZClvEYZB5RcWmcQRLoLUXG_q-0rep2pQi1hKPjlq1t33-f6mewRqooBJ75KdFlliFdpwSY-W9aY7dahX7Tg0wWAnnnQ3-7lWdzFafpGpc622spiO19S9e2RNMCPazzXm3T-dzvcQJ3R9W_qWbyIbgZF29kyFkVH-w1rLbiT7pjSMTiLEDH6zri78uY5mM-2M1bRH0TZrDPKHU_J3E9EsoZ2FdkcxDBiTKLNxoSdNW4kY0CwaKhskRoRYYpz1bXF5LeVT7NLoOZ7Pm0a71TfFO4ey5OkRusw5sA8uZNuIKJhHUDafdJuI62Cif-o_hUdMr8sqwLgn89cXOODcNfcr0XF0UXhR8QkoKnqXtCbQ609tFkdk5iDRB0JpjpN44agPxHadDnYkGCMoPWJV2fKIiu1yGRkCMr9YoxixVRuN4_urTunqSlAX3o1BS0mAhvKzcfC1rKCxOpbJOVAVo3gekAtdXHjdlzx5WwHOx-YvsnYY-v40_o409Bq01g=w446-h327-no?authuser=0" style={{
+                          marginLeft: 3,
+                          marginTop: 3,
+                          marginRight: 5,
+                          height: 50,
+                          width: 70
+                        }}></img>
                     <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-                        Regions Personal Investment Platform
+                        Regions Personal Investment Platform 
                     </Typography>
                     <SignOut></SignOut>
                 </Toolbar>
