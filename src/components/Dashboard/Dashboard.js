@@ -38,15 +38,82 @@ const useStyles = makeStyles((theme) => ({
 export default function Dashboard() {
   const classes = useStyles();
 
-  function FormRow() {
-    return (
-      <React.Fragment>
-        <Grid item xs={12} sm={12} md={4} lg={2}>
+  // First Pie Chart data
+  const data1 = {
+        labels: [
+            'Automobile',
+            'Travel',
+            'Home'
+        ],
+        datasets: [{
+            data: [30, 50, 100],
+            backgroundColor: [
+            '#47c3d4',
+            '#cc4e00',
+            '#ffc425'
+            ],
+            hoverBackgroundColor: [
+            '#47c3d4',
+            '#cc4e00',
+            '#ffc425'
+            ]
+        }]
+    };
 
-        </Grid>
-      </React.Fragment>
-    );
+  // First Pie Chart Options
+  const options1 = {
+      legend: {
+          position: 'bottom',
+          labels: {
+              fontSize: 20
+          }
+      }, 
+      title: {
+          display: true,
+          position: 'top',
+          fontSize: 24,
+          text: 'Subaccount distribution'
+      }
   }
+
+  // Second Pie Chart Data
+  const data2 = {
+    labels: [
+        'New Car',
+        'Europe Vacation',
+        'Wedding'
+    ],
+    datasets: [{
+        data: [200, 150, 100],
+        backgroundColor: [
+        '#47c3d4',
+        '#cc4e00',
+        '#ffc425'
+        ],
+        hoverBackgroundColor: [
+        '#47c3d4',
+        '#cc4e00',
+        '#ffc425'
+        ]
+    }]
+};
+
+  const options2 = {
+    legend: {
+      position: 'bottom',
+      labels: {
+          fontSize: 20
+      }
+    }, 
+    title: {
+        display: true,
+        position: 'top',
+        fontSize: 24,
+        text: 'Fund distribution'
+    }
+  };
+
+
 
   return (
     <ThemeProvider theme={theme}>
@@ -57,11 +124,23 @@ export default function Dashboard() {
           <Grid container alignItems="left"> 
             <Grid item xs={9} className="scroll-container"> 
                 <Chart/> 
-                <PieCharts></PieCharts>
-                <Grid container item Spacing={0}>
-                  <FormRow>
-                  </FormRow>
-                </Grid>
+                <div id='chart-container' style={{
+                  display: 'inline-block'
+                }}>
+                  <div id='chart-1' style={{
+                      height: 900, 
+                      width: 900
+                    }}>
+                    <PieCharts data={data1} options={options1}/>
+                    </div>
+
+                    <div id="chart-2" style={{
+                      height: 900, 
+                      width: 900
+                    }}>
+                      <PieCharts data={data2} options={options2}/>
+                    </div>
+                </div>
             </Grid>
           </Grid>
         </Container>
