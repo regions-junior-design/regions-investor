@@ -136,7 +136,8 @@ export default function Dashboard() {
                   height: 600
                 }}>
                 <Typography variant='h2' style={{
-                  marginLeft: 360,
+                  marginLeft: 400,
+                  marginBottom: 20,
                   marginTop: 30,
                   backgroundColor: "#528400",
                   padding: 10,
@@ -148,11 +149,13 @@ export default function Dashboard() {
                 <Grid container spacing={3} style={{
                   marginTop: 10,
                   width: 950,
+                  marginLeft: -60,
                 }}>
                   <Grid item sm={6}>
                   <div id='chart-1' style={{
                       height: 800, 
                       width: 800,
+                      marginRight: '80px'
                     }}>
                     <PieCharts data={data1} options={options1}/>
                     </div>
