@@ -9,6 +9,7 @@ import {theme} from '../../MaterialUITheme';
 import {ThemeProvider} from '@material-ui/core/styles';
 import News from './News';
 import RecentTransactions from './RecentTransactions';
+import PieCharts from './PieCharts';
 
 const useStyles = makeStyles((theme) => ({
   drawerPaperClose: {
@@ -41,7 +42,7 @@ export default function Dashboard() {
     return (
       <React.Fragment>
         <Grid item xs={12} sm={12} md={4} lg={2}>
-        <RecentTransactions></RecentTransactions>
+
         </Grid>
       </React.Fragment>
     );
@@ -55,7 +56,8 @@ export default function Dashboard() {
         <Container maxWidth="xl" className={classes.container}>
           <Grid container alignItems="left"> 
             <Grid item xs={9} className="scroll-container"> 
-                <Chart /> 
+                <Chart/> 
+                <PieCharts></PieCharts>
                 <Grid container item Spacing={0}>
                   <FormRow>
                   </FormRow>
