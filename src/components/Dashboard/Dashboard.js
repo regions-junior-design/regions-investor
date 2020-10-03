@@ -125,25 +125,34 @@ export default function Dashboard() {
           <Grid container alignItems="left"> 
             <Grid item xs={9} className="scroll-container"> 
                 <Chart/> 
-                <Typography variant='h2' style={{
-                  marginLeft: 530,
-                  marginTop: 120,
+                <div id='pie-chart-area' style={{
                   borderStyle: 'solid',
                   borderColor: "#88bb00",
-                  borderWidth: 20,
+                  borderWidth: 3,
+                  marginLeft: 140,
+                  marginTop: 140,
+                  borderRadius: '13px',
+                  width: 1200,
+                  height: 600
+                }}>
+                <Typography variant='h2' style={{
+                  marginLeft: 360,
+                  marginTop: 30,
+                  backgroundColor: "#528400",
                   padding: 10,
-                  width: 450
+                  width: 410,
+                  color: 'white'
                 }}>
                   Subaccount Breakdown
                 </Typography>
                 <Grid container spacing={3} style={{
                   marginTop: 10,
-                  width: 950
+                  width: 950,
                 }}>
                   <Grid item sm={6}>
                   <div id='chart-1' style={{
                       height: 800, 
-                      width: 800
+                      width: 800,
                     }}>
                     <PieCharts data={data1} options={options1}/>
                     </div>
@@ -159,6 +168,7 @@ export default function Dashboard() {
                   </Grid>
 
                 </Grid>
+                </div>
 
 
             </Grid>
