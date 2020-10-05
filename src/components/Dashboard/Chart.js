@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
-import { useTheme } from '@material-ui/core/styles';
-import { Container, CssBaseline, Button, ButtonGroup, ListItemSecondaryAction, ThemeProvider } from '@material-ui/core';
-import Typography from '@material-ui/core/Typography';
+import { Button, ButtonGroup, Container, CssBaseline } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
+import { useTheme } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import React from 'react';
 import ChartContent from './ChartContent';
 
 // ['January', 'February', 'March', 'April', 'May', 'June', 'July']
