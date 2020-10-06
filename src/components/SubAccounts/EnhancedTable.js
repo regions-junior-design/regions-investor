@@ -20,11 +20,11 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
 import DeleteIcon from '@material-ui/icons/Delete';
 import FilterListIcon from '@material-ui/icons/FilterList';
-import MoreVertTwoToneIcon from '@material-ui/icons/MoreVertTwoTone';
+// import MoreVertTwoToneIcon from '@material-ui/icons/MoreVertTwoTone';
 import {Button} from '@material-ui/core';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
+// import Menu from '@material-ui/core/Menu';
+// import MenuItem from '@material-ui/core/MenuItem';
+// import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -310,7 +310,7 @@ const EnhancedTable = ({
                       <TableCell align="right">{row.goalAmount}</TableCell>
                       <TableCell align="right">{row.investmentStyle}</TableCell>
                       <TableCell align="right">{row.goalDate}</TableCell>
-                      <TableCell>
+                      {/* <TableCell>
                       <PopupState variant="popover" popupId="demo-popup-menu">
                         {(popupState) => (
                           <React.Fragment>
@@ -326,7 +326,7 @@ const EnhancedTable = ({
                         )}
                       </PopupState>
  
-                      </TableCell>
+                      </TableCell> */}
                     </TableRow>
                   );
                 })}

@@ -16,6 +16,10 @@ import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
+import MoreVertTwoToneIcon from '@material-ui/icons/MoreVertTwoTone';
 
 const useStyles = makeStyles((theme) => ({
     drawerPaperClose: {
@@ -57,9 +61,9 @@ export default function SubAccounts() {
         setNum(1);
     }
 
-    const handelIndividualGoal = () => {
+    const handleIndividualPage = () => {
         setView("Individual");
-        setNum(2);
+        setNum(3);
     }
     
     return (
@@ -91,6 +95,20 @@ export default function SubAccounts() {
                                     <EditIcon fontSize='medium'></EditIcon>
                                     <Typography className="tooltiptext">Edit Goal</Typography>
                                 </Button>
+                                <PopupState variant="popover" popupId="demo-popup-menu">
+                                    {(popupState) => (
+                                    <React.Fragment>
+                                    <Button variant='contained' color='primary' {...bindTrigger(popupState)}>
+                                        <MoreVertTwoToneIcon fontSize='medium'>
+                                        </MoreVertTwoToneIcon>
+                                        </Button>
+                                        <Menu {...bindMenu(popupState)}>
+                                        <MenuItem>Edit Goal</MenuItem>
+                                        <MenuItem>Goal Details</MenuItem>
+                                        </Menu>
+                                    </React.Fragment>
+                                    )}
+                                </PopupState>
                                 <ETableF authUser={authUser}/>
                             </div>
                         )}
@@ -145,6 +163,13 @@ export default function SubAccounts() {
               <div></div>
           )
           }  
+          {num == 3 ? (
+              <div>
+                  </div>
+          ) : (
+            <div></div>
+          )
+          }
         </div>
         </main>
         </ThemeProvider>
