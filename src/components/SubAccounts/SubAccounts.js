@@ -95,20 +95,6 @@ export default function SubAccounts() {
                                     <EditIcon fontSize='medium'></EditIcon>
                                     <Typography className="tooltiptext">Edit Goal</Typography>
                                 </Button>
-                                <PopupState variant="popover" popupId="demo-popup-menu">
-                                    {(popupState) => (
-                                    <React.Fragment>
-                                    <Button variant='contained' color='primary' {...bindTrigger(popupState)}>
-                                        <MoreVertTwoToneIcon fontSize='medium'>
-                                        </MoreVertTwoToneIcon>
-                                        </Button>
-                                        <Menu {...bindMenu(popupState)}>
-                                        <MenuItem>Edit Goal</MenuItem>
-                                        <MenuItem>Goal Details</MenuItem>
-                                        </Menu>
-                                    </React.Fragment>
-                                    )}
-                                </PopupState>
                                 <ETableF authUser={authUser}/>
                             </div>
                         )}
