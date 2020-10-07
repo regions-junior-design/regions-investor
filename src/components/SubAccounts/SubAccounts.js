@@ -4,7 +4,7 @@ import Heading from './Heading';
 import {Typography, Button } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
 import './index.css';
-import { Add } from '@material-ui/icons';
+import { Add, More } from '@material-ui/icons';
 import EditIcon from '@material-ui/icons/Edit';
 import NewGoalPage from './NewGoalPage';
 import { AuthUserContext } from '../Session';
@@ -19,7 +19,7 @@ import Grid from '@material-ui/core/Grid';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
-import MoreVertTwoToneIcon from '@material-ui/icons/MoreVertTwoTone';
+import InfoIcon from '@material-ui/icons/Info';
 
 const useStyles = makeStyles((theme) => ({
     drawerPaperClose: {
@@ -46,7 +46,15 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function SubAccounts() {
+const IndividualPage = ({name, chartInfo, total}) => {
+    return(
+      <div>
+          testing
+    </div>
+    )
+  }
+
+export default function SubAccounts({page}) {
     const classes = useStyles();
     const [view, setView] = useState("Dashboard");
     const [num, setNum] = useState(0);
@@ -61,7 +69,7 @@ export default function SubAccounts() {
         setNum(1);
     }
 
-    const handleIndividualPage = () => {
+    const handleIndividual = () => {
         setView("Individual");
         setNum(3);
     }
@@ -95,7 +103,28 @@ export default function SubAccounts() {
                                     <EditIcon fontSize='medium'></EditIcon>
                                     <Typography className="tooltiptext">Edit Goal</Typography>
                                 </Button>
-                                <ETableF authUser={authUser}/>
+
+                                <PopupState variant="popover" popupId="demo-popup-menu">
+                                    {(popupState) => (
+                                    <React.Fragment>
+                                    <Button {...bindTrigger(popupState)} variant='contained' color='primary' style={{
+                                        marginLeft: 20,
+                                        marginTop: -10
+                                    }} className='tooltip'>
+                                        <Typography className='tooltiptext'>Individual Subaccount Info</Typography>
+                                        <InfoIcon fontSize='medium'></InfoIcon>
+                                        </Button>
+                                        <Menu {...bindMenu(popupState)}>
+                                        <MenuItem onClick={handleIndividual}>Wedding</MenuItem>
+                                        <MenuItem onClick={handleIndividual}>New Car</MenuItem>
+                                        <MenuItem onClick={handleIndividual}>Europe Vacation</MenuItem>
+                                        </Menu>
+                                    </React.Fragment>
+                                    )}
+                                </PopupState>
+
+
+                                <ETableF authUser={authUser}></ETableF>
                             </div>
                         )}
                     </AuthUserContext.Consumer>
@@ -151,6 +180,11 @@ export default function SubAccounts() {
           }  
           {num == 3 ? (
               <div>
+                    <Button onClick={handleMain} variant="contained" style={{
+                        backgroundColor: "#528400",
+                        color: 'white',  
+                    }}>Cancel</Button>
+                  <IndividualPage></IndividualPage>
                   </div>
           ) : (
             <div></div>
