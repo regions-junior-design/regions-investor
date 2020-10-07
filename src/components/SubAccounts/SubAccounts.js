@@ -49,7 +49,9 @@ const useStyles = makeStyles((theme) => ({
 const IndividualPage = ({name, chartInfo, total}) => {
     return(
       <div>
-          testing
+          <Typography variant='h1'>{name}</Typography>
+          <Typography variant='h2'>Total Subaccount Value: {total}</Typography>
+          
     </div>
     )
   }
@@ -184,7 +186,7 @@ export default function SubAccounts({page}) {
                         backgroundColor: "#528400",
                         color: 'white',  
                     }}>Cancel</Button>
-                  <IndividualPage></IndividualPage>
+                  <IndividualPage name='Name from Database' total='20000'></IndividualPage>
                   </div>
           ) : (
             <div></div>
