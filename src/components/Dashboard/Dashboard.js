@@ -11,6 +11,7 @@ import {ThemeProvider} from '@material-ui/core/styles';
 import News from './News';
 import RecentTransactions from './RecentTransactions';
 import PieCharts from './PieCharts';
+import Progress from './Progress';
 
 const useStyles = makeStyles((theme) => ({
   drawerPaperClose: {
@@ -168,6 +169,10 @@ export default function Dashboard() {
                     }}>
                       <PieCharts data={data2} options={options2}/>
                     </div>
+                  </Grid>
+
+                  <Grid item sm={6}>
+                    <Progress></Progress>
                   </Grid>
 
                 </Grid>
