@@ -11,6 +11,8 @@ import {ThemeProvider} from '@material-ui/core/styles';
 import News from './News';
 import RecentTransactions from './RecentTransactions';
 import PieCharts from './PieCharts';
+import Progress from './Progress';
+import InfoIcon from '@material-ui/icons/Info';
 
 const useStyles = makeStyles((theme) => ({
   drawerPaperClose: {
@@ -167,6 +169,70 @@ export default function Dashboard() {
                       width: 800
                     }}>
                       <PieCharts data={data2} options={options2}/>
+                    </div>
+                  </Grid>
+
+                  <Grid item xs={12}>
+                    <Typography variant='h2' style={{
+                      marginTop: -250,
+                      marginLeft: 350,
+                    }}>
+                      Subaccount Progress Breakdown
+                    </Typography>
+                    <Typography variant='h6' style={{
+                      marginTop: 10,
+                      marginLeft: 180, 
+                      width: 1000
+                    }}><InfoIcon fontSize='medium' style={{
+                      marginRight: 10
+                    }}></InfoIcon>The progress bars below show you your progress towards your individual subaccount goals.</Typography>
+                  </Grid>
+
+                  <Grid item sm={6}>
+                    <div style={{
+                      marginLeft: 100,
+                      marginTop: -100
+                    }}>
+                      <Typography variant='h4' style={{
+                        marginBottom: 10
+                      }}>Wedding Progress</Typography>
+                      <Progress num="50"></Progress>
+                    </div>
+                  </Grid>
+
+                  <Grid item sm={6}>
+                    <div style={{
+                      marginLeft: 200,
+                      marginTop: -100
+                    }}>
+                      <Typography variant='h4' style={{
+                        marginBottom: 10
+                      }}>Europe Vacation Progress</Typography>
+                      <Progress num="70"></Progress>
+                    </div>
+                  </Grid>
+
+                  <Grid item sm={6}>
+                    <div style={{
+                      marginLeft: 100,
+                      marginBottom: 50
+                    }}>
+                      <Typography variant='h4' style={{
+                        marginBottom: 10
+                      }}>New House Progress</Typography>
+                      <Progress num="90"></Progress>
+                    </div>
+                  </Grid>
+
+                  <Grid item sm={6}>
+                    <div style={{
+                      marginLeft: 200,
+                      marginBottom: 50
+                    }}>
+                      <Typography variant='h4' style={{
+                        marginBottom: 10
+                      }}>New Car Progress</Typography>
+                      <Progress num="20"></Progress>
                     </div>
                   </Grid>
 
