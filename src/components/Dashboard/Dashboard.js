@@ -171,8 +171,37 @@ export default function Dashboard() {
                     </div>
                   </Grid>
 
+                  <Grid item xs={12}>
+                    <Typography variant='h2' style={{
+                      marginTop: -250,
+                      marginLeft: 350,
+                    }}>
+                      Subaccount Progress Breakdown
+                    </Typography>
+                  </Grid>
+
                   <Grid item sm={6}>
-                    <Progress></Progress>
+                    <div style={{
+                      marginLeft: 100,
+                      marginTop: -100
+                    }}>
+                      <Typography variant='h4' style={{
+                        marginBottom: 10
+                      }}>Wedding Progress</Typography>
+                      <Progress num="50"></Progress>
+                    </div>
+                  </Grid>
+
+                  <Grid item sm={6}>
+                    <div style={{
+                      marginLeft: 200,
+                      marginTop: -100
+                    }}>
+                      <Typography variant='h4' style={{
+                        marginBottom: 10
+                      }}>Europe Vacation Progress</Typography>
+                      <Progress num="70"></Progress>
+                    </div>
                   </Grid>
 
                 </Grid>
