@@ -69,7 +69,7 @@ class ETable extends Component {
     };
   
     componentWillUnmount() {
-      this.props.firebase.messages(this.props.authUser.uid).off();
+      this.props.firebase.mainAccounts(this.props.authUser.uid).off();
     }
   
     // onCreateMessage = (event, authUser) => {
