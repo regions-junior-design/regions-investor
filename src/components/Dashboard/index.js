@@ -29,7 +29,6 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import SignOut from '../SignOut';
 import AccountPage from '../Account';
 import SubAccounts from '../SubAccounts/SubAccounts';
-import Transfer from '../Transfer'
 
 
 
@@ -144,8 +143,8 @@ export default function Platform() {
     setNum(2);
   }
 
-  const handleTransfer = () => {
-    setView("Transfer");
+  const handleResearch = () => {
+    setView("Research");
     setNum(3);
   }
 
@@ -217,11 +216,11 @@ export default function Platform() {
                             </ListItemIcon>
                             <ListItemText primary="Recent Transactions" />
                         </ListItem>
-                        <ListItem button onClick={handleTransfer} >
+                        <ListItem button onClick={handleResearch} >
                             <ListItemIcon>
                                 <FindInPageIcon />
                             </ListItemIcon>
-                            <ListItemText primary="Transfer" />
+                            <ListItemText primary="Research" />
                         </ListItem>
                         <ListItem button onClick={handleHelp} >
                             <ListItemIcon>
@@ -284,7 +283,7 @@ export default function Platform() {
                 <main className={classes.content}>
                     <div className={classes.appBarSpacer} />
                     <Container maxWidth="lg" className={classes.container}>
-                        <Transfer></Transfer>
+                        <h1>Research Page</h1>
                     </Container>
                 </main>
             </div>
