@@ -10,12 +10,12 @@ import React, { useState } from "react";
 import { theme } from "../../MaterialUITheme";
 import { AuthUserContext } from "../Session";
 import ETableF from "./FireBaseTable";
-import TextField from '@material-ui/core/TextField';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
+import TextField from "@material-ui/core/TextField";
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
 import "./index.css";
 import NewGoalPage from "./NewGoalPage";
 import EditGoalPage from "./EditGoalPage";
@@ -51,6 +51,7 @@ export default function SubAccounts() {
     const [num, setNum] = useState(0);
     const [del, setDelete] = useState(0);
     const [open, setOpen] = React.useState(false);
+    const [select, setSelect] = useState([]);
 
     const handleMain = () => {
         setView("MainPage");
@@ -69,11 +70,16 @@ export default function SubAccounts() {
 
     const handleClickOpen = () => {
         setOpen(true);
-      };
-    
-      const handleClose = () => {
+    };
+
+    const handleClose = () => {
         setOpen(false);
-      };
+    };
+
+    const onSelected = (selected) => {
+        console.log("is elected" + selected);
+        setSelect(selected);
+    };
 
     return (
         <ThemeProvider theme={theme}>
@@ -125,18 +131,39 @@ export default function SubAccounts() {
                                                         Edit Goal
                                                     </Typography>
                                                 </Button>
-                                                <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-                                                    <DialogTitle id="form-dialog-title">Edit Goal</DialogTitle>
-                                                        <DialogContent>
+                                                <Dialog
+                                                    open={open}
+                                                    onClose={handleClose}
+                                                    aria-labelledby="form-dialog-title"
+                                                >
+                                                    <DialogTitle id="form-dialog-title">
+                                                        Edit Goal
+                                                    </DialogTitle>
+                                                    <DialogContent>
                                                         <DialogContentText>
-                                                            You can edit any part of your goal except for the Current Account Value. For that you must go the Transfer Page
+                                                            You can edit any
+                                                            part of your goal
+                                                            except for the
+                                                            Current Account
+                                                            Value. For that you
+                                                            must go the Transfer
+                                                            Page
                                                         </DialogContentText>
-                                                            <EditGoalPage></EditGoalPage>
-                                                        </DialogContent>
+                                                        <EditGoalPage
+                                                            authUser={authUser}
+                                                            selected={select}
+                                                            back={handleClose}
+                                                        ></EditGoalPage>
+                                                    </DialogContent>
                                                     <DialogActions>
-                                                    <Button onClick={handleClose} color="primary">
-                                                        Cancel
-                                                    </Button>
+                                                        <Button
+                                                            onClick={
+                                                                handleClose
+                                                            }
+                                                            color="primary"
+                                                        >
+                                                            Cancel
+                                                        </Button>
                                                     </DialogActions>
                                                 </Dialog>
                                                 <Button
@@ -160,6 +187,7 @@ export default function SubAccounts() {
                                                 <ETableF
                                                     authUser={authUser}
                                                     del={del}
+                                                    onSelected={onSelected}
                                                 />
                                             </div>
                                         )}

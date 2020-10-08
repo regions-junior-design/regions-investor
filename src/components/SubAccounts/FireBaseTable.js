@@ -4,12 +4,12 @@ import { AuthUserContext } from '../Session';
 import EnhancedTable from './EnhancedTable';
 
 
-export default function SubAccountPage({del}) {
+export default function SubAccountPage({del, onSelected}) {
     return ( 
       <AuthUserContext.Consumer>
         {authUser => (
           <div>
-            <ETableF authUser={authUser} del={del}/>
+            <ETableF authUser={authUser} del={del} onSelected={onSelected}/>
           </div>
         )}
       </AuthUserContext.Consumer>
@@ -37,6 +37,7 @@ class ETable extends Component {
     onSelected = (selected) => {
       console.log("is elected" + selected)
       this.setState({selected: selected })
+      this.props.onSelected(selected)
 
     }
 
@@ -84,15 +85,17 @@ class ETable extends Component {
     //   event.preventDefault();
     // };
   
-    // onEditMessage = (message, text) => {
+    //  onEditMessage = (message, text) => {
     //   const { uid, ...messageSnapshot } = message;
   
-    //   this.props.firebase.message(this.user.uid, message.uid).set({
+    //  this.props.firebase.message(this.user.uid, message.uid).set({
     //     ...messageSnapshot,
-    //     text,
-    //     editedAt: this.props.firebase.serverValue.TIMESTAMP,
-    //   });
-    // };
+    //      text,
+    //      editedAt: this.props.firebase.serverValue.TIMESTAMP,
+    //    });
+    //  };
+
+
   
     onRemoveMessage = () => {
       const {selected} = this.state;
