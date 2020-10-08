@@ -39,7 +39,7 @@ function EditGoalPage(props) {
                         required
                         id="goal"
                         name="goal"
-                        label="New Goal Ammount"
+                        label="New Goal Amount"
                         onChange={(e) => setGoal(e.target.value)}
                         fullWidth
                         type="number"
