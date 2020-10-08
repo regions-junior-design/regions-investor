@@ -23,6 +23,7 @@ import InfoIcon from '@material-ui/icons/Info';
 
 import Progress from '../Dashboard/Progress';
 import PieCharts from '../Dashboard/PieCharts';
+import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -53,9 +54,40 @@ const useStyles = makeStyles((theme) => ({
 const IndividualPage = ({name, chartInfo, total}) => {
     return(
       <div>
-          <Typography variant='h1'>{name}</Typography>
-          <Typography variant='h2'>Total Subaccount Value: {total}</Typography>
-          
+          <Grid container spacing={3}>
+              <Grid item xs={12} style={{
+                  marginLeft: 500,
+                  marginTop: 20
+              }}>
+                <Typography variant='h1'>{name}</Typography>
+              </Grid>
+
+              <Grid item xs={12} style={{
+                  marginLeft: 450,
+                  marginTop: 20
+              }}>
+                <Typography variant='h2'>Total Subaccount Value: ${total}</Typography>
+              </Grid>
+
+              <Grid item xs={6} style={{
+                  marginLeft: 200,
+                  marginTop: 50
+              }}>
+                <Progress num="60"></Progress>
+              </Grid>
+
+              <Grid item xs={6} style={{
+                  marginTop: 60,
+                  marginLeft: -100
+              }}>
+                <div style={{
+                        height: 800, 
+                        width: 800
+                        }}>
+                <PieCharts data={data1} options={options1}></PieCharts>
+                </div>
+              </Grid>
+          </Grid>
     </div>
     )
   }
@@ -227,15 +259,10 @@ export default function SubAccounts({page}) {
                     <Button onClick={handleMain} variant="contained" style={{
                         backgroundColor: "#528400",
                         color: 'white',  
-                    }}>Cancel</Button>
+                        marginLeft: 20, 
+                        marginTop: 20
+                    }}><KeyboardBackspaceIcon fontSize='medium'></KeyboardBackspaceIcon></Button>
                   <IndividualPage name='Name from Database' total='20000'></IndividualPage>
-                  <Progress num="60"></Progress>
-                  <div style={{
-                      height: 800, 
-                      width: 800
-                    }}>
-                    <PieCharts data={data1} options={options1}></PieCharts>
-                    </div>
 
                   </div>
           ) : (
