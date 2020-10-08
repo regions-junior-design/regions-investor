@@ -29,6 +29,7 @@ import SignOut from '../SignOut';
 import SubAccounts from '../SubAccounts/SubAccounts';
 import Dashboard from './Dashboard';
 import Transfer from '../Transfer';
+import { AuthUserContext } from '../Session';
 
 
 
@@ -283,7 +284,11 @@ export default function Platform() {
                 <main className={classes.content}>
                     <div className={classes.appBarSpacer} />
                     <Container maxWidth="lg" className={classes.container}>
-                    <Transfer></Transfer>
+                    <AuthUserContext.Consumer>
+                      {authUser => (
+                        <Transfer authUser={authUser}/>
+                      )}
+                    </AuthUserContext.Consumer>
                     </Container>
                 </main>
             </div>

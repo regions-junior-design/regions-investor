@@ -15,11 +15,31 @@ import { withFirebase } from '../Firebase';
 
 function TransferPage(props) {
     // console.log(props.authUser)
-    const [name,setName] = useState("")
-    const [goal,setGoal] = useState(0)
-    const [desc,setDesc] = useState("")
-    const [init,setInit] = useState(0)
-    const [type,setType] = useState("")
+    const [name,setName] = useState("");
+    const [goal,setGoal] = useState(0);
+    const [desc,setDesc] = useState("");
+    const [init,setInit] = useState(0);
+    const [type,setType] = useState("");
+
+    const [accounts,setAccounts] = useState([]);
+    const [loaded,setLoaded] = useState(false);
+
+    console.log(props);
+
+    if(!loaded) {
+      props.firebase.mainAccounts(props.authUser.uid).once('value').then( v => {
+        let acc = v.val();
+        console.log(acc);
+        let ls = []
+        for(var value in acc){
+          console.log(value);
+          ls.push({value: acc[value]})
+        }
+        setAccounts(ls);
+      })
+      setLoaded(true);
+    }
+
     const updateData = (e) =>{
         props.firebase.mainAccounts(props.authUser.uid).push(
             {
@@ -46,10 +66,10 @@ function TransferPage(props) {
             id="type"
             onChange={(e) => setType(e.target.value)}
             >
-                <MenuItem value={"Account1"}>Holding Account</MenuItem>
-                <MenuItem value={"Account2"}>New Phone</MenuItem>
-                <MenuItem value={"Account3"}>Housing Downpayment</MenuItem>
-                <MenuItem value={"Account4"}>Birthday Gift</MenuItem>
+              {accounts.map((item, i) => 
+                // console.log(item, i);
+                <MenuItem value={i}>{item.value.name}</MenuItem>
+              )}
             </Select>
           </FormControl>
         </Grid>
@@ -61,10 +81,10 @@ function TransferPage(props) {
             id="type"
             onChange={(e) => setType(e.target.value)}
             >
-                <MenuItem value={"Account1"}>Holding Account</MenuItem>
-                <MenuItem value={"Account2"}>New Phone</MenuItem>
-                <MenuItem value={"Account3"}>Housing Downpayment</MenuItem>
-                <MenuItem value={"Account4"}>Birthday Gift</MenuItem>
+              {accounts.map((item, i) => 
+                // console.log(item, i);
+                <MenuItem value={i}>{item.value.name}</MenuItem>
+              )}
             </Select>
           </FormControl>
         </Grid>
