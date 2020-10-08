@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-
-import { AuthUserContext } from '../Session';
 import { withFirebase } from '../Firebase';
+import { AuthUserContext } from '../Session';
 import EnhancedTable from './EnhancedTable';
 
-export default function SubAccountPage() {
+
+export default function SubAccountPage({del}) {
     return ( 
       <AuthUserContext.Consumer>
         {authUser => (
           <div>
-            <ETableF authUser={authUser}/>
+            <ETableF authUser={authUser} del={del}/>
           </div>
         )}
       </AuthUserContext.Consumer>
@@ -24,13 +24,26 @@ class ETable extends Component {
         text: '',
         loading: false,
         messages: [],
+        selected: [],
       };
     }
+
+    
   
     componentDidMount() {
       this.onListenForMessages();
     }
   
+    onSelected = (selected) => {
+      console.log("is elected" + selected)
+      this.setState({selected: selected })
+
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+      if (prevProps.del != this.props.del) this.onRemoveMessage()
+    }
+
     onListenForMessages = () => {
       this.setState({ loading: true });
   
@@ -81,12 +94,18 @@ class ETable extends Component {
     //   });
     // };
   
-    // onRemoveMessage = uid => {
-    //   this.props.firebase.mainAccount(this.props.user.uid, uid).remove();
-    // };
+    onRemoveMessage = () => {
+      const {selected} = this.state;
+      selected.forEach( v => { 
+        this.props.firebase.mainAccount(this.props.authUser.uid, v).remove();}
+        )
+     
+
+    };
   
     render() {
       const { text, messages, loading } = this.state;
+      
   
       return (
             <AuthUserContext.Consumer>
@@ -98,6 +117,7 @@ class ETable extends Component {
                     <EnhancedTable
                         authUser={authUser}
                         rows={messages}
+                        onSelected={this.onSelected}
                         // onEditMessage={this.onEditMessage}
                         // onRemoveMessage={this.onRemoveMessage}
                     />
