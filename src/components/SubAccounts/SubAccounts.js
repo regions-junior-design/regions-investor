@@ -10,8 +10,15 @@ import React, { useState } from "react";
 import { theme } from "../../MaterialUITheme";
 import { AuthUserContext } from "../Session";
 import ETableF from "./FireBaseTable";
+import TextField from '@material-ui/core/TextField';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
 import "./index.css";
 import NewGoalPage from "./NewGoalPage";
+import EditGoalPage from "./EditGoalPage";
 
 const useStyles = makeStyles((theme) => ({
     drawerPaperClose: {
@@ -43,6 +50,7 @@ export default function SubAccounts() {
     const [view, setView] = useState("Dashboard");
     const [num, setNum] = useState(0);
     const [del, setDelete] = useState(0);
+    const [open, setOpen] = React.useState(false);
 
     const handleMain = () => {
         setView("MainPage");
@@ -58,6 +66,14 @@ export default function SubAccounts() {
         setDelete(del + 1);
         console.log(del);
     };
+
+    const handleClickOpen = () => {
+        setOpen(true);
+      };
+    
+      const handleClose = () => {
+        setOpen(false);
+      };
 
     return (
         <ThemeProvider theme={theme}>
@@ -95,6 +111,7 @@ export default function SubAccounts() {
                                                 <Button
                                                     variant="contained"
                                                     className="tooltip"
+                                                    onClick={handleClickOpen}
                                                     style={{
                                                         marginBottom: 20,
                                                         backgroundColor:
@@ -108,7 +125,20 @@ export default function SubAccounts() {
                                                         Edit Goal
                                                     </Typography>
                                                 </Button>
-
+                                                <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+                                                    <DialogTitle id="form-dialog-title">Edit Goal</DialogTitle>
+                                                        <DialogContent>
+                                                        <DialogContentText>
+                                                            You can edit any part of your goal except for the Current Account Value. For that you must go the Transfer Page
+                                                        </DialogContentText>
+                                                            <EditGoalPage></EditGoalPage>
+                                                        </DialogContent>
+                                                    <DialogActions>
+                                                    <Button onClick={handleClose} color="primary">
+                                                        Cancel
+                                                    </Button>
+                                                    </DialogActions>
+                                                </Dialog>
                                                 <Button
                                                     variant="contained"
                                                     className="tooltip"
