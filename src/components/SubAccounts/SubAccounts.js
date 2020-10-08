@@ -54,7 +54,8 @@ const useStyles = makeStyles((theme) => ({
 const IndividualPage = ({name, chartInfo, total}) => {
     return(
       <div>
-          <Grid container spacing={3}>
+          <Grid container spacing={3} alignItems='center'>
+
               <Grid item xs={12} style={{
                   marginLeft: 500,
                   marginTop: 20
@@ -64,21 +65,19 @@ const IndividualPage = ({name, chartInfo, total}) => {
 
               <Grid item xs={12} style={{
                   marginLeft: 450,
-                  marginTop: 20
+                  marginTop: 10
               }}>
-                <Typography variant='h2'>Total Subaccount Value: ${total}</Typography>
+                <Typography variant='h3'>Total Subaccount Value: ${total}</Typography>
               </Grid>
 
               <Grid item xs={6} style={{
-                  marginLeft: 200,
-                  marginTop: 50
+                  padding: 50
               }}>
                 <Progress num="60"></Progress>
               </Grid>
 
               <Grid item xs={6} style={{
-                  marginTop: 60,
-                  marginLeft: -100
+                  padding: 50,
               }}>
                 <div style={{
                         height: 800, 
