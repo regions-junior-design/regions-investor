@@ -1,5 +1,5 @@
-import React from 'react';
 import { Box, Typography } from '@material-ui/core';
+import React from 'react';
 
 export default function RecentTransactions() {
     return(
