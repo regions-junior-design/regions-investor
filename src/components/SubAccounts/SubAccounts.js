@@ -21,6 +21,10 @@ import MenuItem from '@material-ui/core/MenuItem';
 import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
 import InfoIcon from '@material-ui/icons/Info';
 
+import Progress from '../Dashboard/Progress';
+import PieCharts from '../Dashboard/PieCharts';
+
+
 const useStyles = makeStyles((theme) => ({
     drawerPaperClose: {
         overflowX: 'hidden',
@@ -54,6 +58,44 @@ const IndividualPage = ({name, chartInfo, total}) => {
           
     </div>
     )
+  }
+
+    // First Pie Chart data
+    const data1 = {
+        labels: [
+            'Automobile',
+            'Travel',
+            'Home'
+        ],
+        datasets: [{
+            data: [30, 50, 100],
+            backgroundColor: [
+            '#47c3d4',
+            '#cc4e00',
+            '#ffc425'
+            ],
+            hoverBackgroundColor: [
+            '#47c3d4',
+            '#cc4e00',
+            '#ffc425'
+            ]
+        }]
+    };
+
+  // First Pie Chart Options
+  const options1 = {
+      legend: {
+          position: 'bottom',
+          labels: {
+              fontSize: 20
+          }
+      }, 
+      title: {
+          display: true,
+          position: 'top',
+          fontSize: 24,
+          text: 'Subaccount distribution'
+      }
   }
 
 export default function SubAccounts({page}) {
@@ -187,6 +229,14 @@ export default function SubAccounts({page}) {
                         color: 'white',  
                     }}>Cancel</Button>
                   <IndividualPage name='Name from Database' total='20000'></IndividualPage>
+                  <Progress num="60"></Progress>
+                  <div style={{
+                      height: 800, 
+                      width: 800
+                    }}>
+                    <PieCharts data={data1} options={options1}></PieCharts>
+                    </div>
+
                   </div>
           ) : (
             <div></div>
