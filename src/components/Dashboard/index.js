@@ -28,6 +28,7 @@ import AccountPage from '../Account';
 import SignOut from '../SignOut';
 import SubAccounts from '../SubAccounts/SubAccounts';
 import Dashboard from './Dashboard';
+import Transfer from '../Transfer';
 
 
 
@@ -142,8 +143,8 @@ export default function Platform() {
     setNum(2);
   }
 
-  const handleResearch = () => {
-    setView("Research");
+  const handleTransfer = () => {
+    setView("Transfer");
     setNum(3);
   }
 
@@ -215,11 +216,11 @@ export default function Platform() {
                             </ListItemIcon>
                             <ListItemText primary="Recent Transactions" />
                         </ListItem>
-                        <ListItem button onClick={handleResearch} >
+                        <ListItem button onClick={handleTransfer} >
                             <ListItemIcon>
                                 <FindInPageIcon />
                             </ListItemIcon>
-                            <ListItemText primary="Research" />
+                            <ListItemText primary="Transfer" />
                         </ListItem>
                         <ListItem button onClick={handleHelp} >
                             <ListItemIcon>
@@ -282,7 +283,7 @@ export default function Platform() {
                 <main className={classes.content}>
                     <div className={classes.appBarSpacer} />
                     <Container maxWidth="lg" className={classes.container}>
-                        <h1>Research Page</h1>
+                    <Transfer></Transfer>
                     </Container>
                 </main>
             </div>
