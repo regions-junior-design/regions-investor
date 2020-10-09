@@ -27,23 +27,38 @@ function TransferPage(props) {
     // console.log(props);
 
     if(!loaded) {
-      props.firebase.mainAccounts(props.authUser.uid).once('value').then( v => {
+      let ls = [];
+      props.firebase.holding(props.authUser.uid).once('value').then( v => {
         let acc = v.val();
         // console.log(acc);
-        let ls = []
-        for(var value in acc){
-          // console.log(value);
-          ls.push({value: acc[value], acc: value})
+        let holding = {
+          value: acc.value,
+          name: 'Holding Account'
         }
-        setAccounts(ls);
+        ls.push({value: holding, acc: 'holding'});
+        props.firebase.mainAccounts(props.authUser.uid).once('value').then( v => {
+          let acc = v.val();
+          // console.log(acc);
+          // let ls = []
+          for(var value in acc){
+            // console.log(value, acc[value]);
+            ls.push({value: acc[value], acc: value})
+          }
+          setAccounts(ls);
+          // console.log(ls);
+        })
+        setLoaded(true);
       })
-      setLoaded(true);
     }
 
     const checkReady = (a, b, c) => {
-      console.log(accounts[a] && accounts[b] && c);
+      // console.log(accounts[a] && accounts[b] && c);
       if (accounts[a] && accounts[b] && c) {
-        setReady(false);
+        if (accounts[a].acc !== accounts[b].acc) {
+          setReady(false);
+        } else {
+          setReady(true);
+        }
       }
       else {
         setReady(true);
@@ -54,13 +69,32 @@ function TransferPage(props) {
       // console.log(accounts[acc1])
       // console.log(accounts[acc2])
       // console.log(sum)
-
-      var updates = {};
-      updates['currentAccountValue'] = accounts[acc1].value.currentAccountValue - sum;
-      props.firebase.mainAccount(props.authUser.uid, accounts[acc1].acc).update(updates);
-      updates['currentAccountValue'] = accounts[acc2].value.currentAccountValue + sum;
-      props.firebase.mainAccount(props.authUser.uid, accounts[acc2].acc).update(updates);
-      setLoaded(false);
+      if (accounts[acc1].acc === accounts[acc2].acc) {
+        // console.log('same')
+      } else if (accounts[acc1].acc === 'holding') {
+        var updates = {};
+        updates['value'] = accounts[acc1].value.value - sum;
+        props.firebase.holding(props.authUser.uid).update(updates);
+        updates = {};
+        updates['currentAccountValue'] = accounts[acc2].value.currentAccountValue + sum;
+        props.firebase.mainAccount(props.authUser.uid, accounts[acc2].acc).update(updates);
+        setLoaded(false);
+      } else if (accounts[acc2].acc === 'holding') {
+        var updates = {};
+        updates['currentAccountValue'] = accounts[acc1].value.currentAccountValue - sum;
+        props.firebase.mainAccount(props.authUser.uid, accounts[acc1].acc).update(updates);
+        updates = {};
+        updates['value'] = accounts[acc2].value.value + sum;
+        props.firebase.holding(props.authUser.uid).update(updates);
+        setLoaded(false);
+      } else {
+        var updates = {};
+        updates['currentAccountValue'] = accounts[acc1].value.currentAccountValue - sum;
+        props.firebase.mainAccount(props.authUser.uid, accounts[acc1].acc).update(updates);
+        updates['currentAccountValue'] = accounts[acc2].value.currentAccountValue + sum;
+        props.firebase.mainAccount(props.authUser.uid, accounts[acc2].acc).update(updates);
+        setLoaded(false);
+      }
     }
 
   return (
