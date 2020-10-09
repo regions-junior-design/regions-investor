@@ -50,6 +50,7 @@ export default function SubAccounts() {
     const [view, setView] = useState("Dashboard");
     const [num, setNum] = useState(0);
     const [del, setDelete] = useState(0);
+    const [chosen, setChosen] = useState(false);
     const [open, setOpen] = React.useState(false);
     const [select, setSelect] = useState([]);
 
@@ -69,7 +70,7 @@ export default function SubAccounts() {
     };
 
     const handleClickOpen = () => {
-        setOpen(true);
+        if (chosen) setOpen(true);
     };
 
     const handleClose = () => {
@@ -78,6 +79,7 @@ export default function SubAccounts() {
 
     const onSelected = (selected) => {
         console.log("is elected" + selected);
+        setChosen(selected.length != 0);
         setSelect(selected);
     };
 
