@@ -25,25 +25,39 @@ import Progress from '../Dashboard/Progress';
 import PieCharts from '../Dashboard/PieCharts';
 import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
 
+import { Button, Typography } from "@material-ui/core";
+import Container from "@material-ui/core/Container";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import Grid from "@material-ui/core/Grid";
+import { makeStyles, ThemeProvider } from "@material-ui/core/styles";
+import AddIcon from "@material-ui/icons/Add";
+import DeleteIcon from "@material-ui/icons/Delete";
+import EditIcon from "@material-ui/icons/Edit";
+import React, { useState } from "react";
+import { theme } from "../../MaterialUITheme";
+import { AuthUserContext } from "../Session";
+import ETableF from "./FireBaseTable";
+import "./index.css";
+import NewGoalPage from "./NewGoalPage";
 
 const useStyles = makeStyles((theme) => ({
     drawerPaperClose: {
-        overflowX: 'hidden',
-        transition: theme.transitions.create('width', {
-        easing: theme.transitions.easing.sharp,
-        duration: theme.transitions.duration.leavingScreen,
+        overflowX: "hidden",
+        transition: theme.transitions.create("width", {
+            easing: theme.transitions.easing.sharp,
+            duration: theme.transitions.duration.leavingScreen,
         }),
         width: theme.spacing(7),
-        [theme.breakpoints.up('sm')]: {
-        width: theme.spacing(9),
+        [theme.breakpoints.up("sm")]: {
+            width: theme.spacing(9),
         },
     },
     appBarSpacer: theme.mixins.toolbar,
     content: {
         flexGrow: 1,
-        height: '100vh',
-        width: '100vw',
-        overflow: 'auto',
+        height: "100vh",
+        width: "100vw",
+        overflow: "auto",
     },
     container: {
         paddingTop: theme.spacing(4),
@@ -147,15 +161,17 @@ export default function SubAccounts({page}) {
     const classes = useStyles();
     const [view, setView] = useState("Dashboard");
     const [num, setNum] = useState(0);
-    
+    const [del, setDelete] = useState(0);
+
     const handleMain = () => {
         setView("MainPage");
         setNum(0);
-    }
+    };
 
     const handleNewGoal = () => {
         setView("NewGoal");
         setNum(1);
+
     }
 
     const handleIndividual = () => {
@@ -163,12 +179,19 @@ export default function SubAccounts({page}) {
         setNum(3);
     }
     
+
+    };
+
+    const handleDelete = () => {
+        setDelete(del + 1);
+        console.log(del);
+    };
+
+
     return (
         <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <main className={classes.content}>
-        <div>
-            {num === 0 ? (
+            <CssBaseline />
+            <main className={classes.content}>
                 <div>
                     {/* <Heading></Heading> */}
                     <Container maxWidth="lg" className={classes.container}>
@@ -284,11 +307,7 @@ export default function SubAccounts({page}) {
           }
         </div>
         </main>
+
         </ThemeProvider>
-    )
+    );
 }
-
-
-    
-      
-

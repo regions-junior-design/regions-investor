@@ -1,11 +1,11 @@
-import React, {useState} from 'react';
 // import InfoIcon from '@material-ui/icons/Info';
 // import IconButton from '@material-ui/core/IconButton';
-import {Typography, Button, Grid} from '@material-ui/core';
+import { Button, Typography } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
-import './index.css';
-import { Add } from '@material-ui/icons';
+import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
+import React from 'react';
+import './index.css';
 
 export default function PageButtons() {
 
@@ -27,6 +27,14 @@ export default function PageButtons() {
                <EditIcon fontSize='medium'></EditIcon>
                <Typography className="tooltiptext">Edit Goal</Typography>
            </Button>
+           <Button variant='contained' className="tooltip" style={{
+               marginBottom: 20,
+               backgroundColor: "#528400",
+               color: 'white',
+           }}> <DeleteIcon fontSize='medium'></DeleteIcon>
+            <Typography className="tooltiptext">Delete</Typography>
+           </Button>
+
 
         </>
     )

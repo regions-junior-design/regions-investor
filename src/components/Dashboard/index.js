@@ -1,34 +1,34 @@
-import Dashboard from './Dashboard';
-import React, { useState }from 'react';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
 import Container from '@material-ui/core/Container';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Divider from '@material-ui/core/Divider';
+import Drawer from '@material-ui/core/Drawer';
+import IconButton from '@material-ui/core/IconButton';
+import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListSubheader from '@material-ui/core/ListSubheader';
-import DashboardIcon from '@material-ui/icons/Dashboard';
-import ViewListIcon from '@material-ui/icons/ViewList';
-import TimelapseIcon from '@material-ui/icons/Timelapse';
-import HelpIcon from '@material-ui/icons/Help';
-import AccountBoxIcon from '@material-ui/icons/AccountBox';
-import SettingsIcon from '@material-ui/icons/Settings';
-import FindInPageIcon from '@material-ui/icons/FindInPage';
-import {theme} from '../../MaterialUITheme';
-import {ThemeProvider } from '@material-ui/core/styles';
-import clsx from 'clsx';
-import Drawer from '@material-ui/core/Drawer';
-import AppBar from '@material-ui/core/AppBar';
+import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
-import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
+import Typography from '@material-ui/core/Typography';
+import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import SignOut from '../SignOut';
+import DashboardIcon from '@material-ui/icons/Dashboard';
+import FindInPageIcon from '@material-ui/icons/FindInPage';
+import HelpIcon from '@material-ui/icons/Help';
+import MenuIcon from '@material-ui/icons/Menu';
+import SettingsIcon from '@material-ui/icons/Settings';
+import TimelapseIcon from '@material-ui/icons/Timelapse';
+import ViewListIcon from '@material-ui/icons/ViewList';
+import clsx from 'clsx';
+import React, { useState } from 'react';
+import { theme } from '../../MaterialUITheme';
 import AccountPage from '../Account';
+import SignOut from '../SignOut';
 import SubAccounts from '../SubAccounts/SubAccounts';
+import Dashboard from './Dashboard';
+import Transfer from '../Transfer';
 
 
 
@@ -143,8 +143,8 @@ export default function Platform() {
     setNum(2);
   }
 
-  const handleResearch = () => {
-    setView("Research");
+  const handleTransfer = () => {
+    setView("Transfer");
     setNum(3);
   }
 
@@ -223,11 +223,11 @@ export default function Platform() {
                             </ListItemIcon>
                             <ListItemText primary="Recent Transactions" />
                         </ListItem>
-                        <ListItem button onClick={handleResearch} >
+                        <ListItem button onClick={handleTransfer} >
                             <ListItemIcon>
                                 <FindInPageIcon />
                             </ListItemIcon>
-                            <ListItemText primary="Research" />
+                            <ListItemText primary="Transfer" />
                         </ListItem>
                         <ListItem button onClick={handleHelp} >
                             <ListItemIcon>
@@ -290,7 +290,7 @@ export default function Platform() {
                 <main className={classes.content}>
                     <div className={classes.appBarSpacer} />
                     <Container maxWidth="lg" className={classes.container}>
-                        <h1>Research Page</h1>
+                    <Transfer></Transfer>
                     </Container>
                 </main>
             </div>

@@ -1,7 +1,9 @@
-import React, {Component} from 'react';
-import PropTypes from 'prop-types';
-import clsx from 'clsx';
+import Checkbox from '@material-ui/core/Checkbox';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import IconButton from '@material-ui/core/IconButton';
+import Paper from '@material-ui/core/Paper';
 import { lighten, makeStyles } from '@material-ui/core/styles';
+import Switch from '@material-ui/core/Switch';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -11,20 +13,10 @@ import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 import TableSortLabel from '@material-ui/core/TableSortLabel';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Paper from '@material-ui/core/Paper';
-import Checkbox from '@material-ui/core/Checkbox';
-import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Switch from '@material-ui/core/Switch';
-import DeleteIcon from '@material-ui/icons/Delete';
+import Typography from '@material-ui/core/Typography';
 import FilterListIcon from '@material-ui/icons/FilterList';
-import MoreVertTwoToneIcon from '@material-ui/icons/MoreVertTwoTone';
-import {Button} from '@material-ui/core';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
+
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -198,7 +190,7 @@ const EnhancedTable = ({
   authUser,
   rows,
   // onEditMessage,
-  // onRemoveMessage,
+  onSelected,
 }) => {
   const classes = useStyles();
   const [order, setOrder] = React.useState('asc');
@@ -219,6 +211,7 @@ const EnhancedTable = ({
     const selectedIndex = selected.indexOf(name);
     let newSelected = [];
     console.log(selected)
+
     if (selected.length <= 0) {
       if (selectedIndex === -1) {
         newSelected = newSelected.concat(selected, name);
@@ -232,12 +225,24 @@ const EnhancedTable = ({
           selected.slice(selectedIndex + 1),
         );
       }
-      setSelected(newSelected);
-    } else if (name === selected[0]){
-      setSelected(newSelected);
     }
-    console.log(selected)
+    newSelected = newSelected.filter(v => rows.map(e => e.name).includes(v))
+    console.log(newSelected)
+    setSelected(newSelected);
+    if(newSelected.length > 0)
+    onSelected( [rows.find(element => element.name == newSelected[0]).uid] )
+    else
+    onSelected([])
+    console.log(rows)
   };
+  
+  useEffect(e => {
+    let newSelected = [];
+    newSelected = newSelected.concat(selected);
+    newSelected = newSelected.filter(v => rows.map(e => e.name).includes(v))
+    console.log(newSelected)
+    setSelected(newSelected);
+  }, [rows])
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);

@@ -1,14 +1,10 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
+import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
+import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
+import React from 'react';
+import { theme } from '../../MaterialUITheme';
 import Chart from './Chart';
-import { Paper } from '@material-ui/core';
-import {theme} from '../../MaterialUITheme';
-import {Typography} from '@material-ui/core'
-import {ThemeProvider} from '@material-ui/core/styles';
-import News from './News';
 import RecentTransactions from './RecentTransactions';
 import PieCharts from './PieCharts';
 import Progress from './Progress';

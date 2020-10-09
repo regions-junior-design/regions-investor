@@ -1,16 +1,13 @@
-import React from 'react';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import InputLabel from '@material-ui/core/InputLabel';
-import InputAdornment from '@material-ui/core/InputAdornment';
+import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
+import Grid from '@material-ui/core/Grid';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
-import Button from '@material-ui/core/Button';
-import { useState } from 'react';
+import TextField from '@material-ui/core/TextField';
+import Typography from '@material-ui/core/Typography';
+import React, { useState } from 'react';
 import { withFirebase } from '../Firebase';
 
 function NewGoalPage(props) {
