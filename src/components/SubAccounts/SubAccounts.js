@@ -155,18 +155,14 @@ const useStyles = makeStyles((theme) => ({
                                    <PopupState variant="popover" popupId="demo-popup-menu">
                                     {(popupState) => (
                                     <React.Fragment>
-                                    <Button {...bindTrigger(popupState)} variant='contained' color='primary' style={{
+                                        {/* TRINH THIS IS THE BUTTON TO TAKE YOU TO THE INDIVIDUAL PAGE */}
+                                    <Button variant='contained' color='primary' style={{
                                         marginLeft: 20,
                                         marginTop: -10
-                                    }} className='tooltip'>
+                                    }} className='tooltip' onClick={handleIndividual}>
                                         <Typography className='tooltiptext'>Individual Subaccount Info</Typography>
                                         <InfoIcon fontSize='medium'></InfoIcon>
                                         </Button>
-                                        <Menu {...bindMenu(popupState)}>
-                                        <MenuItem onClick={handleIndividual}>{authUser.uid}</MenuItem>
-                                        <MenuItem onClick={handleIndividual}>{authUser.email}</MenuItem>
-                                        <MenuItem onClick={handleIndividual}>{authUser.email}</MenuItem>
-                                        </Menu>
                                     </React.Fragment>
                                     )}
                                 </PopupState>
@@ -279,6 +275,7 @@ const useStyles = makeStyles((theme) => ({
           )
           }  
           {num == 3 ? (
+            //   TRINH THIS IS THE INDIVIDUAL PAGE
               <div>
               <AuthUserContext.Consumer>
               {authUser => (
