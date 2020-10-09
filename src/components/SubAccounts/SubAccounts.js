@@ -58,26 +58,40 @@ const IndividualPage = ({name, chartInfo, total}) => {
 
               <Grid item xs={12} style={{
                   marginLeft: 500,
-                  marginTop: 20
               }}>
                 <Typography variant='h1'>{name}</Typography>
               </Grid>
 
               <Grid item xs={12} style={{
-                  marginLeft: 450,
+                  marginLeft: 490,
                   marginTop: 10
               }}>
-                <Typography variant='h3'>Total Subaccount Value: ${total}</Typography>
+                <Typography variant='h3' style={{
+                    borderStyle: 'solid', 
+                    borderColor: "#88bb00",
+                    borderWidth: 10,
+                    padding: 10,
+                    width: 460
+                }}>Total Subaccount Value: ${total}</Typography>
               </Grid>
 
-              <Grid item xs={6} style={{
-                  padding: 50
+              <Grid item xs={12} style={{
+                  marginLeft: 610,
+                  marginTop: -10
+              }}>
+                  <Typography variant='h4'>Progress to Goal: $23,500</Typography>
+              </Grid>
+
+              <Grid item xs={12} style={{
+                  marginLeft: 470,
+                  marginTop: -10
               }}>
                 <Progress num="60"></Progress>
               </Grid>
 
-              <Grid item xs={6} style={{
-                  padding: 50,
+              <Grid item xs={12} style={{
+                  marginTop: 10,
+                  marginLeft: 300
               }}>
                 <div style={{
                         height: 800, 
@@ -94,12 +108,12 @@ const IndividualPage = ({name, chartInfo, total}) => {
     // First Pie Chart data
     const data1 = {
         labels: [
-            'Automobile',
-            'Travel',
-            'Home'
+            'GOOG',
+            'SBUX',
+            'EFX'
         ],
         datasets: [{
-            data: [30, 50, 100],
+            data: [30, 50, 20],
             backgroundColor: [
             '#47c3d4',
             '#cc4e00',
@@ -125,7 +139,7 @@ const IndividualPage = ({name, chartInfo, total}) => {
           display: true,
           position: 'top',
           fontSize: 24,
-          text: 'Subaccount distribution'
+          text: 'Distribution of funds'
       }
   }
 
@@ -261,7 +275,7 @@ export default function SubAccounts({page}) {
                         marginLeft: 20, 
                         marginTop: 20
                     }}><KeyboardBackspaceIcon fontSize='medium'></KeyboardBackspaceIcon></Button>
-                  <IndividualPage name='Name from Database' total='20000'></IndividualPage>
+                  <IndividualPage name='Name from Database' total='20,137'></IndividualPage>
 
                   </div>
           ) : (
