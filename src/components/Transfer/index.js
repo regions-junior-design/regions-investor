@@ -51,8 +51,8 @@ function TransferPage(props) {
     }
 
     const updateData = (e) =>{
-      console.log(accounts[acc1])
-      console.log(accounts[acc2])
+      // console.log(accounts[acc1])
+      // console.log(accounts[acc2])
       // console.log(sum)
 
       var updates = {};
