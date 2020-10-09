@@ -15,22 +15,88 @@ import { withFirebase } from '../Firebase';
 
 function TransferPage(props) {
     // console.log(props.authUser)
-    const [name,setName] = useState("")
-    const [goal,setGoal] = useState(0)
-    const [desc,setDesc] = useState("")
-    const [init,setInit] = useState(0)
-    const [type,setType] = useState("")
-    const updateData = (e) =>{
-        props.firebase.mainAccounts(props.authUser.uid).push(
-            {
-                name: name || "",
-                goalAmount: goal || "",
-                description: desc || "",
-                currentAccountValue: init || "",
-                investmentStyle: type || ""
-            });
-        props.back();
+    const [acc1,setacc1] = useState(-1);
+    const [acc2,setacc2] = useState(-1);
+    const [sum,setsum] = useState(0);
+    const [memo,setmemo] = useState("");
+    const [ready,setReady] = useState(true);
+
+    const [accounts,setAccounts] = useState([]);
+    const [loaded,setLoaded] = useState(false);
+
+    // console.log(props);
+
+    if(!loaded) {
+      let ls = [];
+      props.firebase.holding(props.authUser.uid).once('value').then( v => {
+        let acc = v.val();
+        // console.log(acc);
+        let holding = {
+          value: acc.value,
+          name: 'Holding Account'
+        }
+        ls.push({value: holding, acc: 'holding'});
+        props.firebase.mainAccounts(props.authUser.uid).once('value').then( v => {
+          let acc = v.val();
+          // console.log(acc);
+          // let ls = []
+          for(var value in acc){
+            // console.log(value, acc[value]);
+            ls.push({value: acc[value], acc: value})
+          }
+          setAccounts(ls);
+          // console.log(ls);
+        })
+        setLoaded(true);
+      })
     }
+
+    const checkReady = (a, b, c) => {
+      // console.log(accounts[a] && accounts[b] && c);
+      if (accounts[a] && accounts[b] && c) {
+        if (accounts[a].acc !== accounts[b].acc) {
+          setReady(false);
+        } else {
+          setReady(true);
+        }
+      }
+      else {
+        setReady(true);
+      };
+    }
+
+    const updateData = (e) =>{
+      // console.log(accounts[acc1])
+      // console.log(accounts[acc2])
+      // console.log(sum)
+      if (accounts[acc1].acc === accounts[acc2].acc) {
+        // console.log('same')
+      } else if (accounts[acc1].acc === 'holding') {
+        var updates = {};
+        updates['value'] = accounts[acc1].value.value - sum;
+        props.firebase.holding(props.authUser.uid).update(updates);
+        updates = {};
+        updates['currentAccountValue'] = accounts[acc2].value.currentAccountValue + sum;
+        props.firebase.mainAccount(props.authUser.uid, accounts[acc2].acc).update(updates);
+        setLoaded(false);
+      } else if (accounts[acc2].acc === 'holding') {
+        var updates = {};
+        updates['currentAccountValue'] = accounts[acc1].value.currentAccountValue - sum;
+        props.firebase.mainAccount(props.authUser.uid, accounts[acc1].acc).update(updates);
+        updates = {};
+        updates['value'] = accounts[acc2].value.value + sum;
+        props.firebase.holding(props.authUser.uid).update(updates);
+        setLoaded(false);
+      } else {
+        var updates = {};
+        updates['currentAccountValue'] = accounts[acc1].value.currentAccountValue - sum;
+        props.firebase.mainAccount(props.authUser.uid, accounts[acc1].acc).update(updates);
+        updates['currentAccountValue'] = accounts[acc2].value.currentAccountValue + sum;
+        props.firebase.mainAccount(props.authUser.uid, accounts[acc2].acc).update(updates);
+        setLoaded(false);
+      }
+    }
+
   return (
     <React.Fragment>
       <br></br>
@@ -44,12 +110,15 @@ function TransferPage(props) {
             <Select
             labelId="type-label"
             id="type"
-            onChange={(e) => setType(e.target.value)}
+            onChange={(e) => {
+              setacc1(e.target.value)
+              checkReady(e.target.value, acc2, sum);
+            }}
             >
-                <MenuItem value={"Account1"}>Holding Account</MenuItem>
-                <MenuItem value={"Account2"}>New Phone</MenuItem>
-                <MenuItem value={"Account3"}>Housing Downpayment</MenuItem>
-                <MenuItem value={"Account4"}>Birthday Gift</MenuItem>
+              {accounts.map((item, i) => 
+                // console.log(item, i);
+                <MenuItem value={i}>{item.value.name}</MenuItem>
+              )}
             </Select>
           </FormControl>
         </Grid>
@@ -59,12 +128,15 @@ function TransferPage(props) {
             <Select
             labelId="type-label"
             id="type"
-            onChange={(e) => setType(e.target.value)}
+            onChange={(e) => {
+              setacc2(e.target.value);
+              checkReady(acc1, e.target.value, sum);
+            }}
             >
-                <MenuItem value={"Account1"}>Holding Account</MenuItem>
-                <MenuItem value={"Account2"}>New Phone</MenuItem>
-                <MenuItem value={"Account3"}>Housing Downpayment</MenuItem>
-                <MenuItem value={"Account4"}>Birthday Gift</MenuItem>
+              {accounts.map((item, i) => 
+                // console.log(item, i);
+                <MenuItem value={i}>{item.value.name}</MenuItem>
+              )}
             </Select>
           </FormControl>
         </Grid>
@@ -74,7 +146,10 @@ function TransferPage(props) {
             id="goal"
             name="goal"
             label="Ammount"
-            onChange={(e) => setGoal(e.target.value)}
+            onChange={(e) => {
+              setsum(parseInt(e.target.value));
+              checkReady(acc1, acc2, e.target.value);
+            }}
             fullWidth
             type="number"
             InputProps={{
@@ -87,7 +162,7 @@ function TransferPage(props) {
             id="desc"
             name="desc"
             label="Memo"
-            onChange={(e) => setDesc(e.target.value)}
+            onChange={(e) => setmemo(e.target.value)}
             fullWidth
           />
         </Grid>
@@ -98,6 +173,7 @@ function TransferPage(props) {
             color="primary"
             size="medium"
             onClick={updateData}
+            disabled={ready}
           >
             Complete Transfer
           </Button>

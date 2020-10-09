@@ -69,7 +69,7 @@ class ETable extends Component {
     };
   
     componentWillUnmount() {
-      this.props.firebase.messages(this.props.authUser.uid).off();
+      this.props.firebase.mainAccounts(this.props.authUser.uid).off();
     }
   
     // onCreateMessage = (event, authUser) => {
@@ -97,10 +97,19 @@ class ETable extends Component {
     onRemoveMessage = () => {
       const {selected} = this.state;
       selected.forEach( v => { 
-        this.props.firebase.mainAccount(this.props.authUser.uid, v).remove();}
-        )
-     
-
+        console.log(v)
+        this.props.firebase.mainAccount(this.props.authUser.uid, v).once('value').then( a => {
+          let av = parseInt(a.val()['currentAccountValue']);
+          // console.log(cv);
+          this.props.firebase.holding(this.props.authUser.uid).once('value').then( h => {
+            let hv = h.val()['value'];
+            // console.log(hv);
+            let newVal = hv + av;
+            this.props.firebase.holding(this.props.authUser.uid).update({value: newVal});
+          });
+          this.props.firebase.mainAccount(this.props.authUser.uid, v).remove();
+        });
+      })
     };
   
     render() {

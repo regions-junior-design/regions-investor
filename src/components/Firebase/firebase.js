@@ -135,6 +135,9 @@ class Firebase {
 
   updateAccountDetail = (data, uid) => this.db.ref(`users/${uid}`).update(data) 
 
+  // holding
+  holding = uid => this.db.ref(`holding/${uid}`);
+
 }
 
 export default Firebase;

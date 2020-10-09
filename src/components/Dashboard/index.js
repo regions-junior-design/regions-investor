@@ -15,7 +15,8 @@ import Typography from '@material-ui/core/Typography';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import DashboardIcon from '@material-ui/icons/Dashboard';
-import FindInPageIcon from '@material-ui/icons/FindInPage';
+// import FindInPageIcon from '@material-ui/icons/FindInPage';
+import SwapHorizIcon from '@material-ui/icons/SwapHoriz';
 import HelpIcon from '@material-ui/icons/Help';
 import MenuIcon from '@material-ui/icons/Menu';
 import SettingsIcon from '@material-ui/icons/Settings';
@@ -29,6 +30,7 @@ import SignOut from '../SignOut';
 import SubAccounts from '../SubAccounts/SubAccounts';
 import Dashboard from './Dashboard';
 import Transfer from '../Transfer';
+import { AuthUserContext } from '../Session';
 
 
 
@@ -218,7 +220,7 @@ export default function Platform() {
                         </ListItem>
                         <ListItem button onClick={handleTransfer} >
                             <ListItemIcon>
-                                <FindInPageIcon />
+                                <SwapHorizIcon />
                             </ListItemIcon>
                             <ListItemText primary="Transfer" />
                         </ListItem>
@@ -283,7 +285,11 @@ export default function Platform() {
                 <main className={classes.content}>
                     <div className={classes.appBarSpacer} />
                     <Container maxWidth="lg" className={classes.container}>
-                    <Transfer></Transfer>
+                    <AuthUserContext.Consumer>
+                      {authUser => (
+                        <Transfer authUser={authUser}/>
+                      )}
+                    </AuthUserContext.Consumer>
                     </Container>
                 </main>
             </div>
