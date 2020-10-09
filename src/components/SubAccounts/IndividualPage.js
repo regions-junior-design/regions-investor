@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { withFirebase } from '../Firebase';
 import Grid from '@material-ui/core/Grid';
 import {Typography, Button } from '@material-ui/core';
@@ -46,11 +46,36 @@ import PieCharts from '../Dashboard/PieCharts';
 
 
 function IndividualPage(props) {
+
+    const [currentAccValue, setcurrentAccValue ] = useState(0)
+    const [goal, setGoal ] = useState(0)
+
+    const onListenForSubAccounts = () => { 
+
+        props.firebase
+          .mainAccount(props.authUser.uid, props.selected[0] )
+          .on('value', snapshot => {
+            const accountObject = snapshot.val();
+            console.log("accountOBject")
+            console.log(accountObject)
+            setcurrentAccValue(accountObject.currentAccountValue)
+            setGoal(accountObject.goalAmount)
+            
+          });
     
+    
+        }
+    
+    
+      useEffect(() => { 
+          onListenForSubAccounts();
+      }, [])
+
+
     return(
       <div>
         <AuthUserContext.Consumer>
-            {authUser => (
+            {authUser   => (
             <div>
                 <Grid container spacing={3} alignItems='center'>
 
@@ -70,14 +95,14 @@ function IndividualPage(props) {
                             borderWidth: 10,
                             padding: 10,
                             width: 460
-                        }}>Total Subaccount Value: $</Typography>
+                        }}>Total Subaccount Value: $ { currentAccValue ? currentAccValue : 0 }  </Typography>
                     </Grid>
 
                     <Grid item xs={12} style={{
                         marginLeft: 610,
                         marginTop: -10
                     }}>
-                        <Typography variant='h4'>Progress to Goal: $</Typography>
+                        <Typography variant='h4'>Progress to Goal: $ {goal ? goal : 0}</Typography>
                     </Grid>
 
                     <Grid item xs={12} style={{
