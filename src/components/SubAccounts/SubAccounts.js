@@ -206,9 +206,9 @@ const useStyles = makeStyles((theme) => ({
                                         <InfoIcon fontSize='medium'></InfoIcon>
                                         </Button>
                                         <Menu {...bindMenu(popupState)}>
-                                        <MenuItem onClick={handleIndividual}>{authUser.name}</MenuItem>
-                                        <MenuItem onClick={handleIndividual}>{authUser.name}</MenuItem>
-                                        <MenuItem onClick={handleIndividual}>{authUser.name}</MenuItem>
+                                        <MenuItem onClick={handleIndividual}>{authUser.uid}</MenuItem>
+                                        <MenuItem onClick={handleIndividual}>{authUser.email}</MenuItem>
+                                        <MenuItem onClick={handleIndividual}>{authUser.email}</MenuItem>
                                         </Menu>
                                     </React.Fragment>
                                     )}
