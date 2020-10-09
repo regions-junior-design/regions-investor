@@ -4,12 +4,12 @@ import { AuthUserContext } from '../Session';
 import EnhancedTable from './EnhancedTable';
 
 
-export default function SubAccountPage({del}) {
+export default function SubAccountPage({del, onSelected}) {
     return ( 
       <AuthUserContext.Consumer>
         {authUser => (
           <div>
-            <ETableF authUser={authUser} del={del}/>
+            <ETableF authUser={authUser} del={del} onSelected={onSelected}/>
           </div>
         )}
       </AuthUserContext.Consumer>
@@ -37,6 +37,7 @@ class ETable extends Component {
     onSelected = (selected) => {
       console.log("is elected" + selected)
       this.setState({selected: selected })
+      this.props.onSelected(selected)
 
     }
 
@@ -69,7 +70,7 @@ class ETable extends Component {
     };
   
     componentWillUnmount() {
-      this.props.firebase.messages(this.props.authUser.uid).off();
+      this.props.firebase.mainAccounts(this.props.authUser.uid).off();
     }
   
     // onCreateMessage = (event, authUser) => {
@@ -84,23 +85,34 @@ class ETable extends Component {
     //   event.preventDefault();
     // };
   
-    // onEditMessage = (message, text) => {
+    //  onEditMessage = (message, text) => {
     //   const { uid, ...messageSnapshot } = message;
   
-    //   this.props.firebase.message(this.user.uid, message.uid).set({
+    //  this.props.firebase.message(this.user.uid, message.uid).set({
     //     ...messageSnapshot,
-    //     text,
-    //     editedAt: this.props.firebase.serverValue.TIMESTAMP,
-    //   });
-    // };
+    //      text,
+    //      editedAt: this.props.firebase.serverValue.TIMESTAMP,
+    //    });
+    //  };
+
+
   
     onRemoveMessage = () => {
       const {selected} = this.state;
       selected.forEach( v => { 
-        this.props.firebase.mainAccount(this.props.authUser.uid, v).remove();}
-        )
-     
-
+        console.log(v)
+        this.props.firebase.mainAccount(this.props.authUser.uid, v).once('value').then( a => {
+          let av = parseInt(a.val()['currentAccountValue']);
+          // console.log(cv);
+          this.props.firebase.holding(this.props.authUser.uid).once('value').then( h => {
+            let hv = h.val()['value'];
+            // console.log(hv);
+            let newVal = hv + av;
+            this.props.firebase.holding(this.props.authUser.uid).update({value: newVal});
+          });
+          this.props.firebase.mainAccount(this.props.authUser.uid, v).remove();
+        });
+      })
     };
   
     render() {

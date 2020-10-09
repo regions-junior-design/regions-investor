@@ -15,7 +15,8 @@ import Typography from '@material-ui/core/Typography';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import DashboardIcon from '@material-ui/icons/Dashboard';
-import FindInPageIcon from '@material-ui/icons/FindInPage';
+// import FindInPageIcon from '@material-ui/icons/FindInPage';
+import SwapHorizIcon from '@material-ui/icons/SwapHoriz';
 import HelpIcon from '@material-ui/icons/Help';
 import MenuIcon from '@material-ui/icons/Menu';
 import SettingsIcon from '@material-ui/icons/Settings';
@@ -29,6 +30,8 @@ import SignOut from '../SignOut';
 import SubAccounts from '../SubAccounts/SubAccounts';
 import Dashboard from './Dashboard';
 import Transfer from '../Transfer';
+import { AuthUserContext } from '../Session';
+import { withFirebase } from '../Firebase';
 
 
 
@@ -112,13 +115,25 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function Platform() {
+function Platform(props) {
 
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
 
   const [view, setView] = useState("Dashboard");
   const [num, setNum] = useState(0);
+  const [total, setTotal] = useState(0);
+
+  props.firebase.mainAccounts(props.authUser.uid).once('value').then( v => {
+    let sum = 0;
+    let acc = v.val();
+    // console.log(acc);
+    for(var value in acc){
+      // console.log(acc[value])
+      sum += acc[value].currentAccountValue;
+    }
+    setTotal(sum);
+  })
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -204,7 +219,16 @@ export default function Platform() {
                     </IconButton>
                 </div>
                 <Divider />
+                  <dl></dl>
                     <List>
+                    <Typography component="h1" variant="h6" color="inherit" align="center" noWrap className={classes.title}>
+                        Total Account Value
+                    </Typography>
+                    <Typography component="h1" variant="h6" color="primary" align="center" noWrap className={classes.title}>
+                        ${total}
+                    </Typography>
+                    <dl></dl>
+                    <hr></hr>
                         <ListItem button onClick={handleDashboard}>
                             <ListItemIcon>
                                 <DashboardIcon />
@@ -225,7 +249,7 @@ export default function Platform() {
                         </ListItem>
                         <ListItem button onClick={handleTransfer} >
                             <ListItemIcon>
-                                <FindInPageIcon />
+                                <SwapHorizIcon />
                             </ListItemIcon>
                             <ListItemText primary="Transfer" />
                         </ListItem>
@@ -290,7 +314,11 @@ export default function Platform() {
                 <main className={classes.content}>
                     <div className={classes.appBarSpacer} />
                     <Container maxWidth="lg" className={classes.container}>
-                    <Transfer></Transfer>
+                    <AuthUserContext.Consumer>
+                      {authUser => (
+                        <Transfer authUser={authUser}/>
+                      )}
+                    </AuthUserContext.Consumer>
                     </Container>
                 </main>
             </div>
@@ -336,3 +364,5 @@ export default function Platform() {
       </ThemeProvider>
     );
 }
+
+export default withFirebase(Platform);

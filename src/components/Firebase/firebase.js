@@ -135,6 +135,11 @@ class Firebase {
 
   updateAccountDetail = (data, uid) => this.db.ref(`users/${uid}`).update(data) 
 
+  // holding
+  holding = uid => this.db.ref(`holding/${uid}`);
+  //subaccount
+  updateSubAcc = (data,userId,uid) =>this.db.ref(`accounts/${userId}/${uid}`).update(data)
+
 }
 
 export default Firebase;
