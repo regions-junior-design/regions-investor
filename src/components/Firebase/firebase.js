@@ -140,6 +140,12 @@ class Firebase {
   //subaccount
   updateSubAcc = (data,userId,uid) =>this.db.ref(`accounts/${userId}/${uid}`).update(data)
 
+  //indi
+
+  dataIndi = (userId,uid) =>this.db.ref(`accounts/${userId}/${uid}`).currentAccountValue
+  
+
+
 }
 
 export default Firebase;
