@@ -96,7 +96,7 @@ function EditGoalPage(props) {
                         size="medium"
                         onClick={updateData}
                     >
-                        Create Goal
+                        Save Goal
                     </Button>
                 </Grid>
             </Grid>
