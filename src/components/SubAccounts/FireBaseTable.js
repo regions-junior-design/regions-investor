@@ -104,12 +104,12 @@ class ETable extends Component {
         this.props.firebase.mainAccount(this.props.authUser.uid, v).once('value').then( a => {
           let av = parseInt(a.val()['currentAccountValue']);
           // console.log(cv);
-          this.props.firebase.holding(this.props.authUser.uid).once('value').then( h => {
-            let hv = h.val()['value'];
-            // console.log(hv);
-            let newVal = hv + av;
-            this.props.firebase.holding(this.props.authUser.uid).update({value: newVal});
-          });
+          // this.props.firebase.holding(this.props.authUser.uid).once('value').then( h => {
+          //   let hv = h.val()['value'];
+          //   // console.log(hv);
+          //   let newVal = hv + av;
+          //   this.props.firebase.holding(this.props.authUser.uid).update({value: newVal});
+          // });
           this.props.firebase.mainAccount(this.props.authUser.uid, v).remove();
         });
       })
