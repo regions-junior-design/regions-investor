@@ -9,6 +9,7 @@ import RecentTransactions from './RecentTransactions';
 import PieCharts from './PieCharts';
 import Progress from './Progress';
 import InfoIcon from '@material-ui/icons/Info';
+import {Typography} from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   drawerPaperClose: {
