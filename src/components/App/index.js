@@ -37,7 +37,7 @@ const App = () => (
   <AuthUserContext.Consumer>
   {authUser =>
     authUser ? (
-      <Dashboard></Dashboard>
+      <Dashboard authUser={authUser}></Dashboard>
     ) : (
       <LandingPage />
     )

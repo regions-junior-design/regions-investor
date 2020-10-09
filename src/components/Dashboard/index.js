@@ -31,6 +31,7 @@ import SubAccounts from '../SubAccounts/SubAccounts';
 import Dashboard from './Dashboard';
 import Transfer from '../Transfer';
 import { AuthUserContext } from '../Session';
+import { withFirebase } from '../Firebase';
 
 
 
@@ -114,13 +115,25 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function Platform() {
+function Platform(props) {
 
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
 
   const [view, setView] = useState("Dashboard");
   const [num, setNum] = useState(0);
+  const [total, setTotal] = useState(0);
+
+  props.firebase.mainAccounts(props.authUser.uid).once('value').then( v => {
+    let sum = 0;
+    let acc = v.val();
+    // console.log(acc);
+    for(var value in acc){
+      // console.log(acc[value])
+      sum += acc[value].currentAccountValue;
+    }
+    setTotal(sum);
+  })
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -205,7 +218,7 @@ export default function Platform() {
                         Total Account Value
                     </Typography>
                     <Typography component="h1" variant="h6" color="primary" align="center" noWrap className={classes.title}>
-                        $18,999
+                        ${total}
                     </Typography>
                     <dl></dl>
                     <hr></hr>
@@ -344,3 +357,5 @@ export default function Platform() {
       </ThemeProvider>
     );
 }
+
+export default withFirebase(Platform);
