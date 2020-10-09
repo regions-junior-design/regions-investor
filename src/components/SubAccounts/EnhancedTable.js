@@ -318,22 +318,6 @@ const EnhancedTable = ({
                       <TableCell align="right">{row.goalAmount}</TableCell>
                       <TableCell align="right">{row.investmentStyle}</TableCell>
                       <TableCell align="right">{row.goalDate}</TableCell>
-                      {/* <TableCell>
-                      <PopupState variant="popover" popupId="demo-popup-menu">
-                                    {(popupState) => (
-                                    <React.Fragment>
-                                    <Button {...bindTrigger(popupState)}>
-                                        <MoreVertTwoToneIcon fontSize='medium'>
-                                        </MoreVertTwoToneIcon>
-                                        </Button>
-                                        <Menu {...bindMenu(popupState)}>
-                                        <MenuItem>Edit Goal</MenuItem>
-                                        <MenuItem>Goal Details</MenuItem>
-                                        </Menu>
-                                    </React.Fragment>
-                                    )}
-                                </PopupState>
-                      </TableCell> */}
                     </TableRow>
                   );
                 })}
