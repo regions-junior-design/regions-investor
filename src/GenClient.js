@@ -1,15 +1,22 @@
 import React from 'react';
+import { defaultProps } from 'recompose';
 
-export function GenClient() {
+export function GenClient(props) {
 
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [response, setResponse] = useState([]);
 
-    const url = " ";
+    const payload = props.payload
+    const url = props.url;
+    const headers = props.headers;
   
     useEffect(() => {
-      fetch(url)
+      fetch(url, {
+        method: payload,
+        headers: headers,
+      }
+        )
         .then(res => res.json())
         .then(
           (result) => {
