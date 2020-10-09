@@ -1,3 +1,6 @@
+import React, {useEffect} from 'react';
+import PropTypes from 'prop-types';
+import clsx from 'clsx';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import IconButton from '@material-ui/core/IconButton';
@@ -16,9 +19,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
 import FilterListIcon from '@material-ui/icons/FilterList';
-import clsx from 'clsx';
-import PropTypes from 'prop-types';
-import React, { useEffect } from 'react';
+
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -309,6 +310,7 @@ const EnhancedTable = ({
                           inputProps={{ 'aria-labelledby': labelId }}
                         />
                       </TableCell>
+                      {/* THIS IS WHERE YOU PUT ON CLICK FUNCTION */}
                       <TableCell component="th" id={labelId} scope="row" padding="none">
                         {row.name}
                       </TableCell>

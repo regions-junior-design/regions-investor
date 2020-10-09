@@ -184,11 +184,17 @@ class SignInGoogleBase extends Component {
       .doSignInWithGoogle()
       .then(socialAuthUser => {
         // Create a user in your Firebase Realtime Database too
-        return this.props.firebase.user(socialAuthUser.user.uid).set({
+        let res = this.props.firebase.user(socialAuthUser.user.uid).set({
           username: socialAuthUser.user.displayName,
           email: socialAuthUser.user.email,
           roles: {},
         });
+        this.props.firebase.holding(socialAuthUser.user.uid).once('value').then( v => {
+          let cv = v.val()['value'];
+          console.log(cv);
+          this.props.firebase.holding(socialAuthUser.user.uid).update({value: cv || 0});
+        });
+        return res;
       })
       .then(() => {
         this.setState({ error: null });

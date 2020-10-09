@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button';
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
 import * as ROLES from '../../constants/roles';
+import { auth } from 'firebase';
 
 const SignUpPage = () => (
   <div>
@@ -53,11 +54,19 @@ class SignUpFormBase extends Component {
       .doCreateUserWithEmailAndPassword(email, passwordOne)
       .then(authUser => {
         // Create a user in your Firebase realtime database
-        return this.props.firebase.user(authUser.user.uid).set({
+        let res = this.props.firebase.user(authUser.user.uid).set({
           username,
           email,
           roles,
         });
+
+        this.props.firebase.holding(authUser.user.uid).once('value').then( v => {
+          let cv = v.val()['value'];
+          console.log(cv);
+          this.props.firebase.holding(authUser.user.uid).update({value: cv || 0});
+        });
+        
+        return res;
       })
       .then(() => {
         return this.props.firebase.doSendEmailVerification();

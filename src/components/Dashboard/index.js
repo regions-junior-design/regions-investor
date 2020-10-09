@@ -15,7 +15,8 @@ import Typography from '@material-ui/core/Typography';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import DashboardIcon from '@material-ui/icons/Dashboard';
-import FindInPageIcon from '@material-ui/icons/FindInPage';
+// import FindInPageIcon from '@material-ui/icons/FindInPage';
+import SwapHorizIcon from '@material-ui/icons/SwapHoriz';
 import HelpIcon from '@material-ui/icons/Help';
 import MenuIcon from '@material-ui/icons/Menu';
 import SettingsIcon from '@material-ui/icons/Settings';
@@ -28,6 +29,9 @@ import AccountPage from '../Account';
 import SignOut from '../SignOut';
 import SubAccounts from '../SubAccounts/SubAccounts';
 import Dashboard from './Dashboard';
+import Transfer from '../Transfer';
+import { AuthUserContext } from '../Session';
+import { withFirebase } from '../Firebase';
 
 
 
@@ -111,13 +115,25 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function Platform() {
+function Platform(props) {
 
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
 
   const [view, setView] = useState("Dashboard");
   const [num, setNum] = useState(0);
+  const [total, setTotal] = useState(0);
+
+  props.firebase.mainAccounts(props.authUser.uid).once('value').then( v => {
+    let sum = 0;
+    let acc = v.val();
+    // console.log(acc);
+    for(var value in acc){
+      // console.log(acc[value])
+      sum += acc[value].currentAccountValue;
+    }
+    setTotal(sum);
+  })
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -142,8 +158,8 @@ export default function Platform() {
     setNum(2);
   }
 
-  const handleResearch = () => {
-    setView("Research");
+  const handleTransfer = () => {
+    setView("Transfer");
     setNum(3);
   }
 
@@ -177,8 +193,15 @@ export default function Platform() {
                         >
                         <MenuIcon />
                     </IconButton>
+                    <img src="https://lh3.googleusercontent.com/kPTc1uhV8RQn_JOrTFBIbHXznvmZKvmfupQ7vVFUj_VyLhRWc7IpXPEL15m_kU5udvWK43o30zHDQkbV2-XKkNko886I2haSalGqL2jWvQpkmfXQ0GgIGFqXzEtCKAASHtVzbGdxE2LMR5lBLr4YWoIbieqh8HOwh8LrUpmJGD8DBEvFt-M4uxuiRKj0YVpCO5X6ZClvEYZB5RcWmcQRLoLUXG_q-0rep2pQi1hKPjlq1t33-f6mewRqooBJ75KdFlliFdpwSY-W9aY7dahX7Tg0wWAnnnQ3-7lWdzFafpGpc622spiO19S9e2RNMCPazzXm3T-dzvcQJ3R9W_qWbyIbgZF29kyFkVH-w1rLbiT7pjSMTiLEDH6zri78uY5mM-2M1bRH0TZrDPKHU_J3E9EsoZ2FdkcxDBiTKLNxoSdNW4kY0CwaKhskRoRYYpz1bXF5LeVT7NLoOZ7Pm0a71TfFO4ey5OkRusw5sA8uZNuIKJhHUDafdJuI62Cif-o_hUdMr8sqwLgn89cXOODcNfcr0XF0UXhR8QkoKnqXtCbQ609tFkdk5iDRB0JpjpN44agPxHadDnYkGCMoPWJV2fKIiu1yGRkCMr9YoxixVRuN4_urTunqSlAX3o1BS0mAhvKzcfC1rKCxOpbJOVAVo3gekAtdXHjdlzx5WwHOx-YvsnYY-v40_o409Bq01g=w446-h327-no?authuser=0" style={{
+                          marginLeft: 3,
+                          marginTop: 3,
+                          marginRight: 5,
+                          height: 50,
+                          width: 70
+                        }}></img>
                     <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-                        Regions Personal Investment Platform
+                        Regions Personal Investment Platform 
                     </Typography>
                     <SignOut></SignOut>
                 </Toolbar>
@@ -196,7 +219,16 @@ export default function Platform() {
                     </IconButton>
                 </div>
                 <Divider />
+                  <dl></dl>
                     <List>
+                    <Typography component="h1" variant="h6" color="inherit" align="center" noWrap className={classes.title}>
+                        Total Account Value
+                    </Typography>
+                    <Typography component="h1" variant="h6" color="primary" align="center" noWrap className={classes.title}>
+                        ${total}
+                    </Typography>
+                    <dl></dl>
+                    <hr></hr>
                         <ListItem button onClick={handleDashboard}>
                             <ListItemIcon>
                                 <DashboardIcon />
@@ -215,11 +247,11 @@ export default function Platform() {
                             </ListItemIcon>
                             <ListItemText primary="Recent Transactions" />
                         </ListItem>
-                        <ListItem button onClick={handleResearch} >
+                        <ListItem button onClick={handleTransfer} >
                             <ListItemIcon>
-                                <FindInPageIcon />
+                                <SwapHorizIcon />
                             </ListItemIcon>
-                            <ListItemText primary="Research" />
+                            <ListItemText primary="Transfer" />
                         </ListItem>
                         <ListItem button onClick={handleHelp} >
                             <ListItemIcon>
@@ -282,7 +314,11 @@ export default function Platform() {
                 <main className={classes.content}>
                     <div className={classes.appBarSpacer} />
                     <Container maxWidth="lg" className={classes.container}>
-                        <h1>Research Page</h1>
+                    <AuthUserContext.Consumer>
+                      {authUser => (
+                        <Transfer authUser={authUser}/>
+                      )}
+                    </AuthUserContext.Consumer>
                     </Container>
                 </main>
             </div>
@@ -328,3 +364,5 @@ export default function Platform() {
       </ThemeProvider>
     );
 }
+
+export default withFirebase(Platform);
