@@ -69,6 +69,7 @@ const useStyles = makeStyles((theme) => ({
     const [select, setSelect] = useState([]);
 
     const handleMain = () => {
+        setChosen(false)
         setView("MainPage");
         setNum(0);
     }
@@ -79,8 +80,10 @@ const useStyles = makeStyles((theme) => ({
     }
 
     const handleIndividual = () => {
-        setView("Individual");
+        if (chosen) 
+        {setView("Individual");
         setNum(3);
+        }
     }
     
     const handleDelete = () => {
@@ -275,7 +278,6 @@ const useStyles = makeStyles((theme) => ({
           )
           }  
           {num == 3 ? (
-            //   TRINH THIS IS THE INDIVIDUAL PAGE
               <div>
               <AuthUserContext.Consumer>
               {authUser => (
@@ -286,7 +288,8 @@ const useStyles = makeStyles((theme) => ({
                           marginLeft: 20, 
                           marginTop: 20
                       }}><KeyboardBackspaceIcon fontSize='medium'></KeyboardBackspaceIcon></Button>
-                  <IndividualPage name='firebase name' total='20,137'></IndividualPage>
+                  <IndividualPage authUser={authUser}
+                                 selected={select}   ></IndividualPage>
                   </div>
               )}
               </AuthUserContext.Consumer>
