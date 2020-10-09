@@ -199,7 +199,16 @@ export default function Platform() {
                     </IconButton>
                 </div>
                 <Divider />
+                  <dl></dl>
                     <List>
+                    <Typography component="h1" variant="h6" color="inherit" align="center" noWrap className={classes.title}>
+                        Total Account Value
+                    </Typography>
+                    <Typography component="h1" variant="h6" color="primary" align="center" noWrap className={classes.title}>
+                        $18,999
+                    </Typography>
+                    <dl></dl>
+                    <hr></hr>
                         <ListItem button onClick={handleDashboard}>
                             <ListItemIcon>
                                 <DashboardIcon />
