@@ -15,7 +15,8 @@ import Typography from '@material-ui/core/Typography';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import DashboardIcon from '@material-ui/icons/Dashboard';
-import FindInPageIcon from '@material-ui/icons/FindInPage';
+// import FindInPageIcon from '@material-ui/icons/FindInPage';
+import SwapHorizIcon from '@material-ui/icons/SwapHoriz';
 import HelpIcon from '@material-ui/icons/Help';
 import MenuIcon from '@material-ui/icons/Menu';
 import SettingsIcon from '@material-ui/icons/Settings';
@@ -219,7 +220,7 @@ export default function Platform() {
                         </ListItem>
                         <ListItem button onClick={handleTransfer} >
                             <ListItemIcon>
-                                <FindInPageIcon />
+                                <SwapHorizIcon />
                             </ListItemIcon>
                             <ListItemText primary="Transfer" />
                         </ListItem>
