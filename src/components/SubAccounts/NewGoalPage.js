@@ -22,9 +22,9 @@ function NewGoalPage(props) {
         props.firebase.mainAccounts(props.authUser.uid).push(
             {
                 name: name || "",
-                goalAmount: goal || "",
+                goalAmount: goal || 0,
                 description: desc || "",
-                currentAccountValue: init || "",
+                currentAccountValue: init || 0,
                 goalDate: date || "",
                 investmentStyle: type || ""
             });
@@ -53,7 +53,7 @@ function NewGoalPage(props) {
             id="goal"
             name="goal"
             label="Goal Ammount"
-            onChange={(e) => setGoal(e.target.value)}
+            onChange={(e) => setGoal(parseInt(e.target.value))}
             fullWidth
             type="number"
             InputProps={{
@@ -67,7 +67,7 @@ function NewGoalPage(props) {
             id="init"
             name="init"
             label="Initial Deposit"
-            onChange={(e) => setInit(e.target.value)}
+            onChange={(e) => setInit(parseInt(e.target.value))}
             fullWidth
             type="number"
             InputProps={{
