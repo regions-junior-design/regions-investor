@@ -15,6 +15,7 @@ import Typography from '@material-ui/core/Typography';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import DashboardIcon from '@material-ui/icons/Dashboard';
+import AssignmentIcon from '@material-ui/icons/Assignment';
 // import FindInPageIcon from '@material-ui/icons/FindInPage';
 import SwapHorizIcon from '@material-ui/icons/SwapHoriz';
 import HelpIcon from '@material-ui/icons/Help';
@@ -178,6 +179,11 @@ function Platform(props) {
     setNum(6);
   }
 
+  const handleInvestmentPlan = () => {
+    setView("InvestmentPlanner");
+    setNum(7);
+  }
+
     return (
       <ThemeProvider theme={theme}>
       <div className={classes.root}>
@@ -252,6 +258,12 @@ function Platform(props) {
                                 <SwapHorizIcon />
                             </ListItemIcon>
                             <ListItemText primary="Transfer" />
+                        </ListItem>
+                        <ListItem button onClick={handleInvestmentPlan}>
+                          <ListItemIcon>
+                            <AssignmentIcon></AssignmentIcon>
+                          </ListItemIcon>
+                          <ListItemText primary="Investment Plans"></ListItemText>
                         </ListItem>
                         <ListItem button onClick={handleHelp} >
                             <ListItemIcon>
@@ -358,6 +370,21 @@ function Platform(props) {
             </div>
         ) : (
             <div></div>
+        )
+        }
+        {num === 7 ? (
+          <div>
+              <main className={classes.content}>
+                  <div className={classes.appBarSpacer} />
+                  <Container maxWidth="lg" className={classes.container}>
+                      <h1>Investment Planner Page</h1>
+                  </Container>
+              </main>
+          </div>
+        ) : (
+          <div>
+
+          </div>
         )
         }
         </div>
