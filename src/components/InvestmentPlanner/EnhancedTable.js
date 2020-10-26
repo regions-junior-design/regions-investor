@@ -48,11 +48,11 @@ function stableSort(array, comparator) {
 }
 
 const headCells = [
-  { id: 'name', numeric: false, disablePadding: true, label: 'Goal' },
-  { id: 'currentAccountValue', numeric: true, disablePadding: false, label: 'Current Account Value ($)' },
-  { id: 'goalAmount', numeric: true, disablePadding: false, label: 'Goal Amount ($)' },
-  { id: 'investmentStyle', numeric: false, disablePadding: false, label: 'Investment Strategy' },
-  { id: 'goalDate', numeric: false, disablePadding: false, label: 'Goal Date' },
+  { id: 'name', numeric: false, disablePadding: true, label: 'Investment Plan Name' },
+  { id: 'currentAccountValue', numeric: true, disablePadding: false, label: 'attribute 1' },
+  { id: 'goalAmount', numeric: true, disablePadding: false, label: 'attribute 2' },
+  { id: 'investmentStyle', numeric: false, disablePadding: false, label: 'attribute 3' },
+  { id: 'goalDate', numeric: false, disablePadding: false, label: 'Date Created' },
 ];
 
 function EnhancedTableHead(props) {

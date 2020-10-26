@@ -16,7 +16,7 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import NewGoalPage from "../SubAccounts/NewGoalPage";
+import NewPlan from './NewPlan';
 import EditGoalPage from "../SubAccounts/EditGoalPage";
 import '../SubAccounts/index.css';
 import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
@@ -132,7 +132,7 @@ const useStyles = makeStyles((theme) => ({
                                        {" "}
                                        <AddIcon fontSize="medium"></AddIcon>
                                        <Typography className="tooltiptext">
-                                           Add Goal
+                                           New Investment Plan
                                        </Typography>
                                    </Button>
                                    <Button
@@ -149,7 +149,7 @@ const useStyles = makeStyles((theme) => ({
                                    >
                                        <EditIcon fontSize="medium"></EditIcon>
                                        <Typography className="tooltiptext">
-                                           Edit Goal
+                                           Edit Investment Plan
                                        </Typography>
                                    </Button>
                                    <PopupState variant="popover" popupId="demo-popup-menu">
@@ -160,7 +160,7 @@ const useStyles = makeStyles((theme) => ({
                                         marginLeft: 20,
                                         marginTop: -10
                                     }} className='tooltip' onClick={handleIndividual}>
-                                        <Typography className='tooltiptext'>Individual Subaccount Info</Typography>
+                                        <Typography className='tooltiptext'>Individual Investment Plan Info</Typography>
                                         <InfoIcon fontSize='medium'></InfoIcon>
                                         </Button>
                                     </React.Fragment>
@@ -172,17 +172,12 @@ const useStyles = makeStyles((theme) => ({
                                        aria-labelledby="form-dialog-title"
                                    >
                                        <DialogTitle id="form-dialog-title">
-                                           Edit Goal
+                                           Edit Investment Plan
                                        </DialogTitle>
                                        <DialogContent>
                                            <DialogContentText>
                                                You can edit any
-                                               part of your goal
-                                               except for the
-                                               Current Account
-                                               Value. For that you
-                                               must go the Transfer
-                                               Page
+                                               part of your investment plan.
                                            </DialogContentText>
                                            <EditGoalPage
                                                authUser={authUser}
@@ -243,7 +238,7 @@ const useStyles = makeStyles((theme) => ({
                         backgroundColor: "#528400",
                         color: 'white',  
                     }}>Cancel</Button>
-                    <NewGoalPage authUser={authUser} back={handleMain}/>
+                    <NewPlan authUser={authUser} back={handleMain}/>
                     </div>
                 )}
             </AuthUserContext.Consumer>
