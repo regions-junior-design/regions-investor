@@ -33,6 +33,7 @@ import Dashboard from './Dashboard';
 import Transfer from '../Transfer';
 import { AuthUserContext } from '../Session';
 import { withFirebase } from '../Firebase';
+import InvestmentPlanner from '../InvestmentPlanner/InvestmentPlanner';
 
 
 
@@ -263,7 +264,7 @@ function Platform(props) {
                           <ListItemIcon>
                             <AssignmentIcon></AssignmentIcon>
                           </ListItemIcon>
-                          <ListItemText primary="Investment Plans"></ListItemText>
+                          <ListItemText primary="Investment Planner"></ListItemText>
                         </ListItem>
                         <ListItem button onClick={handleHelp} >
                             <ListItemIcon>
@@ -374,12 +375,10 @@ function Platform(props) {
         }
         {num === 7 ? (
           <div>
-              <main className={classes.content}>
-                  <div className={classes.appBarSpacer} />
-                  <Container maxWidth="lg" className={classes.container}>
-                      <h1>Investment Planner Page</h1>
-                  </Container>
-              </main>
+            <main className={classes.content}>
+              <div className={classes.appBarSpacer} />
+                <InvestmentPlanner></InvestmentPlanner>
+            </main>
           </div>
         ) : (
           <div>
