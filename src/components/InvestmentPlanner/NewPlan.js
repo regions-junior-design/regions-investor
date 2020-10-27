@@ -17,6 +17,16 @@ import Switch from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import PieCharts from '../Dashboard/PieCharts';
 import { Slide, Slider } from '@material-ui/core';
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
+import { AuthUserContext } from "../Session";
+import EditGoalPage from '../SubAccounts/EditGoalPage';
+import EditIcon from "@material-ui/icons/Edit";
+import FullScreenDialog from './FullScreenDialog';
 
 function NewPlan(props) {
     // console.log(props.authUser)
@@ -25,14 +35,23 @@ function NewPlan(props) {
     const [bondNum, setBondNum] = useState(0);
     const [stockNum, setStockNum] = useState(0);
     const [f401kNum, set401KNum] = useState(0);
+    const [chosen, setChosen] = useState(false);
+    const [open, setOpen] = React.useState(false);
+    const [select, setSelect] = useState([]);
 
-    function checkValues(type, num) {
-      var max = 100 - num;
-      if (num > max) {
-        num = max;
-      }
-    }
+    const handleClickOpen = () => {
+      if (chosen) setOpen(true);
+    };
 
+  const handleClose = () => {
+      setOpen(false);
+  };
+
+  const onSelected = (selected) => {
+    console.log("is elected" + selected);
+    setChosen(selected.length != 0);
+    setSelect(selected);
+};
   return (
     <React.Fragment>
       <br></br>
@@ -56,15 +75,27 @@ function NewPlan(props) {
                 marginBottom: 40
             }}> Think about what approach you want to use when investing. Are you going to take a thematic or sector approach? With a thematic approach, you invest long-term in an idea as it changes
             and develops across a variety of sectors. On the other hand, a sector approach is one where you invest in businesses within a certain sector of the economy. Once you know <i>what</i> you want to invest in, you are ready
-            to figure out <i>how</i>. Not sure where to start? Check out the Resources tab to learn more about your options. 
+            to figure out <i>how</i>.
             </Typography>
         </Grid>
         <Grid item xs={12}>
             <Typography variant="h3">Step 2: Choose Where You Will Invest</Typography>
             <Typography variant="h4">Select What You Want to Invest In</Typography>
+            <InfoIcon></InfoIcon>
+            <Typography variant="body">What are my options? The buttons below will show you options of how you can invest your money.</Typography>
         </Grid>
-        <Grid item xs={12}>
-            
+        <Grid item xs={12} sm={4} >
+            <FullScreenDialog label="Bonds Options" title="Bonds Options"></FullScreenDialog>
+        </Grid>
+        <Grid item xs={12} sm={4} style={{
+          marginLeft: -100
+        }}>
+            <FullScreenDialog label="Mutual Fund Options" title="Mutual Fund Options"></FullScreenDialog>
+        </Grid>
+        <Grid item xs={12} sm={4} style={{
+          marginLeft: -50
+        }}>
+            <FullScreenDialog label="Stock Options" title="Stock Options"></FullScreenDialog>
         </Grid>
         <Grid item xs={12}>
           <Button
@@ -72,6 +103,9 @@ function NewPlan(props) {
             variant="contained"
             color="primary"
             size="medium"
+            style={{
+              marginTop: 50
+            }}
             // onClick={updateData}
           >
             Create Plan
