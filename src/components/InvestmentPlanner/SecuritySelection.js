@@ -9,6 +9,13 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import Radio from '@material-ui/core/Radio';
 import Button from '@material-ui/core/Button';
+import SecurityGridDetail from "./SecurityGridDetail";
+import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -40,6 +47,16 @@ const useStyles = makeStyles((theme) => ({
 export default function SecuritiesGrid() {
   const classes = useStyles();
   const [spacing, setSpacing] = React.useState(2);
+  const [open, setOpen] = React.useState(false);
+
+  const handleClose = () => {
+    setOpen(false);
+};
+
+const handleClickOpen = () => {
+    setOpen(true);
+};
+
   //this line with {0,1,2,3} is where you pass in how many cards in the grind to create and then a value to map this to
   return (
     <Grid container className={classes.root} spacing={2}>
@@ -65,9 +82,30 @@ export default function SecuritiesGrid() {
               <Button variant="outlined" color="primary" size="small" className={classes.margin}>
                     Add
             </Button>
-            <Button variant="outlined" color="primary" size="small" className={classes.margin}>
+            <Button variant="outlined" color="primary" size="small" className={classes.margin} onClick={handleClickOpen}>
                     Details
             </Button>
+            <Dialog
+                                       open={open}
+                                       onClose={handleClose}
+                                       aria-labelledby="form-dialog-title"
+                                   >
+                                       <DialogContent>
+                                           <SecurityGridDetail
+                                               back={handleClose}
+                                           ></SecurityGridDetail>
+                                       </DialogContent>
+                                       <DialogActions>
+                                           <Button
+                                               onClick={
+                                                   handleClose
+                                               }
+                                               color="primary"
+                                           >
+                                               Cancel
+                                           </Button>
+                                       </DialogActions>
+                                   </Dialog>
               </Grid>
               </Grid>
             </Grid>
