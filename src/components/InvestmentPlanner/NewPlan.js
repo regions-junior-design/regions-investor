@@ -27,14 +27,16 @@ import { AuthUserContext } from "../Session";
 import EditGoalPage from '../SubAccounts/EditGoalPage';
 import EditIcon from "@material-ui/icons/Edit";
 import FullScreenDialog from './FullScreenDialog';
+import StrategyButton from './StrategyButton';
 
 function NewPlan(props) {
     // console.log(props.authUser)
     const [name, setName] = useState("");
+    const [desc,setDesc] = useState("");
+    const [type,setType] = useState("");
+    const [risk, setRisk] = useState("");
+    const [id, setId] = useState(1);
     const [mutualFundNum, setMutualFundNum] = useState(0);
-    const [bondNum, setBondNum] = useState(0);
-    const [stockNum, setStockNum] = useState(0);
-    const [f401kNum, set401KNum] = useState(0);
     const [chosen, setChosen] = useState(false);
     const [open, setOpen] = React.useState(false);
     const [select, setSelect] = useState([]);
@@ -70,6 +72,15 @@ function NewPlan(props) {
           />
         </Grid>
         <Grid item xs={12}>
+          <TextField
+            id="name"
+            name="name"
+            onChange={(e) => setDesc(e.target.value)}
+            label="Investment Plan Description"
+            fullWidth
+          />
+        </Grid>
+        <Grid item xs={12}>
             <Typography variant="h3">Step 1: Think About How You Will Invest</Typography>
             <Typography variant="body" style={{
                 marginBottom: 40
@@ -79,23 +90,60 @@ function NewPlan(props) {
             </Typography>
         </Grid>
         <Grid item xs={12}>
+        <FormControl fullWidth>
+            <InputLabel id="type-label">Strategy</InputLabel>
+            <Select
+            labelId="type-label"
+            id="type"
+            onChange={(e) => setType(e.target.value)}
+            onChange={(e) => console.log(e.target.value)}
+            onChange={(e) => setId(-(id))}
+            style={{
+              width: 100,
+            }}
+            >
+                <MenuItem value={"Thematic"}>Thematic</MenuItem>
+                <MenuItem value={"Sector"}>Sector</MenuItem>
+            </Select>
+          </FormControl>
+        </Grid>
+        <Grid item xs={12}>
             <Typography variant="h3">Step 2: Choose Where You Will Invest</Typography>
             <Typography variant="h4">Select What You Want to Invest In</Typography>
             <InfoIcon></InfoIcon>
             <Typography variant="body">What are my options? The buttons below will show you options of how you can invest your money.</Typography>
         </Grid>
-        <Grid item xs={12} sm={4} >
-            <FullScreenDialog label="Bonds Options" title="Bonds Options"></FullScreenDialog>
+        <Grid item xs={12}>
+        <StrategyButton strategy={id}></StrategyButton>
+        </Grid>
+        {/* <Grid item xs={12} sm={4} >
+            <FullScreenDialog label="Bonds" title="Bonds"></FullScreenDialog>
         </Grid>
         <Grid item xs={12} sm={4} style={{
-          marginLeft: -100
+          marginLeft: -200
         }}>
-            <FullScreenDialog label="Mutual Fund Options" title="Mutual Fund Options"></FullScreenDialog>
+            <FullScreenDialog label="Stocks" title="Stocks"></FullScreenDialog>
+        </Grid> */}
+        <Grid item xs={12}>
+            <Typography variant="h3">Step 3: Choose The Risk</Typography>
+            <InfoIcon></InfoIcon>
+            <Typography variant="body">Choose how you want to invest: conservatively, moderately, or aggressively. Your decision will determine your specific bond/stock 
+            bundle.</Typography>
         </Grid>
-        <Grid item xs={12} sm={4} style={{
-          marginLeft: -50
-        }}>
-            <FullScreenDialog label="Stock Options" title="Stock Options"></FullScreenDialog>
+        <Grid item xs={3}>
+        <FormControl fullWidth>
+            <InputLabel id="type-label">Risk Level</InputLabel>
+            <Select
+            labelId="type-label"
+            id="type"
+            onChange={(e) => setRisk(e.target.value)}
+            >
+                <MenuItem value={"None"}>None</MenuItem>
+                <MenuItem value={"Conservative"}>Conservative</MenuItem>
+                <MenuItem value={"Moderate"}>Moderate</MenuItem>
+                <MenuItem value={"Aggresive"}>Aggresive</MenuItem>
+            </Select>
+          </FormControl>
         </Grid>
         <Grid item xs={12}>
           <Button
