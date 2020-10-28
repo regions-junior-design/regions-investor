@@ -49,10 +49,10 @@ function stableSort(array, comparator) {
 
 const headCells = [
   { id: 'name', numeric: false, disablePadding: true, label: 'Investment Plan Name' },
-  { id: 'currentAccountValue', numeric: true, disablePadding: false, label: 'attribute 1' },
-  { id: 'goalAmount', numeric: true, disablePadding: false, label: 'attribute 2' },
-  { id: 'investmentStyle', numeric: false, disablePadding: false, label: 'attribute 3' },
-  { id: 'goalDate', numeric: false, disablePadding: false, label: 'Date Created' },
+  { id: 'amountUsed', numeric: true, disablePadding: false, label: 'Active Goals Using Plan' },
+  { id: 'planType', numeric: true, disablePadding: false, label: 'Plan Type' },
+  { id: 'investmentStyle', numeric: false, disablePadding: false, label: 'Investment Style' },
+  { id: 'date', numeric: false, disablePadding: false, label: 'Date Created' },
 ];
 
 function EnhancedTableHead(props) {
@@ -142,7 +142,7 @@ const EnhancedTableToolbar = (props) => {
         </Typography>
       ) : (
         <Typography className={classes.title} variant="h6" id="tableTitle" component="div">
-          Goals
+          Investment Plans
         </Typography>
       )}
 
@@ -197,7 +197,7 @@ const EnhancedTable = ({
 }) => {
   const classes = useStyles();
   const [order, setOrder] = React.useState('asc');
-  const [orderBy, setOrderBy] = React.useState('currentAccountValue');
+  const [orderBy, setOrderBy] = React.useState('amountUsed');
   const [selected, setSelected] = React.useState([]);
   const [page, setPage] = React.useState(0);
   const [dense, setDense] = React.useState(false);
@@ -311,10 +311,10 @@ const EnhancedTable = ({
                       <TableCell component="th" id={labelId} scope="row" padding="none">
                         {row.name}
                       </TableCell>
-                      <TableCell align="right">{row.currentAccountValue}</TableCell>
-                      <TableCell align="right">{row.goalAmount}</TableCell>
+                      <TableCell align="right">{row.amountUsed}</TableCell>
+                      <TableCell align="right">{row.planType}</TableCell>
                       <TableCell align="right">{row.investmentStyle}</TableCell>
-                      <TableCell align="right">{row.goalDate}</TableCell>
+                      <TableCell align="right">{row.date}</TableCell>
                     </TableRow>
                   );
                 })}
