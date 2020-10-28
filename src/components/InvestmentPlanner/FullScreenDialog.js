@@ -12,6 +12,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import CloseIcon from '@material-ui/icons/Close';
 import Slide from '@material-ui/core/Slide';
+import SecuritiesGrid from './SecuritySelection';
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -59,7 +60,7 @@ export default function FullScreenDialog({label, title}) {
           </Toolbar>
         </AppBar>
         <List>
-
+          <SecuritiesGrid></SecuritiesGrid>
         </List>
       </Dialog>
     </div>
