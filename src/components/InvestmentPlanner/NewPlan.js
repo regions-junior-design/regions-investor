@@ -35,7 +35,7 @@ function NewPlan(props) {
     const [desc,setDesc] = useState("");
     const [type,setType] = useState("");
     const [risk, setRisk] = useState("");
-    const [id, setId] = useState(1);
+    const [id, setId] = useState(0);
     const [mutualFundNum, setMutualFundNum] = useState(0);
     const [chosen, setChosen] = useState(false);
     const [open, setOpen] = React.useState(false);
@@ -97,13 +97,13 @@ function NewPlan(props) {
             id="type"
             onChange={(e) => setType(e.target.value)}
             onChange={(e) => console.log(e.target.value)}
-            onChange={(e) => setId(-(id))}
+            //onChange={(e) => setId(-(id))}
             style={{
               width: 100,
             }}
             >
-                <MenuItem value={"Thematic"}>Thematic</MenuItem>
-                <MenuItem value={"Sector"}>Sector</MenuItem>
+                <MenuItem value={"Thematic"} onClick={(e) => setId(1)}>Thematic</MenuItem> 
+                <MenuItem value={"Sector"} onClick={(e) => setId(0)}>Sector</MenuItem>
             </Select>
           </FormControl>
         </Grid>
