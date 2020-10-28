@@ -27,6 +27,7 @@ import { AuthUserContext } from "../Session";
 import EditGoalPage from '../SubAccounts/EditGoalPage';
 import EditIcon from "@material-ui/icons/Edit";
 import FullScreenDialog from './FullScreenDialog';
+import StrategyButton from './StrategyButton';
 
 function NewPlan(props) {
     // console.log(props.authUser)
@@ -34,6 +35,7 @@ function NewPlan(props) {
     const [desc,setDesc] = useState("");
     const [type,setType] = useState("");
     const [risk, setRisk] = useState("");
+    const [id, setId] = useState(1);
     const [mutualFundNum, setMutualFundNum] = useState(0);
     const [chosen, setChosen] = useState(false);
     const [open, setOpen] = React.useState(false);
@@ -87,18 +89,17 @@ function NewPlan(props) {
             to figure out <i>how</i>.
             </Typography>
         </Grid>
-        <Grid>
+        <Grid item xs={12}>
         <FormControl fullWidth>
-            <InputLabel id="type-label" style={{
-              marginLeft: 20
-            }}>Strategy</InputLabel>
+            <InputLabel id="type-label">Strategy</InputLabel>
             <Select
             labelId="type-label"
             id="type"
             onChange={(e) => setType(e.target.value)}
+            onChange={(e) => console.log(e.target.value)}
+            onChange={(e) => setId(-(id))}
             style={{
               width: 100,
-              marginLeft: 20
             }}
             >
                 <MenuItem value={"Thematic"}>Thematic</MenuItem>
@@ -112,14 +113,17 @@ function NewPlan(props) {
             <InfoIcon></InfoIcon>
             <Typography variant="body">What are my options? The buttons below will show you options of how you can invest your money.</Typography>
         </Grid>
-        <Grid item xs={12} sm={4} >
-            <FullScreenDialog label="Bonds" title="Bonds Options"></FullScreenDialog>
+        <Grid item xs={12}>
+        <StrategyButton strategy={id}></StrategyButton>
+        </Grid>
+        {/* <Grid item xs={12} sm={4} >
+            <FullScreenDialog label="Bonds" title="Bonds"></FullScreenDialog>
         </Grid>
         <Grid item xs={12} sm={4} style={{
           marginLeft: -200
         }}>
-            <FullScreenDialog label="Stocks" title="Stock Options"></FullScreenDialog>
-        </Grid>
+            <FullScreenDialog label="Stocks" title="Stocks"></FullScreenDialog>
+        </Grid> */}
         <Grid item xs={12}>
             <Typography variant="h3">Step 3: Choose The Risk</Typography>
             <InfoIcon></InfoIcon>
