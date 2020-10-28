@@ -16,8 +16,9 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
+import { Card } from '@material-ui/core';
 
-
+const primary = "#88bb00";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -48,6 +49,7 @@ export default function SecuritiesGrid() {
   const classes = useStyles();
   const [spacing, setSpacing] = React.useState(2);
   const [open, setOpen] = React.useState(false);
+  const [color, setColor] = primary
 
   const handleClose = () => {
     setOpen(false);
@@ -57,6 +59,10 @@ const handleClickOpen = () => {
     setOpen(true);
 };
 
+const handleClickAdd = () => {
+    console.log(1)
+};
+
   //this line with {0,1,2,3} is where you pass in how many cards in the grind to create and then a value to map this to
   return (
     <Grid container className={classes.root} spacing={2}>
@@ -64,7 +70,7 @@ const handleClickOpen = () => {
       <Grid container justify="flex-start" spacing={spacing}>
         {[0,1,2,3,4].map((value) => (
           <Grid key={value} item>
-            <Paper className={classes.paper}>
+            <Card className={classes.paper} elevation={3} backgroundColor="#88bb00">
         <Grid container spacing={2}>
           <Grid item xs={12} sm container>
             <Grid item xs container direction="row" spacing={2}>
@@ -79,7 +85,7 @@ const handleClickOpen = () => {
                   Top Holdings: Facebook, Twitter, Tencent, Snap
                 </Typography>
                 <Grid justify="flex-end" direction="column">
-              <Button variant="outlined" color="primary" size="small" className={classes.margin}>
+              <Button variant="outlined" color="primary" size="small" className={classes.margin} onClick={handleClickAdd}>
                     Add
             </Button>
             <Button variant="outlined" color="primary" size="small" className={classes.margin} onClick={handleClickOpen}>
@@ -111,7 +117,7 @@ const handleClickOpen = () => {
             </Grid>
           </Grid>
         </Grid>
-      </Paper>
+      </Card>
           </Grid>
         ))}
       </Grid>
