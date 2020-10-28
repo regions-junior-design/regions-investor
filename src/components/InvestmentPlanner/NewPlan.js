@@ -123,10 +123,10 @@ function NewPlan(props) {
         <Grid item xs={12}>
             <Typography variant="h3">Step 3: Choose The Risk</Typography>
             <InfoIcon></InfoIcon>
-            <Typography variant="body">Choose how you want to invest: conservatively, moderately, or aggressively. Your decision will determine which your specific bond/stock 
+            <Typography variant="body">Choose how you want to invest: conservatively, moderately, or aggressively. Your decision will determine your specific bond/stock 
             bundle.</Typography>
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={3}>
         <FormControl fullWidth>
             <InputLabel id="type-label">Risk Level</InputLabel>
             <Select
