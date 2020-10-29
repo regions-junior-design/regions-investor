@@ -143,7 +143,12 @@ class Firebase {
   //indi
 
   dataIndi = (userId,uid) =>this.db.ref(`accounts/${userId}/${uid}`).currentAccountValue
+
+  // plans
   
+  plan = (userId, uid) => this.db.ref(`plans/${userId}/${uid}`);
+
+  plans = (userId) => this.db.ref(`plans/${userId}/`);
 
 
 }
