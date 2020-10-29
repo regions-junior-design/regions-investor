@@ -17,6 +17,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import { Card } from '@material-ui/core';
+import {theme} from '../../MaterialUITheme';
 
 const primary = "#88bb00";
 const useStyles = makeStyles((theme) => ({
@@ -49,7 +50,7 @@ export default function SecuritiesGrid() {
   const classes = useStyles();
   const [spacing, setSpacing] = React.useState(2);
   const [open, setOpen] = React.useState(false);
-  const [color, setColor] = primary
+  const [variant, setVariant] = React.useState("outlined");
 
   const handleClose = () => {
     setOpen(false);
@@ -60,7 +61,15 @@ const handleClickOpen = () => {
 };
 
 const handleClickAdd = () => {
-    console.log(1)
+    console.log(1);
+    if (document.getElementById("add").innerHTML == "Remove") {
+      document.getElementById("add").innerHTML = "Add";
+      setVariant("outlined");
+    } else {
+      document.getElementById("add").innerHTML = "Remove";
+      setVariant("contained");
+    }
+
 };
 
   //this line with {0,1,2,3} is where you pass in how many cards in the grind to create and then a value to map this to
@@ -70,7 +79,9 @@ const handleClickAdd = () => {
       <Grid container justify="flex-start" spacing={spacing}>
         {[0,1,2,3,4].map((value) => (
           <Grid key={value} item>
-            <Card className={classes.paper} elevation={3} backgroundColor="#88bb00">
+            <Card className={classes.paper} elevation={3} style={{
+              backgroundColor: "#88bb00"
+            }}>
         <Grid container spacing={2}>
           <Grid item xs={12} sm container>
             <Grid item xs container direction="row" spacing={2}>
@@ -85,7 +96,7 @@ const handleClickAdd = () => {
                   Top Holdings: Facebook, Twitter, Tencent, Snap
                 </Typography>
                 <Grid justify="flex-end" direction="column">
-              <Button variant="outlined" color="primary" size="small" className={classes.margin} onClick={handleClickAdd}>
+              <Button id="add" variant={variant} color="primary" size="small" className={classes.margin} onClick={handleClickAdd}>
                     Add
             </Button>
             <Button variant="outlined" color="primary" size="small" className={classes.margin} onClick={handleClickOpen}>
