@@ -280,7 +280,7 @@ function Platform(props) {
                 </List>
             </Drawer>
         {num === 0 ? (
-            <Dashboard></Dashboard>
+            <Dashboard authUser={props.authUser} firebase={props.firebase}></Dashboard>
         ) : (
             <div></div>
         )
