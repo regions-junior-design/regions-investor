@@ -58,6 +58,11 @@ function NewPlan(props) {
       setSelect(selected);
     };
 
+    const passback = (vals) => {
+
+
+    };
+
     const onCreate = () => {
       console.log(ptype)
       props.firebase.plans(props.authUser.uid).push({
