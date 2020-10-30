@@ -33,7 +33,7 @@ function NewPlan(props) {
     console.log(props)
     const [name, setName] = useState("");
     const [desc,setDesc] = useState("");
-    const [type,setType] = useState("");
+    const [ptype,setType] = useState("");
     const [risk, setRisk] = useState("");
     const [id, setId] = useState(0);
     const [mutualFundNum, setMutualFundNum] = useState(0);
@@ -56,16 +56,18 @@ function NewPlan(props) {
     };
 
     const onCreate = () => {
+      console.log(ptype)
       props.firebase.plans(props.authUser.uid).push({
         name: name,
         desc: desc,
         userId: props.authUser.uid,
+        type: ptype,
         risk: risk,
         createdAt: props.firebase.serverValue.TIMESTAMP,
       });  
       props.back()
     };
-    
+
   return (
     <React.Fragment>
       <AuthUserContext.Consumer>
@@ -110,8 +112,8 @@ function NewPlan(props) {
                 <Select
                 labelId="type-label"
                 id="type"
-                onChange={(e) => setType(e.target.value)}
-                onChange={(e) => console.log(e.target.value)}
+                onChange={(e) => {setType(e.target.value)}}
+                // onChange={(e) => console.log(e.target.value)}
                 //onChange={(e) => setId(-(id))}
                 style={{
                   width: 100,

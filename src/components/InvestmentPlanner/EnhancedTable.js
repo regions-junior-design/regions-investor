@@ -311,10 +311,10 @@ const EnhancedTable = ({
                       <TableCell component="th" id={labelId} scope="row" padding="none">
                         {row.name}
                       </TableCell>
-                      <TableCell align="right">{row.amountUsed}</TableCell>
-                      <TableCell align="right">{row.planType}</TableCell>
-                      <TableCell align="right">{row.investmentStyle}</TableCell>
-                      <TableCell align="right">{row.date}</TableCell>
+                      <TableCell align="right">{row.used}</TableCell>
+                      <TableCell align="right">{row.type}</TableCell>
+                      <TableCell align="right">{row.risk}</TableCell>
+                      <TableCell align="right">{row.createdAt}</TableCell>
                     </TableRow>
                   );
                 })}
