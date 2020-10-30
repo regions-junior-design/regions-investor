@@ -28,6 +28,7 @@ import EditGoalPage from '../SubAccounts/EditGoalPage';
 import EditIcon from "@material-ui/icons/Edit";
 import FullScreenDialog from './FullScreenDialog';
 import StrategyButton from './StrategyButton';
+import Box from '@material-ui/core/Box';
 
 function NewPlan(props) {
     console.log(props)
@@ -35,11 +36,13 @@ function NewPlan(props) {
     const [desc,setDesc] = useState("");
     const [ptype,setType] = useState("");
     const [risk, setRisk] = useState("");
+    const [holdings, setHoldings] = useState(["AAPL", "SPY"]);
     const [id, setId] = useState(0);
     const [mutualFundNum, setMutualFundNum] = useState(0);
     const [chosen, setChosen] = useState(false);
     const [open, setOpen] = React.useState(false);
     const [select, setSelect] = useState([]);
+    const [cv, setCv] = useState("");
 
     const handleClickOpen = () => {
       if (chosen) setOpen(true);
@@ -63,6 +66,7 @@ function NewPlan(props) {
         userId: props.authUser.uid,
         type: ptype,
         risk: risk,
+        holdings: holdings,
         createdAt: props.firebase.serverValue.TIMESTAMP,
       });  
       props.back()
@@ -131,7 +135,35 @@ function NewPlan(props) {
                 <Typography variant="body">What are my options? The buttons below will show you options of how you can invest your money.</Typography>
             </Grid>
             <Grid item xs={12}>
-            <StrategyButton strategy={id}></StrategyButton>
+              <div style={{ width: '100%' }}>
+                {holdings.map((v) => {
+                  // console.log(v);
+                  return(
+                    <Box component="div" display="inline" p={1} m={1} bgcolor="grey">
+                      {v}
+                    </Box>
+                  );
+                })}
+              </div>
+
+              <TextField
+                  id="added"
+                  name="Add Security"
+                  onChange={(e) => setCv(e.target.value.toUpperCase())}
+                  label="TICKER"
+                  value={cv}
+                  onKeyPress={(e) => {
+                    console.log(`Pressed keyCode ${e.key}`);
+                    if (e.key === 'Enter') {
+                      holdings.push(e.target.value);
+                      setHoldings(holdings);
+                      console.log(holdings);
+                      setCv("");
+                      // e.preventDefault();
+                    }
+                  }}
+                />
+            {/* <StrategyButton strategy={id} passBack={passback}></StrategyButton> */}
             </Grid>
             {/* <Grid item xs={12} sm={4} >
                 <FullScreenDialog label="Bonds" title="Bonds"></FullScreenDialog>
