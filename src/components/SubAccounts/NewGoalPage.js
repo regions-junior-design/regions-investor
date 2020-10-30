@@ -52,7 +52,7 @@ function NewGoalPage(props) {
             required
             id="goal"
             name="goal"
-            label="Goal Ammount"
+            label="Goal Amount"
             onChange={(e) => setGoal(parseInt(e.target.value))}
             fullWidth
             type="number"
