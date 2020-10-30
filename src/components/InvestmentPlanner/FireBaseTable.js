@@ -49,7 +49,7 @@ class ETable extends Component {
       this.setState({ loading: true });
   
       this.props.firebase
-        .mainAccounts(this.props.authUser.uid)
+        .plans(this.props.authUser.uid)
         .on('value', snapshot => {
           const messageObject = snapshot.val();
   
@@ -70,7 +70,7 @@ class ETable extends Component {
     };
   
     componentWillUnmount() {
-      this.props.firebase.mainAccounts(this.props.authUser.uid).off();
+      this.props.firebase.plans(this.props.authUser.uid).off();
     }
   
     // onCreateMessage = (event, authUser) => {
@@ -101,7 +101,7 @@ class ETable extends Component {
       const {selected} = this.state;
       selected.forEach( v => { 
         console.log(v)
-        this.props.firebase.mainAccount(this.props.authUser.uid, v).once('value').then( a => {
+        this.props.firebase.plan(this.props.authUser.uid, v).once('value').then( a => {
           let av = parseInt(a.val()['currentAccountValue']);
           // console.log(cv);
           // this.props.firebase.holding(this.props.authUser.uid).once('value').then( h => {
@@ -110,7 +110,7 @@ class ETable extends Component {
           //   let newVal = hv + av;
           //   this.props.firebase.holding(this.props.authUser.uid).update({value: newVal});
           // });
-          this.props.firebase.mainAccount(this.props.authUser.uid, v).remove();
+          this.props.firebase.plan(this.props.authUser.uid, v).remove();
         });
       })
     };

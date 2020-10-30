@@ -377,7 +377,11 @@ function Platform(props) {
           <div>
             <main className={classes.content}>
               <div className={classes.appBarSpacer} />
-                <InvestmentPlanner></InvestmentPlanner>
+                <AuthUserContext.Consumer>
+                  {authUser => (
+                    <InvestmentPlanner authUser={authUser}/>
+                  )}
+                </AuthUserContext.Consumer>
             </main>
           </div>
         ) : (

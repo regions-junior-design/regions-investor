@@ -2,9 +2,9 @@ import React from 'react';
 import FullScreenDialog from './FullScreenDialog';
 import Grid from '@material-ui/core/Grid';
 
-export default function StrategyButton({strategy}) {
-    console.log({strategy});
-    if (strategy == 1) {
+export default function StrategyButton(props) {
+    console.log(props.strategy);
+    if (props.strategy == 1) {
         return(
             <div>
                 <Grid item xs={12} sm={4}>

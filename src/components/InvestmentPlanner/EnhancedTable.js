@@ -49,7 +49,7 @@ function stableSort(array, comparator) {
 
 const headCells = [
   { id: 'name', numeric: false, disablePadding: true, label: 'Investment Plan Name' },
-  { id: 'amountUsed', numeric: true, disablePadding: false, label: 'Active Goals Using Plan' },
+  // { id: 'amountUsed', numeric: true, disablePadding: false, label: 'Active Goals Using Plan' },
   { id: 'planType', numeric: true, disablePadding: false, label: 'Plan Type' },
   { id: 'investmentStyle', numeric: false, disablePadding: false, label: 'Investment Style' },
   { id: 'date', numeric: false, disablePadding: false, label: 'Date Created' },
@@ -311,10 +311,10 @@ const EnhancedTable = ({
                       <TableCell component="th" id={labelId} scope="row" padding="none">
                         {row.name}
                       </TableCell>
-                      <TableCell align="right">{row.amountUsed}</TableCell>
-                      <TableCell align="right">{row.planType}</TableCell>
-                      <TableCell align="right">{row.investmentStyle}</TableCell>
-                      <TableCell align="right">{row.date}</TableCell>
+                      {/* <TableCell align="right">{row.used}</TableCell> */}
+                      <TableCell align="right">{row.type}</TableCell>
+                      <TableCell align="right">{row.risk}</TableCell>
+                      <TableCell align="right">{row.createdAt}</TableCell>
                     </TableRow>
                   );
                 })}
