@@ -14,7 +14,10 @@ export function GenClient(props) {
     useEffect(() => {
       fetch(url, {
         method: payload,
-        headers: headers,
+        headers: {
+          "x-rapidapi-host": "yahoo-finance15.p.rapidapi.com",
+          "x-rapidapi-key": "126bfc9c2dmsh8f0b0ab05eac01fp1a710bjsna04479d10daf"
+        },
       }
         )
         .then(res => res.json())
