@@ -9,7 +9,7 @@ export function GenClient(props) {
 
     const payload = props.payload
     const url = props.url;
-    const headers = props.headers;
+    //const headers = props.headers;
   
     useEffect(() => {
       fetch(url, {
