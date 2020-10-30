@@ -63,7 +63,9 @@ function NewPlan(props) {
         risk: risk,
         createdAt: props.firebase.serverValue.TIMESTAMP,
       });  
+      props.back()
     };
+    
   return (
     <React.Fragment>
       <AuthUserContext.Consumer>

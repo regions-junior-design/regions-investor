@@ -239,7 +239,7 @@ const useStyles = makeStyles((theme) => ({
                         backgroundColor: "#528400",
                         color: 'white',  
                     }}>Cancel</Button>
-                    <NewPlan authUser={authUser} back={handleMain}/>
+                    <NewPlan authUser={authUser} back={handleMain} back={handleMain}/>
                     </div>
                 )}
             </AuthUserContext.Consumer>
