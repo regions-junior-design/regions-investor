@@ -7,7 +7,7 @@ export function GenClient(props) {
     const [isLoaded, setIsLoaded] = useState(false);
     const [response, setResponse] = useState([]);
 
-    const payload = props.payload;
+    //const payload = props.payload;
     const ticker = props.ticker;
     const interval = props.interval;
     const url = "https://yahoo-finance15.p.rapidapi.com/api/yahoo/hi/history/" + {ticker} + "/" + {interval};
@@ -16,7 +16,7 @@ export function GenClient(props) {
   
     useEffect(() => {
       fetch(url, {
-        method: payload,
+        method: 'GET',
         headers: {
           "x-rapidapi-host": "yahoo-finance15.p.rapidapi.com",
           "x-rapidapi-key": "126bfc9c2dmsh8f0b0ab05eac01fp1a710bjsna04479d10daf"
