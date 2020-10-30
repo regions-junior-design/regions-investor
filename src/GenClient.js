@@ -8,8 +8,11 @@ export function GenClient(props) {
     const [response, setResponse] = useState([]);
 
     const payload = props.payload;
-    const url = url
-    //const headers = props.headers;
+    const ticker = props.ticker;
+    const interval = props.interval;
+    const url = "https://yahoo-finance15.p.rapidapi.com/api/yahoo/hi/history/" + {ticker} + "/" + {interval};
+
+   
   
     useEffect(() => {
       fetch(url, {
