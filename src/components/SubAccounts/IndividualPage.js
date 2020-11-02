@@ -11,43 +11,74 @@ import FormControl from '@material-ui/core/FormControl';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 
-    // First Pie Chart data
-    const data1 = {
-        labels: [
-            'GOOG',
-            'SBUX',
-            'EFX'
+// First Pie Chart data
+const data1 = {
+    labels: [
+        'GOOG',
+        'SBUX',
+        'EFX'
+    ],
+    datasets: [{
+        data: [30, 50, 20],
+        backgroundColor: [
+        '#47c3d4',
+        '#cc4e00',
+        '#ffc425'
         ],
-        datasets: [{
-            data: [30, 50, 20],
-            backgroundColor: [
-            '#47c3d4',
-            '#cc4e00',
-            '#ffc425'
-            ],
-            hoverBackgroundColor: [
-            '#47c3d4',
-            '#cc4e00',
-            '#ffc425'
-            ]
-        }]
+        hoverBackgroundColor: [
+        '#47c3d4',
+        '#cc4e00',
+        '#ffc425'
+        ]
+    }]
+};
+
+// First Pie Chart Options
+const options1 = {
+    legend: {
+        position: 'bottom',
+        labels: {
+            fontSize: 20
+        }
+    }, 
+    title: {
+        display: true,
+        position: 'top',
+        fontSize: 24,
+        text: 'Distribution of funds'
+    }
+}
+
+function getPrice(ticker) {
+    var myHeaders = new Headers();
+    myHeaders.append(
+        "x-rapidapi-host",
+        "apidojo-yahoo-finance-v1.p.rapidapi.com"
+    );
+    myHeaders.append(
+        "x-rapidapi-key",
+        "126bfc9c2dmsh8f0b0ab05eac01fp1a710bjsna04479d10daf"
+    );
+
+    var requestOptions = {
+        method: "GET",
+        headers: myHeaders,
+        redirect: "follow",
     };
 
-  // First Pie Chart Options
-  const options1 = {
-      legend: {
-          position: 'bottom',
-          labels: {
-              fontSize: 20
-          }
-      }, 
-      title: {
-          display: true,
-          position: 'top',
-          fontSize: 24,
-          text: 'Distribution of funds'
-      }
-  }
+    return fetch(
+        `https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/v2/get-quotes?symbols=${ticker}&region=US`,
+        requestOptions
+    )
+        .then((response) => response.json())
+        .then(
+            (result) =>
+                (result.quoteResponse.result[0].bid +
+                    result.quoteResponse.result[0].ask) /
+                2
+        )
+        .catch((error) => console.log("error", error));
+}
 
 
 function IndividualPage(props) {
@@ -108,16 +139,20 @@ function IndividualPage(props) {
         updates['planApplied'] = plan;
         var ls = [];
         let ammountPerTicker = currentAccValue/plan.value.holdings.length;
-        for (var ticker of plan.value.holdings) {
+        const requests = plan.value.holdings.map((ticker) => {
             // console.log(ticker);
-            //TODO lookup ticker 
-            // do calculations based on even distribution of tickers in account by overall value
-            // to calcutate num of shares
-            ls.push({ticker: ticker, purchasePrice: 10, numShares: 20})
+            return getPrice(ticker).then((price) => {
+                // console.log(ticker, price);
+                let num = ammountPerTicker/price;
+                ls.push({ticker: ticker, purchasePrice: price, numShares: num})
+            }); 
+        });
 
-        }
-        updates['holdings'] = ls;
-        props.firebase.mainAccount(props.authUser.uid, props.selected[0]).update(updates);
+        Promise.all(requests).then(() => {
+            updates['holdings'] = ls;
+            console.log(ls);
+            props.firebase.mainAccount(props.authUser.uid, props.selected[0]).update(updates);
+        });
       }
 
     //   const checkReady = () => {
