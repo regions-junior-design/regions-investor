@@ -52,12 +52,14 @@ import Select from '@material-ui/core/Select';
 
 function IndividualPage(props) {
 
+    const [currAcc, setCurrAcc] = useState({})
     const [currentAccValue, setcurrentAccValue ] = useState(0)
     const [goal, setGoal ] = useState(0)
     
-    const [plan,setPlan] = useState({});
+    const [plan,setPlan] = useState({empty: true});
     const [plans,setPlans] = useState([]);
     const [loaded,setLoaded] = useState(false);
+    const [ready,setReady] = useState(true);
 
     // console.log(props);
 
@@ -84,6 +86,7 @@ function IndividualPage(props) {
             const accountObject = snapshot.val();
             console.log("accountOBject")
             console.log(accountObject)
+            setCurrAcc(accountObject);
             setcurrentAccValue(accountObject.currentAccountValue)
             setGoal(accountObject.goalAmount)
             
@@ -96,6 +99,35 @@ function IndividualPage(props) {
       useEffect(() => { 
           onListenForSubAccounts();
       }, [])
+
+      const handleApply = (e) => {
+        console.log(plan);
+        console.log(currAcc);
+
+        var updates = {};
+        updates['planApplied'] = plan;
+        var ls = [];
+        let ammountPerTicker = currentAccValue/plan.value.holdings.length;
+        for (var ticker of plan.value.holdings) {
+            // console.log(ticker);
+            //TODO lookup ticker 
+            // do calculations based on even distribution of tickers in account by overall value
+            // to calcutate num of shares
+            ls.push({ticker: ticker, purchasePrice: 10, numShares: 20})
+
+        }
+        updates['holdings'] = ls;
+        props.firebase.mainAccount(props.authUser.uid, props.selected[0]).update(updates);
+      }
+
+    //   const checkReady = () => {
+    //     if (plan.empty) {
+    //         setReady(false);
+    //     }
+    //     else {
+    //         setReady(true);
+    //     };
+    //   }
 
 
     return(
@@ -145,7 +177,8 @@ function IndividualPage(props) {
                             labelId="type-label"
                             id="type"
                             onChange={(e) => {
-                                setPlan(e.target.value)
+                                setPlan(plans[e.target.value]);
+                                // checkReady();
                             }}
                             >
                             {plans.map((item, i) => 
@@ -164,7 +197,7 @@ function IndividualPage(props) {
                                     color: "white",
                                 }}
                                 onClick={handleApply}
-                                // disabled={}
+                                // disabled={ready}
                             >Apply Plan</Button>
                         </FormControl>
                         
