@@ -5,6 +5,11 @@ import {Typography, Button } from '@material-ui/core';
 import { AuthUserContext } from '../Session';
 import Progress from '../Dashboard/Progress';
 import PieCharts from '../Dashboard/PieCharts';
+import InputLabel from '@material-ui/core/InputLabel';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import FormControl from '@material-ui/core/FormControl';
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
 
     // First Pie Chart data
     const data1 = {
@@ -111,6 +116,39 @@ function IndividualPage(props) {
                     }}>
                         <Progress num="60"></Progress>
                     </Grid>
+
+                    <Grid item>
+                        <FormControl>
+                            <InputLabel id="type-label">Select Plan</InputLabel>
+                            <Select
+                            labelId="type-label"
+                            id="type"
+                            onChange={(e) => {
+                                setPlan(e.target.value)
+                            }}
+                            >
+                            {plans.map((item, i) => 
+                                // console.log(item, i);
+                                <MenuItem value={i}>{item.value.name}</MenuItem>
+                            )}
+                            </Select>
+                            <br></br>
+                            <Button
+                                variant="contained"
+                                className="tooltip"
+                                style={{
+                                    marginBottom: 20,
+                                    backgroundColor:
+                                        "#528400",
+                                    color: "white",
+                                }}
+                                onClick={handleApply}
+                                // disabled={}
+                            >Apply Plan</Button>
+                        </FormControl>
+                        
+                    </Grid>
+                    
 
                     <Grid item xs={12} style={{
                         marginTop: 10,
