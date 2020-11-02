@@ -1,16 +1,15 @@
+import { Typography } from "@material-ui/core";
 import Container from "@material-ui/core/Container";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles, ThemeProvider } from "@material-ui/core/styles";
-import React, { useState, useEffect } from "react";
+import InfoIcon from "@material-ui/icons/Info";
+import { schemeCategory10 } from "d3-scale-chromatic";
+import React, { useEffect, useState } from "react";
 import { theme } from "../../MaterialUITheme";
 import Chart from "./Chart";
-import RecentTransactions from "./RecentTransactions";
 import PieCharts from "./PieCharts";
-import { schemeCategory10 } from "d3-scale-chromatic";
 import Progress from "./Progress";
-import InfoIcon from "@material-ui/icons/Info";
-import { Typography } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
     drawerPaperClose: {
@@ -131,7 +130,9 @@ export default function Dashboard(props) {
                             const data =
                                 (v.currentAccountValue / v.goalAmount) * 100
                                     ? Math.min(
-                                          (v.currentAccountValue / v.goalAmount) * 100,
+                                          (v.currentAccountValue /
+                                              v.goalAmount) *
+                                              100,
                                           100
                                       )
                                     : 100;
@@ -266,17 +267,14 @@ export default function Dashboard(props) {
                                             individual subaccount goals.
                                         </Typography>
                                     </Grid>
-                                    </Grid>
+                                </Grid>
 
-                                    <Grid container sm={12}>
+                                <Grid container sm={12}>
                                     {progressData.map((v) => {
                                         const name = v.name;
                                         return (
                                             <Grid item sm={6}>
-                                                <div
-                                                    style={{
-                                                    }}
-                                                >
+                                                <div style={{}}>
                                                     <Typography
                                                         variant="h4"
                                                         style={{
@@ -292,10 +290,7 @@ export default function Dashboard(props) {
                                             </Grid>
                                         );
                                     })}
-
-                                    </Grid>
-                                    
-
+                                </Grid>
                             </div>
                         </Grid>
                     </Grid>

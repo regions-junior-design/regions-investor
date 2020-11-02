@@ -82,7 +82,6 @@ function getPrice(ticker) {
 
 
 function IndividualPage(props) {
-
     const [currAcc, setCurrAcc] = useState({})
     const [currentAccValue, setcurrentAccValue ] = useState(0)
     const [goal, setGoal ] = useState(0)
@@ -110,21 +109,18 @@ function IndividualPage(props) {
     }
 
     const onListenForSubAccounts = () => { 
-
         props.firebase
-          .mainAccount(props.authUser.uid, props.selected[0] )
-          .on('value', snapshot => {
+        .mainAccount(props.authUser.uid, props.selected[0] )
+        .on('value', snapshot => {
             const accountObject = snapshot.val();
             console.log("accountOBject")
             console.log(accountObject)
             setCurrAcc(accountObject);
             setcurrentAccValue(accountObject.currentAccountValue)
             setGoal(accountObject.goalAmount)
-            
-          });
-    
-    
-        }
+                
+        });
+    }
     
     
       useEffect(() => { 
@@ -165,46 +161,72 @@ function IndividualPage(props) {
     //   }
 
 
-    return(
-      <div>
-        <AuthUserContext.Consumer>
-            {authUser   => (
-            <div>
-                <Grid container spacing={3} alignItems='center'>
+    useEffect(() => {
+        onListenForSubAccounts();
+    }, []);
 
-                    <Grid item xs={12} style={{
-                        marginLeft: 500,
-                    }}>
-                        <Typography variant='h1'></Typography>
-                    </Grid>
+    return (
+        <div>
+            <AuthUserContext.Consumer>
+                {(authUser) => (
+                    <div>
+                        <Grid container spacing={3} alignItems="center">
+                            <Grid
+                                item
+                                xs={12}
+                                style={{
+                                    marginLeft: 500,
+                                }}
+                            >
+                                <Typography variant="h1"></Typography>
+                            </Grid>
 
-                    <Grid item xs={12} style={{
-                        marginLeft: 490,
-                        marginTop: 10
-                    }}>
-                        <Typography variant='h3' style={{
-                            borderStyle: 'solid', 
-                            borderColor: "#88bb00",
-                            borderWidth: 10,
-                            padding: 10,
-                            width: 460
-                        }}>Total Subaccount Value: $ { currentAccValue ? currentAccValue : 0 }  </Typography>
-                    </Grid>
+                            <Grid
+                                item
+                                xs={12}
+                                style={{
+                                    marginLeft: 490,
+                                    marginTop: 10,
+                                }}
+                            >
+                                <Typography
+                                    variant="h3"
+                                    style={{
+                                        borderStyle: "solid",
+                                        borderColor: "#88bb00",
+                                        borderWidth: 10,
+                                        padding: 10,
+                                        width: 460,
+                                    }}
+                                >
+                                    Total Subaccount Value: ${" "}
+                                    {currentAccValue ? currentAccValue : 0}{" "}
+                                </Typography>
+                            </Grid>
 
-                    <Grid item xs={12} style={{
-                        marginLeft: 610,
-                        marginTop: -10
-                    }}>
-                        <Typography variant='h4'>Progress to Goal: $ {goal ? goal : 0}</Typography>
-                    </Grid>
+                            <Grid
+                                item
+                                xs={12}
+                                style={{
+                                    marginLeft: 610,
+                                    marginTop: -10,
+                                }}
+                            >
+                                <Typography variant="h4">
+                                    Progress to Goal: $ {goal ? goal : 0}
+                                </Typography>
+                            </Grid>
 
-                    <Grid item xs={12} style={{
-                        marginLeft: 470,
-                        marginTop: -10
-                    }}>
-                        <Progress num="60"></Progress>
-                    </Grid>
-
+                            <Grid
+                                item
+                                xs={12}
+                                style={{
+                                    marginLeft: 470,
+                                    marginTop: -10,
+                                }}
+                            >
+                                <Progress num="60"></Progress>
+                            </Grid>
                     <Grid item>
                         <FormControl>
                             <InputLabel id="type-label">Select Plan</InputLabel>
@@ -255,7 +277,7 @@ function IndividualPage(props) {
             )}
             </AuthUserContext.Consumer>
         </div>
-    )
-  }
+    );
+}
 
-  export default withFirebase(IndividualPage);
+export default withFirebase(IndividualPage);

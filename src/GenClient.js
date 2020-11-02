@@ -7,14 +7,20 @@ export function GenClient(props) {
     const [isLoaded, setIsLoaded] = useState(false);
     const [response, setResponse] = useState([]);
 
-    const payload = props.payload
-    const url = props.url;
-    const headers = props.headers;
+    //const payload = props.payload;
+    const ticker = props.ticker;
+    const interval = props.interval;
+    const url = "https://yahoo-finance15.p.rapidapi.com/api/yahoo/hi/history/" + {ticker} + "/" + {interval};
+
+   
   
     useEffect(() => {
       fetch(url, {
-        method: payload,
-        headers: headers,
+        method: 'GET',
+        headers: {
+          "x-rapidapi-host": "yahoo-finance15.p.rapidapi.com",
+          "x-rapidapi-key": "126bfc9c2dmsh8f0b0ab05eac01fp1a710bjsna04479d10daf"
+        },
       }
         )
         .then(res => res.json())
@@ -34,7 +40,7 @@ export function GenClient(props) {
     if (error) {
       return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
-      return <div>Loading...</div>;
+      return <div>Data is loading...</div>;
     } else {
       return (
         <ul>
