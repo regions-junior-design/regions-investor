@@ -54,6 +54,27 @@ function IndividualPage(props) {
 
     const [currentAccValue, setcurrentAccValue ] = useState(0)
     const [goal, setGoal ] = useState(0)
+    
+    const [plan,setPlan] = useState({});
+    const [plans,setPlans] = useState([]);
+    const [loaded,setLoaded] = useState(false);
+
+    // console.log(props);
+
+    if(!loaded) {
+        let ls = [];
+        props.firebase.plans(props.authUser.uid).once('value').then( v => {
+            let p = v.val();
+            console.log(p);
+            let ls = []
+            for(var value in p){
+                ls.push ({value: p[value], planUID: value})
+            }
+            setPlans(ls);
+            // console.log(ls);
+        })
+        setLoaded(true);
+    }
 
     const onListenForSubAccounts = () => { 
 
