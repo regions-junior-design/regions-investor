@@ -10,6 +10,7 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import FormControl from '@material-ui/core/FormControl';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
+import TickerTable from './TickerTable';
 
 // First Pie Chart data
 const data1 = {
@@ -90,6 +91,8 @@ function IndividualPage(props) {
     const [plans,setPlans] = useState([]);
     const [loaded,setLoaded] = useState(false);
     const [ready,setReady] = useState(true);
+
+    const [variant, setVariant] = useState("contained");
 
     // console.log(props);
 
@@ -187,6 +190,7 @@ function IndividualPage(props) {
                                 style={{
                                     marginLeft: 490,
                                     marginTop: 10,
+                                    marginBottom: 20
                                 }}
                             >
                                 <Typography
@@ -199,8 +203,7 @@ function IndividualPage(props) {
                                         width: 460,
                                     }}
                                 >
-                                    Total Subaccount Value: ${" "}
-                                    {currentAccValue ? currentAccValue : 0}{" "}
+                                    Total Subaccount Value: ${goal ? goal : 0}
                                 </Typography>
                             </Grid>
 
@@ -213,7 +216,8 @@ function IndividualPage(props) {
                                 }}
                             >
                                 <Typography variant="h4">
-                                    Progress to Goal: $ {goal ? goal : 0}
+                                    Progress to Goal: $ {" "}
+                                    {currentAccValue ? currentAccValue : 0}{" "}
                                 </Typography>
                             </Grid>
 
@@ -227,8 +231,23 @@ function IndividualPage(props) {
                             >
                                 <Progress num="60"></Progress>
                             </Grid>
-                    <Grid item>
-                        <FormControl>
+                    <Grid item style={{
+                        marginLeft: 380, 
+                        marginTop: 40,
+                        borderStyle: "solid",
+                        borderColor: "#88bb00",
+                        borderWidth: 3,
+                        width: 700,
+                        height: 200
+                    }}>
+                        <Typography variant="h4" style={{
+                            marginLeft: 140
+                        }}
+                        >
+                            Pick an investment plan to apply to this goal.</Typography>
+                        <FormControl style={{
+                            marginLeft: 270
+                        }}>
                             <InputLabel id="type-label">Select Plan</InputLabel>
                             <Select
                             labelId="type-label"
@@ -259,7 +278,6 @@ function IndividualPage(props) {
                         </FormControl>
                         
                     </Grid>
-                    
 
                     <Grid item xs={12} style={{
                         marginTop: 10,
@@ -272,6 +290,10 @@ function IndividualPage(props) {
                         <PieCharts data={data1} options={options1}></PieCharts>
                         </div>
                     </Grid>
+                </Grid>
+
+                <Grid>
+                    
                 </Grid>
                 </div>
             )}
