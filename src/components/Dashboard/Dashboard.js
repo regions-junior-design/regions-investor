@@ -66,36 +66,10 @@ export default function Dashboard(props) {
             display: true,
             position: "top",
             fontSize: 24,
-            text: "Subaccount distribution",
+            text: "Goal distribution",
         },
     };
 
-    // Second Pie Chart Data
-    const data2 = {
-        labels: ["New Car", "Europe Vacation", "Wedding"],
-        datasets: [
-            {
-                data: [200, 150, 100],
-                backgroundColor: ["#47c3d4", "#cc4e00", "#ffc425"],
-                hoverBackgroundColor: ["#47c3d4", "#cc4e00", "#ffc425"],
-            },
-        ],
-    };
-
-    const options2 = {
-        legend: {
-            position: "bottom",
-            labels: {
-                fontSize: 20,
-            },
-        },
-        title: {
-            display: true,
-            position: "top",
-            fontSize: 24,
-            text: "Fund distribution",
-        },
-    };
     useEffect(() => {
         props.firebase
             .mainAccounts(props.authUser.uid)
@@ -187,16 +161,16 @@ export default function Dashboard(props) {
                                 <Typography
                                     variant="h2"
                                     style={{
-                                        marginLeft: 400,
+                                        marginLeft: 460,
                                         marginBottom: 20,
                                         marginTop: 30,
                                         backgroundColor: "#528400",
                                         padding: 10,
-                                        width: 410,
+                                        width: 290,
                                         color: "white",
                                     }}
                                 >
-                                    Subaccount Breakdown
+                                    Goal Breakdown
                                 </Typography>
                                 <Grid
                                     container
@@ -213,7 +187,7 @@ export default function Dashboard(props) {
                                             style={{
                                                 height: 800,
                                                 width: 800,
-                                                marginRight: "80px",
+                                                marginLeft: "250px"
                                             }}
                                         >
                                             <PieCharts
@@ -223,30 +197,17 @@ export default function Dashboard(props) {
                                         </div>
                                     </Grid>
 
-                                    <Grid item sm={6}>
-                                        <div
-                                            id="chart-2"
-                                            style={{
-                                                height: 800,
-                                                width: 800,
-                                            }}
-                                        >
-                                            <PieCharts
-                                                data={data2}
-                                                options={options2}
-                                            />
-                                        </div>
-                                    </Grid>
-
-                                    <Grid item xs={12}>
+                                    <Grid item xs={12} style={{
+                                        marginLeft: 50
+                                    }}>
                                         <Typography
                                             variant="h2"
                                             style={{
                                                 marginTop: -250,
-                                                marginLeft: 350,
+                                                marginLeft: 370,
                                             }}
                                         >
-                                            Subaccount Progress Breakdown
+                                            Goal Progress Breakdown
                                         </Typography>
                                         <Typography
                                             variant="h6"
@@ -264,17 +225,23 @@ export default function Dashboard(props) {
                                             ></InfoIcon>
                                             The progress bars below show you
                                             your progress towards your
-                                            individual subaccount goals.
+                                            individual goals.
                                         </Typography>
                                     </Grid>
                                 </Grid>
 
-                                <Grid container sm={12}>
+                                <Grid container sm={12} style={{
+                                    marginBottom: 200,
+                                    marginTop: -130,
+                                    marginLeft: 50
+                                }}>
                                     {progressData.map((v) => {
                                         const name = v.name;
                                         return (
                                             <Grid item sm={6}>
-                                                <div style={{}}>
+                                                <div style={{
+                                                    marginBottom: 50
+                                                }}>
                                                     <Typography
                                                         variant="h4"
                                                         style={{
