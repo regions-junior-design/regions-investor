@@ -291,10 +291,10 @@ function IndividualPage(props) {
                         </div>
                     </Grid>
                 </Grid>
-
-                <Grid>
-                    
-                </Grid>
+{/* 
+                <Grid item xs={12}>
+                    <TickerTable></TickerTable>
+                </Grid> */}
                 </div>
             )}
             </AuthUserContext.Consumer>
