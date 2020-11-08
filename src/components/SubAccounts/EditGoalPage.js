@@ -61,7 +61,7 @@ function EditGoalPage(props) {
                         fullWidth
                     />
                 </Grid>
-                <Grid item xs={12} sm={6}>
+                {/* <Grid item xs={12} sm={6}>
                     <TextField
                         required
                         id="date"
@@ -70,8 +70,8 @@ function EditGoalPage(props) {
                         label=" New Goal Date"
                         fullWidth
                     />
-                </Grid>
-                <Grid item xs={12} sm={6}>
+                </Grid> */}
+                {/* <Grid item xs={12} sm={6}>
                     <FormControl fullWidth>
                         <InputLabel id="type-label">New Plan</InputLabel>
                         <Select
@@ -87,7 +87,7 @@ function EditGoalPage(props) {
                             <MenuItem value={"Aggresive"}>Aggresive</MenuItem>
                         </Select>
                     </FormControl>
-                </Grid>
+                </Grid> */}
                 <Grid item xs={12}>
                     <Button
                         type="button"
