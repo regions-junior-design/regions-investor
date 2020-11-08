@@ -203,7 +203,7 @@ function IndividualPage(props) {
                                         width: 460,
                                     }}
                                 >
-                                    Total Subaccount Value: ${goal ? goal : 0}
+                                    Desired Amount to Achieve Goal: ${goal ? goal : 0}
                                 </Typography>
                             </Grid>
 
