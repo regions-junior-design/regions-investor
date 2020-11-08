@@ -200,7 +200,8 @@ function IndividualPage(props) {
                                         borderColor: "#88bb00",
                                         borderWidth: 10,
                                         padding: 10,
-                                        width: 460,
+                                        width: 560,
+                                        marginLeft: -50
                                     }}
                                 >
                                     Desired Amount to Achieve Goal: ${goal ? goal : 0}
