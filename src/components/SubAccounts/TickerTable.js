@@ -48,11 +48,10 @@ function stableSort(array, comparator) {
 }
 
 const headCells = [
-  { id: 'name', numeric: false, disablePadding: true, label: 'Goal' },
-  { id: 'currentAccountValue', numeric: true, disablePadding: false, label: 'Current Account Value ($)' },
-  { id: 'goalAmount', numeric: true, disablePadding: false, label: 'Goal Amount ($)' },
-  { id: 'investmentStyle', numeric: false, disablePadding: false, label: 'Investment Strategy' },
-  { id: 'goalDate', numeric: false, disablePadding: false, label: 'Goal Date' },
+  { id: 'ticker', numeric: false, disablePadding: true, label: 'Ticker' },
+  { id: 'numShares', numeric: true, disablePadding: false, label: 'Number of Shares' },
+  { id: 'purchasePrice', numeric: true, disablePadding: false, label: 'Purchase Price' },
+  { id: 'currentPrice', numeric: false, disablePadding: false, label: 'Current Price' }
 ];
 
 function EnhancedTableHead(props) {
@@ -193,7 +192,7 @@ const TickerTable = ({
   authUser,
   rows,
   // onEditMessage,
-  onSelected,
+
 }) => {
   const classes = useStyles();
   const [order, setOrder] = React.useState('asc');
@@ -208,35 +207,6 @@ const TickerTable = ({
     const isAsc = orderBy === property && order === 'asc';
     setOrder(isAsc ? 'desc' : 'asc');
     setOrderBy(property);
-  };
-
-  const handleClick = (event, name) => {
-    const selectedIndex = selected.indexOf(name);
-    let newSelected = [];
-    console.log(selected)
-
-    if (selected.length <= 0) {
-      if (selectedIndex === -1) {
-        newSelected = newSelected.concat(selected, name);
-      } else if (selectedIndex === 0) {
-        newSelected = newSelected.concat(selected.slice(1));
-      } else if (selectedIndex === selected.length - 1) {
-        newSelected = newSelected.concat(selected.slice(0, -1));
-      } else if (selectedIndex > 0) {
-        newSelected = newSelected.concat(
-          selected.slice(0, selectedIndex),
-          selected.slice(selectedIndex + 1),
-        );
-      }
-    }
-    newSelected = newSelected.filter(v => rows.map(e => e.name).includes(v))
-    console.log(newSelected)
-    setSelected(newSelected);
-    if(newSelected.length > 0)
-    onSelected( [rows.find(element => element.name == newSelected[0]).uid] )
-    else
-    onSelected([])
-    console.log(rows)
   };
   
   useEffect(e => {
@@ -297,7 +267,7 @@ const TickerTable = ({
                   return (
                     <TableRow
                       hover
-                      onClick={(event) => handleClick(event, row.name)}
+
                       role="checkbox"
                       aria-checked={isItemSelected}
                       tabIndex={-1}
@@ -312,12 +282,13 @@ const TickerTable = ({
                       </TableCell>
                       {/* THIS IS WHERE YOU PUT ON CLICK FUNCTION */}
                       <TableCell component="th" id={labelId} scope="row" padding="none">
-                        {row.name}
+
+                        {row.ticker}
                       </TableCell>
-                      <TableCell align="right">{row.currentAccountValue}</TableCell>
-                      <TableCell align="right">{row.goalAmount}</TableCell>
-                      <TableCell align="right">{row.investmentStyle}</TableCell>
-                      <TableCell align="right">{row.goalDate}</TableCell>
+                      <TableCell align="right">{row.numShares}</TableCell>
+                      <TableCell align="right">{row.purchasePrice}</TableCell>
+                      <TableCell align="right">{row.currentPrice}</TableCell>
+
                     </TableRow>
                   );
                 })}
