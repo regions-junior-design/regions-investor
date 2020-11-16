@@ -9,6 +9,7 @@ import PieCharts from "../Dashboard/PieCharts";
 import Progress from "../Dashboard/Progress";
 import { withFirebase } from "../Firebase";
 import { AuthUserContext } from "../Session";
+import TickerTable from "./TickerTable"
 
 // First Pie Chart data
 const data1 = {
@@ -78,7 +79,8 @@ function IndividualPage(props) {
     const [plans, setPlans] = useState([]);
     const [loaded, setLoaded] = useState(false);
     const [ready, setReady] = useState(true);
-
+    const [table, setTable] = useState([]);
+    
     // console.log(props);
 
     if (!loaded) {
@@ -104,11 +106,24 @@ function IndividualPage(props) {
             .mainAccount(props.authUser.uid, props.selected[0])
             .on("value", (snapshot) => {
                 const accountObject = snapshot.val();
-                console.log("accountOBject");
-                console.log(accountObject);
                 setCurrAcc(accountObject);
                 setcurrentAccValue(accountObject.currentAccountValue);
                 setGoal(accountObject.goalAmount);
+                const holdings = accountObject.holdings || []
+                setTable(holdings);
+                const arrayWithCurrentPrice = holdings.map(
+                    (a) => ({ ...a, currentPrice: "N/A" })
+                );
+                setTable(arrayWithCurrentPrice);
+                arrayWithCurrentPrice.forEach((v, i) => {
+                    getPrice(v.ticker).then((price) => {
+                        setTable((tables) => {
+                            const data = tables.map((a) => ({ ...a }));
+                            data[i].currentPrice = price;
+                            return data;
+                        });
+                    });
+                });
             });
     };
 
@@ -117,17 +132,12 @@ function IndividualPage(props) {
     }, []);
 
     const handleApply = (e) => {
-        console.log(plan);
-        console.log(currAcc);
-
         var updates = {};
         updates["planApplied"] = plan;
         var ls = [];
         let ammountPerTicker = currentAccValue / plan.value.holdings.length;
         const requests = plan.value.holdings.map((ticker) => {
-            // console.log(ticker);
             return getPrice(ticker).then((price) => {
-                // console.log(ticker, price);
                 let num = ammountPerTicker / price;
                 ls.push({
                     ticker: ticker,
@@ -139,7 +149,7 @@ function IndividualPage(props) {
 
         Promise.all(requests).then(() => {
             updates["holdings"] = ls;
-            console.log(ls);
+            console.log(updates);
             props.firebase
                 .mainAccount(props.authUser.uid, props.selected[0])
                 .update(updates);
@@ -285,6 +295,13 @@ function IndividualPage(props) {
                                 </div>
                             </Grid>
                         </Grid>
+                        {
+                            <Grid item xs={12}>
+                                <TickerTable authUser={authUser} rows={table}>
+                                    {" "}
+                                </TickerTable>
+                            </Grid>
+                        }
                     </div>
                 )}
             </AuthUserContext.Consumer>
