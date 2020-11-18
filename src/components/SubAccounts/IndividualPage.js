@@ -12,20 +12,6 @@ import FormControl from '@material-ui/core/FormControl';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import TickerTable from './TickerTable';
-// =======
-// import { Button, Typography } from "@material-ui/core";
-// import FormControl from "@material-ui/core/FormControl";
-// import Grid from "@material-ui/core/Grid";
-// import InputLabel from "@material-ui/core/InputLabel";
-// import MenuItem from "@material-ui/core/MenuItem";
-// import Select from "@material-ui/core/Select";
-// import React, { useEffect, useState } from "react";
-// import PieCharts from "../Dashboard/PieCharts";
-// import Progress from "../Dashboard/Progress";
-// import { withFirebase } from "../Firebase";
-// import { AuthUserContext } from "../Session";
-// import TickerTable from "./TickerTable"
-// >>>>>>> develop
 
 // First Pie Chart data
 const data1 = {
@@ -176,16 +162,7 @@ function IndividualPage(props) {
                 .update(updates);
         });
     };
-
-    //   const checkReady = () => {
-    //     if (plan.empty) {
-    //         setReady(false);
-    //     }
-    //     else {
-    //         setReady(true);
-    //     };
-    //   }
-
+    
     useEffect(() => {
         onListenForSubAccounts();
     }, []);

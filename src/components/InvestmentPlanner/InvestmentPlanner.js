@@ -30,6 +30,7 @@ import { withFirebase } from '../Firebase';
 import IndividualPage from '../SubAccounts/IndividualPage';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import Individual from './Individual';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -281,8 +282,8 @@ const useStyles = makeStyles((theme) => ({
                           marginLeft: 20, 
                           marginTop: 20
                       }}><KeyboardBackspaceIcon fontSize='medium'></KeyboardBackspaceIcon></Button>
-                  <IndividualPage authUser={authUser}
-                                 selected={select}   ></IndividualPage>
+                    <Individual></Individual>
+
                   </div>
               )}
               </AuthUserContext.Consumer>
