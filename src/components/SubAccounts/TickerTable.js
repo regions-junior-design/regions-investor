@@ -141,7 +141,7 @@ const EnhancedTableToolbar = (props) => {
         </Typography>
       ) : (
         <Typography className={classes.title} variant="h6" id="tableTitle" component="div">
-          Goals
+          Tickers
         </Typography>
       )}
 
@@ -232,6 +232,12 @@ const TickerTable = ({
 
   const isSelected = (name) => selected.indexOf(name) !== -1;
 
+  function sharesFormat(num) {
+   console.log(typeof num);
+   var n = num.toFixed(1);
+    return n;
+  }
+
   const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
 
   return (
@@ -285,7 +291,8 @@ const TickerTable = ({
 
                         {row.ticker}
                       </TableCell>
-                      <TableCell align="right">{row.numShares}</TableCell>
+                      {/* <TableCell align="right">{row.numShares}</TableCell> */}
+                      <TableCell align="right">{sharesFormat(row.numShares)}</TableCell>
                       <TableCell align="right">{row.purchasePrice}</TableCell>
                       <TableCell align="right">{row.currentPrice}</TableCell>
 

@@ -96,8 +96,13 @@ function IndividualPage(props) {
     const [loaded, setLoaded] = useState(false);
     const [ready, setReady] = useState(true);
     const [table, setTable] = useState([]);
-    
-    // console.log(props);
+
+    // comma separation function
+    function commaSeparation(num) {
+        var nfObject = new Intl.NumberFormat('en-US');
+        var n = nfObject.format(num);
+        return n;
+    }
 
     if (!loaded) {
         let ls = [];
@@ -217,11 +222,11 @@ function IndividualPage(props) {
                                         borderColor: "#88bb00",
                                         borderWidth: 10,
                                         padding: 10,
-                                        width: 560,
+                                        width: 570,
                                         marginLeft: -50
                                     }}
                                 >
-                                    Desired Amount to Achieve Goal: ${goal ? goal : 0}
+                                    Desired Amount to Achieve Goal: ${commaSeparation(goal) ? commaSeparation(goal) : 0}
                                 </Typography>
                             </Grid>
 
@@ -235,7 +240,7 @@ function IndividualPage(props) {
                             >
                                 <Typography variant="h4">
                                     Progress to Goal: $ {" "}
-                                    {currentAccValue ? currentAccValue : 0}{" "}
+                                    {commaSeparation(currentAccValue) ? commaSeparation(currentAccValue) : 0}{" "}
                                 </Typography>
                             </Grid>
 
@@ -291,7 +296,7 @@ function IndividualPage(props) {
                             <Button
                                 variant="contained"
                                 className="tooltip"
-// =======
+
 //                             <Grid item>
 //                                 <FormControl>
 //                                     <InputLabel id="type-label">
@@ -332,36 +337,25 @@ function IndividualPage(props) {
 //                             <Grid
 //                                 item
 //                                 xs={12}
-// >>>>>>> develop
                                 style={{
                                     marginTop: 10,
                                     marginLeft: 300,
                                 }}
 
                             >
-                                <div
-                                    style={{
-                                        height: 800,
-                                        width: 800,
-                                    }}
-                                >
-                                    <PieCharts
-                                        data={data1}
-                                        options={options1}
-                                    ></PieCharts>
-                                </div>
-                            </Grid>
+     
+                            </Button>
+                        </FormControl>
                         </Grid>
-                        {
+
                             <Grid item xs={12}>
                                 <TickerTable authUser={authUser} rows={table}>
                                     {" "}
                                 </TickerTable>
                             </Grid>
-                        }
-                    </div>
+                        
+                    </Grid></div>
                 )}
->>>>>>> develop
             </AuthUserContext.Consumer>
         </div>
     );
