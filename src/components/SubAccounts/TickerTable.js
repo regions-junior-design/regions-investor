@@ -233,8 +233,7 @@ const TickerTable = ({
   const isSelected = (name) => selected.indexOf(name) !== -1;
 
   function sharesFormat(num) {
-   console.log(typeof num);
-   var n = num.toFixed(1);
+    var n = num.toFixed(1);
     return n;
   }
 
@@ -293,7 +292,7 @@ const TickerTable = ({
                       </TableCell>
                       {/* <TableCell align="right">{row.numShares}</TableCell> */}
                       <TableCell align="right">{sharesFormat(row.numShares)}</TableCell>
-                      <TableCell align="right">{row.purchasePrice}</TableCell>
+                      <TableCell align="right">{sharesFormat(row.purchasePrice)}</TableCell>
                       <TableCell align="right">{row.currentPrice}</TableCell>
 
                     </TableRow>

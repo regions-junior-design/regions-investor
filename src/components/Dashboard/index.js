@@ -185,6 +185,14 @@ function Platform(props) {
     setNum(7);
   }
 
+  // comma separation function
+  function commaSeparation(num) {
+    var nfObject = new Intl.NumberFormat('en-US');
+    var n = nfObject.format(num);
+    return n;
+  }
+
+
     return (
       <ThemeProvider theme={theme}>
       <div className={classes.root}>
@@ -232,7 +240,7 @@ function Platform(props) {
                         Total Account Value
                     </Typography>
                     <Typography component="h1" variant="h6" color="primary" align="center" noWrap className={classes.title}>
-                        ${total}
+                        ${commaSeparation(total)}
                     </Typography>
                     <dl></dl>
                     <hr></hr>

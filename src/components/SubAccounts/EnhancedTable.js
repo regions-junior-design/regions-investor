@@ -55,6 +55,14 @@ const headCells = [
   { id: 'goalDate', numeric: false, disablePadding: false, label: 'Goal Date' },
 ];
 
+  // comma separation function
+function commaSeparation(num) {
+  var nfObject = new Intl.NumberFormat('en-US');
+  var n = nfObject.format(num);
+  return n;
+}
+
+
 function EnhancedTableHead(props) {
   const { classes, onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort, goalSelected } = props;
   const createSortHandler = (property) => (event) => {
@@ -314,8 +322,8 @@ const EnhancedTable = ({
                       <TableCell component="th" id={labelId} scope="row" padding="none">
                         {row.name}
                       </TableCell>
-                      <TableCell align="right">{row.currentAccountValue}</TableCell>
-                      <TableCell align="right">{row.goalAmount}</TableCell>
+                      <TableCell align="right">{commaSeparation(row.currentAccountValue)}</TableCell>
+                      <TableCell align="right">{commaSeparation(row.goalAmount)}</TableCell>
                       <TableCell align="right">{row.investmentStyle}</TableCell>
                       <TableCell align="right">{row.goalDate}</TableCell>
                     </TableRow>
