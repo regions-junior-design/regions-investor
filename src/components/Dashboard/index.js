@@ -216,7 +216,7 @@ function Platform(props) {
                           width: 70
                         }}></img> */}
                     <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-                        X Bank Personal Investment Platform 
+                        Personal Investment Platform 
                     </Typography>
                     <SignOut></SignOut>
                 </Toolbar>

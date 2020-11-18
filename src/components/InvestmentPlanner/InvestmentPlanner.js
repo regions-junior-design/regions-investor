@@ -161,7 +161,7 @@ const useStyles = makeStyles((theme) => ({
                                         marginLeft: 20,
                                         marginTop: -10
                                     }} className='tooltip' onClick={handleIndividual}>
-                                        <Typography className='tooltiptext'>Individual Investment Plan Info</Typography>
+                                        <Typography className='tooltiptext'>Individual Info</Typography>
                                         <InfoIcon fontSize='medium'></InfoIcon>
                                         </Button>
                                     </React.Fragment>
