@@ -13,18 +13,6 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import TickerTable from './TickerTable';
 
-// First Pie Chart data
-const data1 = {
-    labels: ["GOOG", "SBUX", "EFX"],
-    datasets: [
-        {
-            data: [30, 50, 20],
-            backgroundColor: ["#47c3d4", "#cc4e00", "#ffc425"],
-            hoverBackgroundColor: ["#47c3d4", "#cc4e00", "#ffc425"],
-        },
-    ],
-};
-
 // First Pie Chart Options
 const options1 = {
     legend: {
