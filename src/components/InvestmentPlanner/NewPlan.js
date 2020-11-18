@@ -148,7 +148,16 @@ function NewPlan(props) {
             </Grid>
 
             <Grid item xs={12}>
-              <TickerPopup></TickerPopup>
+              {/* <TickerPopup></TickerPopup> */}
+              <Button variant="outlined" color="secondary" onClick={ function () {
+                      window.open(
+                        "https://finance.yahoo.com/trending-tickers"
+                      )
+              }}>
+                <Typography variant="button">
+                  Ticker Options
+                </Typography>
+              </Button>
             </Grid>
 
             <Grid item xs={12}>
@@ -180,16 +189,7 @@ function NewPlan(props) {
                     }
                   }}
                 />
-            {/* <StrategyButton strategy={id} passBack={passback}></StrategyButton> */}
             </Grid>
-            {/* <Grid item xs={12} sm={4} >
-                <FullScreenDialog label="Bonds" title="Bonds"></FullScreenDialog>
-            </Grid>
-            <Grid item xs={12} sm={4} style={{
-              marginLeft: -200
-            }}>
-                <FullScreenDialog label="Stocks" title="Stocks"></FullScreenDialog>
-            </Grid> */}
             <Grid item xs={12}>
                 <Typography variant="h3">Step 3: Choose The Risk</Typography>
                 <InfoIcon></InfoIcon>

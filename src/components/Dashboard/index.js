@@ -322,7 +322,7 @@ function Platform(props) {
                 <main className={classes.content}>
                     <div className={classes.appBarSpacer} />
                     <Container maxWidth="lg" className={classes.container}>
-                        <h1>Recent Tranacations Page</h1>
+                        <h1>Recent Transactions Page</h1>
                     </Container>
                 </main>
             </div>

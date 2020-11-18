@@ -36,13 +36,13 @@ export default function TickerPopup() {
           <DialogContentText id="alert-dialog-description">
             <List>
                 <ListItem>
-                    <Typography variant="h4">S&P 500</Typography>
+                    <Typography variant="h4">Apple (AAPL)</Typography>
                 </ListItem>
                 <ListItem>
-                    <Typography variant="h4">Dow 30</Typography>
+                    <Typography variant="h4">Virgin Galactic Holdings (SPCE)</Typography>
                 </ListItem>
                 <ListItem>
-                    <Typography variant="h4">Nasdaq</Typography>
+                    <Typography variant="h4"></Typography>
                 </ListItem>
                 <ListItem>
                     <Typography variant="h4">Russell 2000</Typography>
