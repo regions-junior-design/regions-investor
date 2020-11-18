@@ -209,13 +209,13 @@ const TickerTable = ({
     setOrderBy(property);
   };
   
-  useEffect(e => {
-    let newSelected = [];
-    newSelected = newSelected.concat(selected);
-    newSelected = newSelected.filter(v => rows.map(e => e.name).includes(v))
-    console.log(newSelected)
-    setSelected(newSelected);
-  }, [rows])
+  // useEffect(e => {
+  //   let newSelected = [];
+  //   newSelected = newSelected.concat(selected);
+  //   newSelected = newSelected.filter(v => rows.map(e => e.name).includes(v))
+  //   console.log(newSelected)
+  //   setSelected(newSelected);
+  // }, [rows])
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -230,7 +230,7 @@ const TickerTable = ({
     setDense(event.target.checked);
   };
 
-  const isSelected = (name) => selected.indexOf(name) !== -1;
+  // const isSelected = (name) => selected.indexOf(name) !== -1;
 
   function sharesFormat(num) {
     var n = num.toFixed(1);
@@ -266,27 +266,23 @@ const TickerTable = ({
               {stableSort(rows, getComparator(order, orderBy))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row, index) => {
-                  const isItemSelected = isSelected(row.name);
-                  const labelId = `enhanced-table-checkbox-${index}`;
+                  // const isItemSelected = isSelected(row.name);
+                  // const labelId = `enhanced-table-checkbox-${index}`;
 
                   return (
                     <TableRow
                       hover
 
                       role="checkbox"
-                      aria-checked={isItemSelected}
+                      // aria-checked={isItemSelected}
                       tabIndex={-1}
                       key={row.name}
-                      selected={isItemSelected}
+                      // selected={isItemSelected}
                     >
                       <TableCell padding="checkbox">
-                        <Checkbox
-                          checked={isItemSelected}
-                          inputProps={{ 'aria-labelledby': labelId }}
-                        />
                       </TableCell>
                       {/* THIS IS WHERE YOU PUT ON CLICK FUNCTION */}
-                      <TableCell component="th" id={labelId} scope="row" padding="none">
+                      <TableCell component="th" scope="row" padding="none">
 
                         {row.ticker}
                       </TableCell>
