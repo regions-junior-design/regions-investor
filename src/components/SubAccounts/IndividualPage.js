@@ -259,7 +259,53 @@ function IndividualPage(props) {
                                             : 0
                                     }
                                 ></Progress>
-                            </Grid>                   
+                            </Grid>   
+
+                            <Grid item style={{
+                                marginLeft: 650,
+                                marginTop: 30,
+                                marginBottom: 30
+                            }}>
+                                <Typography variant="h4" style={{
+                                    marginLeft: -190
+                                }}>
+                                    Please select an investment plan to apply to your goal.
+                                </Typography>
+                                <FormControl>
+                                    <InputLabel id="type-label">
+                                        Select Plan
+                                    </InputLabel>
+                                    <Select
+                                        labelId="type-label"
+                                        id="type"
+                                        onChange={(e) => {
+                                            setPlan(plans[e.target.value]);
+                                            // checkReady();
+                                        }}
+                                    >
+                                        {plans.map((item, i) => (
+                                            // console.log(item, i);
+                                            <MenuItem value={i}>
+                                                {item.value.name}
+                                            </MenuItem>
+                                        ))}
+                                    </Select>
+                                    <br></br>
+                                    <Button
+                                        variant="contained"
+                                        className="tooltip"
+                                        style={{
+                                            marginBottom: 20,
+                                            backgroundColor: "#528400",
+                                            color: "white",
+                                        }}
+                                        onClick={handleApply}
+                                        // disabled={ready}
+                                    >
+                                        Apply Plan
+                                    </Button>
+                                </FormControl>
+                            </Grid>                
 
                             <Grid item xs={12}>
                                 <TickerTable authUser={authUser} rows={table}>
