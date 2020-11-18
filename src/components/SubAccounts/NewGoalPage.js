@@ -92,7 +92,7 @@ function NewGoalPage(props) {
             name="date"
             label="Goal Date" fullWidth />
         </Grid>
-        <Grid item xs={12} sm={6}>
+        {/* <Grid item xs={12} sm={6}>
           <FormControl fullWidth>
             <InputLabel id="type-label">Plan</InputLabel>
             <Select
@@ -106,7 +106,7 @@ function NewGoalPage(props) {
                 <MenuItem value={"Aggresive"}>Aggresive</MenuItem>
             </Select>
           </FormControl>
-        </Grid>
+        </Grid> */}
         <Grid item xs={12}>
           <Button
             type="button"

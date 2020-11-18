@@ -67,6 +67,7 @@ const useStyles = makeStyles((theme) => ({
     const [chosen, setChosen] = useState(false);
     const [open, setOpen] = React.useState(false);
     const [select, setSelect] = useState([]);
+    const [btnColor, setBtnColor] = useState("primary");
 
     const handleMain = () => {
         setChosen(false)
@@ -124,10 +125,9 @@ const useStyles = makeStyles((theme) => ({
                                    <Button
                                        variant="contained"
                                        className="tooltip"
+                                       color = "primary"
                                        style={{
                                            marginBottom: 20,
-                                           backgroundColor:
-                                               "#528400",
                                            color: "white",
                                        }}
                                        onClick={handleNewGoal}
@@ -142,10 +142,9 @@ const useStyles = makeStyles((theme) => ({
                                        variant="contained"
                                        className="tooltip"
                                        onClick={handleClickOpen}
+                                       color = {btnColor}
                                        style={{
                                            marginBottom: 20,
-                                           backgroundColor:
-                                               "#528400",
                                            color: "white",
                                            marginLeft: 20,
                                        }}
@@ -159,12 +158,14 @@ const useStyles = makeStyles((theme) => ({
                                     {(popupState) => (
                                     <React.Fragment>
                                         {/* TRINH THIS IS THE BUTTON TO TAKE YOU TO THE INDIVIDUAL PAGE */}
-                                    <Button variant='contained' color='primary' style={{
+                                    <Button variant='contained' color={btnColor} style={{
                                         marginLeft: 20,
                                         marginTop: -10
                                     }} className='tooltip' onClick={handleIndividual}>
-                                        <Typography className='tooltiptext'>Individual Subaccount Info</Typography>
-                                        <InfoIcon fontSize='medium'></InfoIcon>
+                                        <Typography className='tooltiptext'>Individual Info</Typography>
+                                        <InfoIcon fontSize='medium' style={{
+                                            color: 'white'
+                                        }}></InfoIcon>
                                         </Button>
                                     </React.Fragment>
                                     )}
@@ -207,10 +208,9 @@ const useStyles = makeStyles((theme) => ({
                                    <Button
                                        variant="contained"
                                        className="tooltip"
+                                       color = {btnColor}
                                        style={{
                                            marginBottom: 20,
-                                           backgroundColor:
-                                               "#528400",
                                            color: "white",
                                            marginLeft: 20,
                                        }}

@@ -29,6 +29,7 @@ import EditIcon from "@material-ui/icons/Edit";
 import FullScreenDialog from './FullScreenDialog';
 import StrategyButton from './StrategyButton';
 import Box from '@material-ui/core/Box';
+import TickerPopup from './TickerPopup';
 
 function NewPlan(props) {
     console.log(props)
@@ -136,9 +137,20 @@ function NewPlan(props) {
             <Grid item xs={12}>
                 <Typography variant="h3">Step 2: Choose Where You Will Invest</Typography>
                 <Typography variant="h4">Select What You Want to Invest In</Typography>
-                <InfoIcon></InfoIcon>
-                <Typography variant="body">What are my options? The buttons below will show you options of how you can invest your money.</Typography>
+                <InfoIcon style={{
+                  marginLeft: 10,
+                  marginRight: 10,
+                  marginTop: 10
+                }}></InfoIcon>
+                <Typography variant="body" style={{
+                  marginTop: 10
+                }}>Type in the name of the ticker you would like to invest in. If you want to see a list of options, click on the 'Ticker Options' button and then type the name in as you see it.</Typography>
             </Grid>
+
+            <Grid item xs={12}>
+              <TickerPopup></TickerPopup>
+            </Grid>
+
             <Grid item xs={12}>
               <div style={{ width: '100%' }}>
                 {holdings.map((v) => {
@@ -192,7 +204,6 @@ function NewPlan(props) {
                 id="type"
                 onChange={(e) => setRisk(e.target.value)}
                 >
-                    <MenuItem value={"None"}>None</MenuItem>
                     <MenuItem value={"Conservative"}>Conservative</MenuItem>
                     <MenuItem value={"Moderate"}>Moderate</MenuItem>
                     <MenuItem value={"Aggresive"}>Aggresive</MenuItem>

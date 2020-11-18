@@ -1,15 +1,17 @@
-import { Button, Typography } from "@material-ui/core";
-import FormControl from "@material-ui/core/FormControl";
-import Grid from "@material-ui/core/Grid";
-import InputLabel from "@material-ui/core/InputLabel";
-import MenuItem from "@material-ui/core/MenuItem";
-import Select from "@material-ui/core/Select";
-import React, { useEffect, useState } from "react";
-import PieCharts from "../Dashboard/PieCharts";
-import Progress from "../Dashboard/Progress";
-import { withFirebase } from "../Firebase";
-import { AuthUserContext } from "../Session";
-import TickerTable from "./TickerTable"
+
+import React, { useEffect, useState } from 'react';
+import { withFirebase } from '../Firebase';
+import Grid from '@material-ui/core/Grid';
+import {Typography, Button } from '@material-ui/core';
+import { AuthUserContext } from '../Session';
+import Progress from '../Dashboard/Progress';
+import PieCharts from '../Dashboard/PieCharts';
+import InputLabel from '@material-ui/core/InputLabel';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import FormControl from '@material-ui/core/FormControl';
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
+import TickerTable from './TickerTable';
 
 // First Pie Chart data
 const data1 = {
@@ -80,8 +82,13 @@ function IndividualPage(props) {
     const [loaded, setLoaded] = useState(false);
     const [ready, setReady] = useState(true);
     const [table, setTable] = useState([]);
-    
-    // console.log(props);
+
+    // comma separation function
+    function commaSeparation(num) {
+        var nfObject = new Intl.NumberFormat('en-US');
+        var n = nfObject.format(num);
+        return n;
+    }
 
     if (!loaded) {
         let ls = [];
@@ -155,16 +162,7 @@ function IndividualPage(props) {
                 .update(updates);
         });
     };
-
-    //   const checkReady = () => {
-    //     if (plan.empty) {
-    //         setReady(false);
-    //     }
-    //     else {
-    //         setReady(true);
-    //     };
-    //   }
-
+    
     useEffect(() => {
         onListenForSubAccounts();
     }, []);
@@ -191,6 +189,7 @@ function IndividualPage(props) {
                                 style={{
                                     marginLeft: 490,
                                     marginTop: 10,
+                                    marginBottom: 20
                                 }}
                             >
                                 <Typography
@@ -200,11 +199,11 @@ function IndividualPage(props) {
                                         borderColor: "#88bb00",
                                         borderWidth: 10,
                                         padding: 10,
-                                        width: 460,
+                                        width: 570,
+                                        marginLeft: -50
                                     }}
                                 >
-                                    Total Subaccount Value: ${" "}
-                                    {currentAccValue ? currentAccValue : 0}{" "}
+                                    Desired Amount to Achieve Goal: ${commaSeparation(goal) ? commaSeparation(goal) : 0}
                                 </Typography>
                             </Grid>
 
@@ -217,7 +216,8 @@ function IndividualPage(props) {
                                 }}
                             >
                                 <Typography variant="h4">
-                                    Progress to Goal: $ {goal ? goal : 0}
+                                    Progress to Goal: $ {" "}
+                                    {commaSeparation(currentAccValue) ? commaSeparation(currentAccValue) : 0}{" "}
                                 </Typography>
                             </Grid>
 
@@ -236,8 +236,18 @@ function IndividualPage(props) {
                                             : 0
                                     }
                                 ></Progress>
-                            </Grid>
-                            <Grid item>
+                            </Grid>   
+
+                            <Grid item style={{
+                                marginLeft: 650,
+                                marginTop: 30,
+                                marginBottom: 30
+                            }}>
+                                <Typography variant="h4" style={{
+                                    marginLeft: -190
+                                }}>
+                                    Please select an investment plan to apply to your goal.
+                                </Typography>
                                 <FormControl>
                                     <InputLabel id="type-label">
                                         Select Plan
@@ -272,37 +282,15 @@ function IndividualPage(props) {
                                         Apply Plan
                                     </Button>
                                 </FormControl>
-                            </Grid>
+                            </Grid>                
 
-                            <Grid
-                                item
-                                xs={12}
-                                style={{
-                                    marginTop: 10,
-                                    marginLeft: 300,
-                                }}
-                            >
-                                <div
-                                    style={{
-                                        height: 800,
-                                        width: 800,
-                                    }}
-                                >
-                                    <PieCharts
-                                        data={data1}
-                                        options={options1}
-                                    ></PieCharts>
-                                </div>
-                            </Grid>
-                        </Grid>
-                        {
                             <Grid item xs={12}>
                                 <TickerTable authUser={authUser} rows={table}>
                                     {" "}
                                 </TickerTable>
                             </Grid>
-                        }
-                    </div>
+                        
+                    </Grid></div>
                 )}
             </AuthUserContext.Consumer>
         </div>

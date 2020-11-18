@@ -141,7 +141,7 @@ const EnhancedTableToolbar = (props) => {
         </Typography>
       ) : (
         <Typography className={classes.title} variant="h6" id="tableTitle" component="div">
-          Goals
+          Tickers
         </Typography>
       )}
 
@@ -192,6 +192,7 @@ const TickerTable = ({
   authUser,
   rows,
   // onEditMessage,
+
 }) => {
   const classes = useStyles();
   const [order, setOrder] = React.useState('asc');
@@ -207,7 +208,6 @@ const TickerTable = ({
     setOrder(isAsc ? 'desc' : 'asc');
     setOrderBy(property);
   };
-
   
   useEffect(e => {
     let newSelected = [];
@@ -231,6 +231,11 @@ const TickerTable = ({
   };
 
   const isSelected = (name) => selected.indexOf(name) !== -1;
+
+  function sharesFormat(num) {
+    var n = num.toFixed(1);
+    return n;
+  }
 
   const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
 
@@ -267,6 +272,7 @@ const TickerTable = ({
                   return (
                     <TableRow
                       hover
+
                       role="checkbox"
                       aria-checked={isItemSelected}
                       tabIndex={-1}
@@ -281,11 +287,14 @@ const TickerTable = ({
                       </TableCell>
                       {/* THIS IS WHERE YOU PUT ON CLICK FUNCTION */}
                       <TableCell component="th" id={labelId} scope="row" padding="none">
+
                         {row.ticker}
                       </TableCell>
-                      <TableCell align="right">{row.numShares}</TableCell>
-                      <TableCell align="right">{row.purchasePrice}</TableCell>
+                      {/* <TableCell align="right">{row.numShares}</TableCell> */}
+                      <TableCell align="right">{sharesFormat(row.numShares)}</TableCell>
+                      <TableCell align="right">{sharesFormat(row.purchasePrice)}</TableCell>
                       <TableCell align="right">{row.currentPrice}</TableCell>
+
                     </TableRow>
                   );
                 })}
