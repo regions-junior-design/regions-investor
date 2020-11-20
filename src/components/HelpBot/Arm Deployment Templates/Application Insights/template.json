@@ -1,0 +1,30 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "components_juniordesignresourse_botjevhq6_name": {
+            "defaultValue": "juniordesignresourse-botjevhq6",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "microsoft.insights/components",
+            "apiVersion": "2018-05-01-preview",
+            "name": "[parameters('components_juniordesignresourse_botjevhq6_name')]",
+            "location": "eastus",
+            "tags": {
+                "hidden-link:/subscriptions/1340d948-a6c9-4267-b51e-c378df9ab0f0/resourceGroups/juniorDesignResourse/providers/Microsoft.BotService/botServices/juniordesignresourse-bot": "Resource",
+                "hidden-link:/subscriptions/1340d948-a6c9-4267-b51e-c378df9ab0f0/resourceGroups/juniorDesignResourse/providers/Microsoft.Web/sites/juniordesignresourse-bot": "Resource"
+            },
+            "kind": "web",
+            "properties": {
+                "Application_Type": "web",
+                "RetentionInDays": 90,
+                "publicNetworkAccessForIngestion": "Enabled",
+                "publicNetworkAccessForQuery": "Enabled"
+            }
+        }
+    ]
+}
