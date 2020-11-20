@@ -31,7 +31,7 @@ import IndividualPage from '../SubAccounts/IndividualPage';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Individual from './Individual';
-
+import TickerTable from '../SubAccounts/TickerTable';
 
 const useStyles = makeStyles((theme) => ({
     drawerPaperClose: {
@@ -58,6 +58,37 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+function getPrice(ticker) {
+    var myHeaders = new Headers();
+    myHeaders.append(
+        "x-rapidapi-host",
+        "apidojo-yahoo-finance-v1.p.rapidapi.com"
+    );
+    myHeaders.append(
+        "x-rapidapi-key",
+        "126bfc9c2dmsh8f0b0ab05eac01fp1a710bjsna04479d10daf"
+    );
+
+    var requestOptions = {
+        method: "GET",
+        headers: myHeaders,
+        redirect: "follow",
+    };
+
+    return fetch(
+        `https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/v2/get-quotes?symbols=${ticker}&region=US`,
+        requestOptions
+    )
+        .then((response) => response.json())
+        .then(
+            (result) =>
+                (result.quoteResponse.result[0].bid +
+                    result.quoteResponse.result[0].ask) /
+                2
+        )
+        .catch((error) => console.log("error", error));
+}
+
   function InvestmentPlanner(props) {
     const classes = useStyles();
     const [view, setView] = useState("Dashboard");
@@ -66,6 +97,7 @@ const useStyles = makeStyles((theme) => ({
     const [chosen, setChosen] = useState(false);
     const [open, setOpen] = React.useState(false);
     const [select, setSelect] = useState([]);
+    const [table, setTable] = useState([]);
 
     const handleMain = () => {
         setChosen(false)
@@ -282,8 +314,10 @@ const useStyles = makeStyles((theme) => ({
                           marginLeft: 20, 
                           marginTop: 20
                       }}><KeyboardBackspaceIcon fontSize='medium'></KeyboardBackspaceIcon></Button>
-                    <Individual></Individual>
-
+                    {/* <Individual></Individual> */}
+                    <TickerTable authUser={authUser} rows={table}>
+                                    {" "}
+                                </TickerTable>
                   </div>
               )}
               </AuthUserContext.Consumer>

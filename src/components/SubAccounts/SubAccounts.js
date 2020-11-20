@@ -68,7 +68,6 @@ const useStyles = makeStyles((theme) => ({
     const [open, setOpen] = React.useState(false);
     const [select, setSelect] = useState([]);
     const [btnColor, setBtnColor] = useState("primary");
-
     const handleMain = () => {
         setChosen(false)
         setView("MainPage");
