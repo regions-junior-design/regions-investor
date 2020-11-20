@@ -270,7 +270,7 @@ function Platform(props) {
                             <ListItemIcon>
                                 <ViewListIcon />
                             </ListItemIcon>
-                            <ListItemText primary="Accounts" />
+                            <ListItemText primary="Goals" />
                         </ListItem>
                         <ListItem button onClick={handleTransactions}>
                             <ListItemIcon>

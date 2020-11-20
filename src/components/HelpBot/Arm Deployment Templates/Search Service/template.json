@@ -1,0 +1,31 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "searchServices_juniordesignresourse_as2nhwnxso7onwa_name": {
+            "defaultValue": "juniordesignresourse-as2nhwnxso7onwa",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Search/searchServices",
+            "apiVersion": "2020-08-01",
+            "name": "[parameters('searchServices_juniordesignresourse_as2nhwnxso7onwa_name')]",
+            "location": "East US",
+            "sku": {
+                "name": "free"
+            },
+            "properties": {
+                "replicaCount": 1,
+                "partitionCount": 1,
+                "hostingMode": "Default",
+                "publicNetworkAccess": "Enabled",
+                "networkRuleSet": {
+                    "ipRules": []
+                }
+            }
+        }
+    ]
+}
