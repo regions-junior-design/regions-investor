@@ -24,7 +24,7 @@ import SettingsIcon from '@material-ui/icons/Settings';
 import TimelapseIcon from '@material-ui/icons/Timelapse';
 import ViewListIcon from '@material-ui/icons/ViewList';
 import clsx from 'clsx';
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { theme } from '../../MaterialUITheme';
 import AccountPage from '../Account';
 import SignOut from '../SignOut';
@@ -34,6 +34,7 @@ import Transfer from '../Transfer';
 import { AuthUserContext } from '../Session';
 import { withFirebase } from '../Firebase';
 import InvestmentPlanner from '../InvestmentPlanner/InvestmentPlanner';
+import ReactWebChat, { createDirectLine } from 'botframework-webchat';
 
 
 
@@ -125,6 +126,20 @@ function Platform(props) {
   const [view, setView] = useState("Dashboard");
   const [num, setNum] = useState(0);
   const [total, setTotal] = useState(0);
+  const directLine = useMemo(() => createDirectLine({ token: 'F7mmXekznYI.vrL0a6KbKB0OK0PiSkuLlkjXCdwgLQACS2ir1WBMSus' }), []);
+  const styleOptions = {
+    bubbleBackground: "#528400",
+    botAvatarInitials: "Bank",
+    userAvatarInitials: "User",
+    userAvatarBackgroundColor: "#88bb00",
+    bubbleTextColor: 'white',
+    showAvatarInGroup: true, // Or 'sender' or true (on every activity).
+    botAvatarBackgroundColor: "#88bb00",
+    bubbleFromUserBorderRadius: 10,
+    bubbleBorderRadius: 10,
+    rootHeight: '700px',
+    rootWidth: '100%',
+  };
 
   props.firebase.mainAccounts(props.authUser.uid).once('value').then( v => {
     let sum = 0;
@@ -194,6 +209,7 @@ function Platform(props) {
 
 
     return (
+      
       <ThemeProvider theme={theme}>
       <div className={classes.root}>
         <CssBaseline />
@@ -348,14 +364,13 @@ function Platform(props) {
         )
         }
         {num === 4 ? (
-            <div>
                 <main className={classes.content}>
                     <div className={classes.appBarSpacer} />
                     <Container maxWidth="lg" className={classes.container}>
-                            <h1>Help Page</h1>
+                    <ReactWebChat directLine={directLine} styleOptions={styleOptions}
+                      />
                     </Container>
                 </main>
-            </div>
         ) : (
             <div></div>
         )
