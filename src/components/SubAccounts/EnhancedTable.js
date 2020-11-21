@@ -51,7 +51,7 @@ const headCells = [
   { id: 'name', numeric: false, disablePadding: true, label: 'Goal' },
   { id: 'currentAccountValue', numeric: true, disablePadding: false, label: 'Current Account Value ($)' },
   { id: 'goalAmount', numeric: true, disablePadding: false, label: 'Goal Amount ($)' },
-  { id: 'investmentStyle', numeric: false, disablePadding: false, label: 'Investment Strategy' },
+  // { id: 'investmentStyle', numeric: false, disablePadding: false, label: 'Investment Strategy' },
   { id: 'goalDate', numeric: false, disablePadding: false, label: 'Goal Date' },
 ];
 
@@ -324,7 +324,7 @@ const EnhancedTable = ({
                       </TableCell>
                       <TableCell align="right">{commaSeparation(row.currentAccountValue)}</TableCell>
                       <TableCell align="right">{commaSeparation(row.goalAmount)}</TableCell>
-                      <TableCell align="right">{row.investmentStyle}</TableCell>
+                      {/* <TableCell align="right">{row.investmentStyle}</TableCell> */}
                       <TableCell align="right">{row.goalDate}</TableCell>
                     </TableRow>
                   );
