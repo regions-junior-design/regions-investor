@@ -12,6 +12,7 @@ import FormControl from '@material-ui/core/FormControl';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import TickerTable from './TickerTable';
+import { useRef } from 'react'
 
 // First Pie Chart Options
 const options1 = {
@@ -70,6 +71,8 @@ function IndividualPage(props) {
     const [loaded, setLoaded] = useState(false);
     const [ready, setReady] = useState(true);
     const [table, setTable] = useState([]);
+    let btnRef = useRef();
+
 
     // comma separation function
     function commaSeparation(num) {
@@ -127,28 +130,33 @@ function IndividualPage(props) {
     }, []);
 
     const handleApply = (e) => {
+
         var updates = {};
         updates["planApplied"] = plan;
         var ls = [];
+        if (!plan.value) return
         let ammountPerTicker = currentAccValue / plan.value.holdings.length;
         const requests = plan.value.holdings.map((ticker) => {
             return getPrice(ticker).then((price) => {
+                
                 let num = ammountPerTicker / price;
                 ls.push({
                     ticker: ticker,
                     purchasePrice: price,
                     numShares: num,
                 });
+                console.log(ls)
             });
         });
 
         Promise.all(requests).then(() => {
             updates["holdings"] = ls;
+
             console.log(updates);
             props.firebase
                 .mainAccount(props.authUser.uid, props.selected[0])
                 .update(updates);
-        });
+        }).catch(e => console.log("Broke" + e));
     };
     
     useEffect(() => {
@@ -259,6 +267,7 @@ function IndividualPage(props) {
                                     <Button
                                         variant="contained"
                                         className="tooltip"
+                                        ref={btnRef}
                                         style={{
                                             marginBottom: 20,
                                             backgroundColor: "#528400",
