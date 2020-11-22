@@ -210,4 +210,4 @@ Firebase Support: https://firebase.google.com/support
 - Transfer page crashes fixed
 
 ## Known Bugs:
-- The RestClient version we use is free version. That’s why it cause the problem cannot retrieve price when the stock market close. When ticker current value cannot be retrieve, the stock table will shown none value. 
+- The RestClient version we use is free version. That’s why it causes the problem cannot retrieve price when the stock market close. When ticker current value cannot be retrieve, the stock table will shown none value. 
