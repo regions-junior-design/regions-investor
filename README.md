@@ -1,4 +1,48 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Regions Personal Investment Platform
+### Team DataBanks
+Daniel Smith, 
+Ross Cefalu, 
+Hayden Smith, 
+Trinh Do, 
+Sid Balireddy 
+
+## About 
+Our project is to create a web-app  for young audience who need to learn how to invest, save, and budget their money in order to build wealth and save for the future. The application will aids users in creating custom investment and saving plans that fit their financial needs.  Our team will focus on providing a simple, yet powerful interface that can attract audiences who expect a seamless experience and expert financial advice.
+
+## Pre-requisites
+
+The following pre requisites are neccessary to run this application.
+
+- Javascript: As a web application, you will need a compatible browser capable of running JavaScript. We suggest [Google Chorme](https://www.google.com/chrome/)
+
+- Node: The node enviornement allows us to host our web app locally for development and testing. There are a variety of installation methods for node. We suggest following the official installer which can be found at [NodeJS](https://nodejs.org/en/)
+
+## Dependencies
+
+The following dependencies must be installed in the Node enviornment for thw web application to function. Dependencies and respective versions are listed below:
+
+- @material-ui/core: 4.11.0
+- @material-ui/icons: 4.9.1
+- chart.js: 2.9.3
+- d3-scale-chromatic: 2.0.0
+- firebase: 7.19.1
+- material-ui-popup-state: 1.6.1
+- react: 16.13.1
+- react-chartjs-2: 2.10.0
+- react-dom: 16.13.1
+- react-router-dom: 5.2.0
+- react-scripts: 3.4.3
+- react-scroll: 1.8.1
+- recompose: 0.30.0
+
+For ease of use these dependencies may be installed automatically
+
+## Download instructions
+## Development
+## Build Instructions
+## Installation
+## Run instructions
+## Troubleshooting
 
 ## Available Scripts
 
