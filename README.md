@@ -160,6 +160,10 @@ All events are logged the your running Node console during development.
 
 Use browser developer tools by right clicking on the loaded web app in your browser and selecting inspect element. Notice that all events are again logged in console in both development mode and in deployed instances of the web application.
 
+- Should the console indicate that packages of any tyoe are missing, simply run `npm install` to verify that all packages are installed correctly.
+- Should the application crash or become unresponsive at any point, we reccomend restarting the node service running the application. Do this by exiting the current process and rerunning `npm  start`.
+- Should the application console indicate that Firebase is unreachable, verify that internet access is intact, and verify that the correct Firebase enviornment creadentials are stored in the `.env` file.
+
 See below additional resources for managing and troubleshooting the application.
 
 <br />
@@ -182,4 +186,28 @@ Firebase Support: https://firebase.google.com/support
 <br />
 
 # Release Notes
+### Version 1.0.0
 
+## New Features:
+- Login by account preference and login with Google credential
+- Edit account information detail: like change name, address, phone number, etc.
+- Change account password
+- Users can log out as they want
+- Goals are now can be created, edited, deleted.
+- The users can see their progress for a goal in goal’s detail page
+- Users can see their progress of the goals in Dashboard page
+- Users can see a pie chart for the distribution of the goals 
+- Transfer functionality is available for the users to transfer money between their goals
+- Investment plans can be created with stocks inputs from the users
+- Investment plans can be apply to goals
+- Users can view data on their shares such as : shares numbers, share’s current price, their bought price.
+
+## Bug Fixes:
+- Minor bugs for spacing in UI fixed.
+- Bugs when users cannot hit select again after a select in goals page fixed.
+- Crashes happened when delete goals fixed.
+- Fixes crashes when holding is undefined
+- Transfer page crashes fixed
+
+## Known Bugs:
+- The RestClient version we use is free version. That’s why it cause the problem cannot retrieve price when the stock market close. When ticker current value cannot be retrieve, the stock table will shown none value. 
