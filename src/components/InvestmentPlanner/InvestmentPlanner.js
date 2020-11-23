@@ -66,7 +66,7 @@ function getPrice(ticker) {
     );
     myHeaders.append(
         "x-rapidapi-key",
-        "126bfc9c2dmsh8f0b0ab05eac01fp1a710bjsna04479d10daf"
+        "48219a2373msh1e5a4985aff6ef7p1cf4a7jsn0955b099737b"
     );
 
     var requestOptions = {
