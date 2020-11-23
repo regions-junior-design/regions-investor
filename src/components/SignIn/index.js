@@ -203,11 +203,16 @@ class SignInGoogleBase extends Component {
           email: socialAuthUser.user.email,
           roles: {},
         });
-        // this.props.firebase.holding(socialAuthUser.user.uid).once('value').then( v => {
-        //   let cv = v.val()['value'];
-        //   console.log(cv);
-        //   this.props.firebase.holding(socialAuthUser.user.uid).update({value: cv || 0});
-        // });
+        this.props.firebase.holding(socialAuthUser.user.uid).once('value').then( v => {
+          // console.log(v.val())
+          if (v.val()) {
+            let cv = v.val()['value'];
+            // console.log(cv);
+            this.props.firebase.holding(socialAuthUser.user.uid).update({value: cv || 0});
+          } else {
+            this.props.firebase.holding(socialAuthUser.user.uid).set({value: 0});
+          }
+        });
         return res;
       })
       .then(() => {
