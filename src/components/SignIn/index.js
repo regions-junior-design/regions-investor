@@ -78,11 +78,25 @@ class SignInFormBase extends Component {
 
     this.props.firebase
       .doSignInWithEmailAndPassword(email, password)
-      .then(() => {
+      .then(authUser => {
         this.setState({ ...INITIAL_STATE });
-        this.props.history.push(ROUTES.HOME);
+        // this.props.history.push(ROUTES.HOME);
+
+        // console.log(authUser);
+
+        this.props.firebase.holding(authUser.user.uid).once('value').then( v => {
+          // console.log(v.val())
+          if (v.val()) {
+            let cv = v.val()['value'];
+            // console.log(cv);
+            this.props.firebase.holding(authUser.user.uid).update({value: cv || 0});
+          } else {
+            this.props.firebase.holding(authUser.user.uid).set({value: 0});
+          }
+        });
       })
       .catch(error => {
+        // console.log('ERROR: ', error);
         this.setState({ error });
       });
 
