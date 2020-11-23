@@ -63,12 +63,12 @@ function TransferPage(props) {
       let ls = [];
       props.firebase.holding(props.authUser.uid).once('value').then( v => {
         let acc = v.val();
-        // console.log(acc);
-        // let holding = {
-        //   value: acc.value,
-        //   name: 'Holding Account'
-        // }
-        // ls.push({value: holding, acc: 'holding'});
+        console.log(acc);
+        let holding = {
+          value: acc.value,
+          name: 'Holding Account'
+        }
+        ls.push({value: holding, acc: 'holding'});
         props.firebase.mainAccounts(props.authUser.uid).once('value').then( v => {
           let acc = v.val();
           // console.log(acc);
