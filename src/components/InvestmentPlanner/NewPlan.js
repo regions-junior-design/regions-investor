@@ -37,7 +37,7 @@ function NewPlan(props) {
     const [desc,setDesc] = useState("");
     const [ptype,setType] = useState("");
     const [risk, setRisk] = useState("");
-    const [holdings, setHoldings] = useState(["AAPL", "SPY"]);
+    const [holdings, setHoldings] = useState([]);
     const [id, setId] = useState(0);
     const [mutualFundNum, setMutualFundNum] = useState(0);
     const [chosen, setChosen] = useState(false);
